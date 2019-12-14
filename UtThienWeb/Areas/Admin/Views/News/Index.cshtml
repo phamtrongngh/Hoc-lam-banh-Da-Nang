@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Admin.Models.News>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <form class="navbar-form">
+        <span class="bmd-form-group">
+            <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                    <i class="material-icons">search</i>
+                    <div class="ripple-container"></div>
+                </button>
+            </div>
+        </span>
+    </form>
+    <select>
+        <option>
+            Chọn Tất Cả
+        </option>
+    </select>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Quản Lí Bài Viết</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                Hình Tiêu Đề
+                            </th>
+                            <th>
+                                Tiêu Đề
+                            </th>
+                            <th>
+                                Tác Giả
+                            </th>
+                            <th>
+                                Ngày Đăng
+                            </th>
+                            <th>
+                                Loại Bài Viết
+                            </th>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/img/@item.NewsThumbails" width="100" height="100" />
+                                        </td>
+                                        <td>
+                                            @item.NewsTitle
+                                        </td>
+                                        <td>
+                                            @item.NewsAuthor
+                                        </td>
+                                        <td>
+                                            @item.NewsDate
+                                        </td>
+                                        <td class="text-primary">
+                                            @item.NewsCatalog.NewsCatalogName
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Chỉnh Sửa Bài Viết", "EditNews", "News", new { NewsId = item.NewsId }, null)
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,115 @@
+﻿@model Admin.Models.Course
+@{
+    ViewBag.Title = "EditCourse";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Upload</h4>
+
+                </div>
+                
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" id="formUpload">
+                        @using (Html.BeginForm("EditCourse", "Courses", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CourseName, "Tên Chuyên Đề", new { @class = "bmd-label-floating" })
+                                        @Html.TextBoxFor(model => model.CourseName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CoursePrice, "Giá Tiền (VNĐ)", new { @class = "bmd-label-floating" })
+                                        @Html.TextBoxFor(model => model.CoursePrice, new { @type = "number", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CourseTeacherName, "Giảng viên", new { @class = "bmd-label-floating" })
+                                        @Html.TextBoxFor(model => model.CourseTeacherName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <select class="custom-select" name="catalog">
+                                            <option value="@Model.CourseCatalog.CourseCatalogId">@Model.CourseCatalog.CourseCatalogName</option>
+                                            @foreach (var item in (IEnumerable<Admin.Models.CourseCatalog>) ViewBag.catalog)
+                                            {
+                                                <option value="@item.CourseCatalogId">@item.CourseCatalogName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3><b>Nội Dung Chi Tiết</b></h3>
+                            <div action="/" method="post">
+                                <input id="fileUpload" type="file" multiple name="filess" style="display:none" />
+                            </div>
+                            <!-- The toolbar will be rendered in this container. -->
+                            <div id="toolbar-container"></div>
+
+                            <!-- This container will become the editable. -->
+                            @Html.TextAreaFor(model => model.CourseDescription, new { @id = "editor" })
+                            <script>
+                                CKEDITOR.replace("editor");
+                            </script>
+                            <input type="button" class="btn btn-primary btn-add-img" value="Thêm Hình Vào TextBox" id="uploadButton" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CourseThumbails, "Chọn Ảnh Bìa", new { @class = "bmd-label-floating" })
+
+                                </div>
+                                <input type="file" class="filestyle" name="file"
+                                       data-classButton="btn-white" data-input="true"
+                                       data-classIcon="icon-plus" data-buttonText="sadasda">
+
+
+                            </div>
+
+
+
+                            <input type="submit" name="submit" value="Delete" onclick="confirm('Bạn Có Chắc Chắn Muốn Xóa Bài Viết??')" class="btn btn-primary pull-right">
+                            <input type="submit" name="submit" value="Update" class="btn btn-primary pull-right">
+                        }
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#uploadButton").click(function () {
+            $("#fileUpload").click();
+        })
+        $("#fileUpload").change(function () {
+            var formData = new FormData($("#formUpload")[0]);
+            $.ajax({
+                method: "post",
+                url: "/Home/UploadImages/",
+                processData: false,
+                contentType: false,
+                data: formData
+            }).done(function (e) {
+                var img = "";
+                for (var i = 0; i < e.length; i++) {
+                    img += "<img src='/img/" + e[i] + "' alt='' style='width:300px;heigh:300px;' /></br>";
+                }
+                var v = $('#editor').val();
+                CKEDITOR.instances.editor.insertHtml(img);
+
+            });
+        })
+    })
+</script>
+

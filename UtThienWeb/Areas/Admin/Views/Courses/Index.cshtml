@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Admin.Models.Course>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Các Khóa Học</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Ảnh Bìa
+                                    </th>
+                                    <th>
+                                        Tên Khóa Học
+                                    </th>
+                                    <th>
+                                        Giá
+                                    </th>
+                                    <th>
+                                        Thời Gian Tạo
+                                    </th>
+                                    <th>
+                                        Khóa Học
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/img/@item.CourseThumbails" width="100" height="100" alt="Alternate Text" />
+                                        </td>
+                                        <td>
+                                            @item.CourseName
+                                        </td>
+                                        <td class="text-primary">
+                                            @item.CoursePrice
+                                        </td>
+                                        <td>
+                                            @item.TimeCreate
+                                        </td>
+                                        <td>
+                                            @item.CourseCatalog.CourseCatalogName
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Chỉnh Sửa Khóa Học", "EditCourse", "Courses", new { CourseId = item.CourseId }, null)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

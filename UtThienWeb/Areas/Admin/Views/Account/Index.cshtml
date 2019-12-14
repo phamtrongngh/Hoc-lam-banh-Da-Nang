@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Admin.Models.Account>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Người Dùng</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        Link Facebook
+                                    </th>
+                                    <th>
+                                        Gender
+                                    </th>
+                                    <th>
+                                        UserName
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.AccountName
+                                        </td>
+                                        <td>
+                                            @item.AccountEmail
+                                        </td>
+                                        <td>
+                                            @item.AccountPhone
+                                        </td>
+                                        <td>
+                                            @item.LinkFacebook
+                                        </td>
+                                        <td>
+                                            @item.AccountGender
+                                        </td>
+                                        <td>
+                                            @item.AccountUser
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Chi Tiết", "AccountDetails", "Account", new { AccountId = item.AccountId }, null)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

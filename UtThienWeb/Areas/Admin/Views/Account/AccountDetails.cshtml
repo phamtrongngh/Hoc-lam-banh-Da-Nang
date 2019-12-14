@@ -1,0 +1,126 @@
+﻿@model Admin.Models.Account
+@{
+    ViewBag.Title = "AccountDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Chi Tiết Tài Khoản: @Html.DisplayFor(model => model.AccountUser)</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Tên Đầy Đủ:
+                                            @Html.DisplayFor(model => model.AccountName)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Mật Khẩu:
+                                            @Html.DisplayFor(model => model.AccountPassword)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Tài Khoản:
+                                            @Html.DisplayFor(model => model.AccountUser)
+                                        </label>
+                                        <input type="email" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Địa Chỉ Mail:
+                                            @Html.DisplayFor(model => model.AccountEmail)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Ngày Sinh:
+                                            @Html.DisplayFor(model => model.AccountBOD)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Địa Chỉ:
+                                            @Html.DisplayFor(model => model.AccountAddress)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Giới Tính
+                                            @Html.DisplayFor(model => model.AccountGender)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Số Điện Thoại:
+                                            @Html.DisplayFor(model => model.AccountPhone)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Ngày Tạo:
+                                            @Html.DisplayFor(model => model.TimeCreate)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">
+                                            Đường Dẫn Facebook (Nếu Có):
+                                            @Html.DisplayFor(model => model.LinkFacebook)
+                                        </label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ActionLink("Quay Về Danh Sách","Index","Account", new {@class = "btn btn-primary pull-right"})
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+

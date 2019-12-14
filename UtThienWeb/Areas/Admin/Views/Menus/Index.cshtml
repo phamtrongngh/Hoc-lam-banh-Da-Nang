@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Admin.Models.Menu>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="menu-setting-box">
+    <h3><b>Tùy Chỉnh Menu</b></h3>
+    <nav class="navbar navbar-expand-sm bg-success">
+        <!-- Brand -->
+        <!-- Links -->
+        <ul class="navbar-nav">
+            @foreach (var item in Model)
+            {
+                if (item.MenuSubLi == null)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop">
+                            @item.MenuLiName
+                        </a>
+                        <div class="dropdown-menu" style="width:225px">
+                            <form action="/" method="post">
+                                @foreach (var i in item.Menu1)
+                                {
+                                    <a style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item @i.MenuLiId">@i.MenuLiName</a>
+                                    <a style="color:red;background-color:initial;" onclick='if (confirm("XÁC NHẬN XÓA??")) $.ajax({
+                                                                url: "/Menus/DeleteMenu/",
+                                                                method: "POST",
+                                                                data: {
+                                                                    id: @i.MenuLiId
+                                                                }
+                                                            }).done(function () {
+                                                                window.location.reload();
+                                                            }); return false'><b>Xóa</b></a>
+                                }
+
+                                <input type='text' id='@item.MenuLiId' placeholder="Thêm" style='width:150.88px;margin-left:20px' />
+                                <a href='#' onclick='if (confirm("XÁC NHẬN LƯU LẠI??")) $.ajax({
+                                                                url: "/Menus/AddMenu/",
+                                                                method: "POST",
+                                                                data: {
+                                                                    id: @item.MenuLiId,
+                                                                    name: $("#@item.MenuLiId").val()
+                                                                }
+                                                            }).done(function () {
+                                                                window.location.reload();
+                                                            }); return false'
+                                   style='color:green;padding-left:12px;background-color:initial'>
+                                    <b>Lưu</b>
+                                </a>
+                            </form>
+                        </div>
+                    </li>
+                }
+
+
+            }
+
+            <!---<li class="nav-item">
+                <a style="color:yellow" class="nav-link add-menu" href="#">
+                    <i class="fa fa-plus" style="font-size:initial"></i>
+                </a>
+            </li>-->
+
+        </ul>
+    </nav>
+
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------------->
+<div id="slide-setting-box">
+    <h3><b>Tùy Chỉnh Ảnh Slide Trang Chủ</b></h3>
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in (IEnumerable<Admin.Models.Slide>)ViewBag.slide)
+            {
+                <div class="col-md-4 card-slide" style="position:relative">
+                    <form class="form" action="/Menus/ChangeSlide" method="post"  enctype = "multipart/form-data">
+                        <input style="display:none" type="text" name="slideNumber" value="@item.SlideId" />
+                        <button type="button"  class="change-card-button btn btn-info">Thay Đổi</button>
+                        <input style="display:none" class="file-upload" type="file" name="file" />
+                    </form>
+
+                    <h5 style="text-align:center">Ảnh @item.SlideId</h5>
+                    <img style="border:4px solid black" width="100%" height="200px" src="~/img/@item.SlideImages" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".change-card-button").click(function () {
+            $(this).next().click();
+        })
+        $(".file-upload").change(function () {
+            $(this).parent(".form").submit();
+        })
+    })
+</script>

@@ -1,0 +1,350 @@
+﻿
+<html lang="zxx">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="industry, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="shortcut icon">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&amp;display=swap" rel="stylesheet">
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!------->
+
+</head>
+
+<body class="" style="">
+
+    <!-- Header section  -->
+    <nav class="navbar navbar-expand-xl navbar-custom">
+        <div class="logo-box">
+            <a class="navbar-brand" href="#">
+                <img class="logo" src="/img/logo.png" alt="">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbarCustom" style="">
+            <ul class="navbar-nav mr-auto">
+                <!--<li class="nav-item">
+                    <a class="nav-link" href="#">Trang Chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Khóa học bánh
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Lớp Bánh Âu gia đình</a>
+                        <a class="dropdown-item" href="#">Lớp bánh chuyên sâu</a>
+                        <a class="dropdown-item" href="#">Lớp bánh ngoại khóa</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Đồ Làm Bánh</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Lịch học
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" href="#">Nội qui lớp học</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hoạt động Học viên</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cùng học làm bánh</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tuyển dụng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Chi nhánh</a>
+                </li>-->
+                @foreach (var item in (IEnumerable<UtThienWeb.Models.Menu>)HttpContext.Current.Application["menu"])
+                {
+                    if (item.MenuSubLi == null)
+                    {
+                        <li class="nav-item dropdown" data-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @item.MenuLiName
+                            </a>
+                            <div class="dropdown-menu" style="width:225px">
+                                @foreach (var i in item.Menu1)
+                                {
+                                    <a style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item @i.MenuLiId">@i.MenuLiName</a>
+                                }
+                            </div>
+                        </li>
+                    }
+
+
+                }
+            </ul>
+        </div>
+        <div class="pull-right" style="display: block;">
+            <div class="icon-menu search-box">
+                <form class="search-form" action="">
+                    <input type="search" class="search">
+                    <i class="fa fa-search icon-search"></i>
+                </form>
+            </div>
+            <div class="icon-menu cart-box">
+                <a href="" class="cart-btn">
+                    <i class="fa fa-cart-plus"></i>
+                </a>
+                <div class="number-cart">0</div>
+            </div>
+            <div class="icon-menu user-login">
+                <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><i class="fa fa-user"></i><span>Đăng nhập</span></a>
+            </div>
+        </div>
+
+        <button id="button-toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCustom" aria-expanded="false">
+            <i class="fa fa-bars fa-lg py-1 text-white"></i>
+        </button>
+
+    </nav>
+    <!-- Header section end  -->
+    <!-- Modal -->
+
+    <form class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" method="post" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header title-login">
+                    <h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <label>Tên đăng nhập</label>
+                    <input class="form-control" name="user-login" type="text" id="userlogin">
+
+                    <label>Mật khẩu</label>
+                    <input class="form-control" name="password-login" type="password" id="passlogin">
+
+                    <input type="checkbox" id="remmember-password" value="1">
+                    <label for="">Nhớ mật khẩu</label><br>
+
+                    <span class="error error-login">Sai tên đăng nhập hoặc mật khẩu</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-dismiss="modal" data-target="#register">Đăng ký</button>
+                    <button type="button" class="btn btn-danger" id="button-login">Đăng nhập</button>
+                    <a href="/home/loginfacebook">
+                        <button type="button" class="btn btn-primary">
+                            <i class="fab fa-facebook-f"></i>  Đăng nhập với facebook
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Model Register-->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header title-login">
+                    <h5 class="modal-title" id="exampleModalLabel">Đăng Kí</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="/Home/Index" id="register-form" method="post">
+                    <div class="modal-body">
+                        <label>Tên đăng nhập</label>
+                        <input class="form-control" name="user-register" type="text" id="userRegister">
+                        <span class="error error-user" color="red">Tên đăng nhập phải từ 6 ký tự trở lên(không có ký tự đặc biệt)</span>
+                        <span class="error error-existUser" color="red">Tên đăng nhập đã tồn tại, vui lòng nhập tên đăng nhập khác</span>
+                        <label>Họ Và Tên</label>
+                        <input class="form-control" name="fullname-register" type="text" id="fullnameRegister">
+                        <span class="error error-fullname" color="red">Vui lòng nhập họ và tên</span>
+                        <label>Giới tính</label>
+                        <br>
+                        <label>Nam</label>
+                        <input type="radio" class="gender" name="gender" value="0" checked="">
+                        <label>Nữ</label>
+                        <input type="radio" class="gender" name="gender" value="1">
+                        <br>
+                        <label>Email</label>
+                        <input class="form-control" name="email-register" type="email" id="email">
+                        <span class="error error-email" color="red">Vui lòng nhập đúng định dạng email</span>
+                        <span class="error error-existEmail" color="red">Email đã tồn tại, vui lòng nhập Email khác</span>
+                        <label>Mật khẩu</label>
+                        <input class="form-control" name="password-register" type="password" id="passRegister">
+                        <span class="error error-password" color="red">Mật khẩu phải hơn 8 ký tự(bao gồm cả chữ thường, chữ hoa và ít nhất 1 số)</span>
+                        <label>Nhập Lại Mật Khẩu</label>
+                        <input class="form-control" type="password" id="passComfirm">
+                        <span class="error error-repassword" color="red">Mật khẩu không khớp, vui lòng nhập lại</span>
+                        <label>Số Điện Thoại</label>
+                        <input class="form-control" name="phone-register" type="text" id="phoneNumber">
+                        <span class="error error-phone" color="red">Số điện thoại không hợp lệ</span>
+                        <label>Ngày Sinh</label>
+                        <input type="date" name="datepicker" class="form-control" id="datepicker" value="">
+                        <span class="error error-date" color="red">Vui lòng chọn ngày sinh</span>
+                        <label>Địa Chỉ</label>
+                        <input class="form-control" name="address-register" type="text" id="address">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="reset" class="btn btn-secondary">
+                        <button type="button" class="btn btn-success" id="submit-register">Đăng Kí</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="body-render">
+        @RenderBody()
+    </div>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Footer -->
+    <footer class="pt-5 pb-4" id="contact">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <img id="logo-footer" src="/img/logo.jpg" alt="">
+
+                    <ul class="social-pet mt-4">
+                        <li><a href="https://www.facebook.com/HocLamBanhDaNang/" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" title="twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" title="youtube"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#" title="instagram"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+
+                    <h5 class="mb-4 font-weight-bold h5-footer">LIÊN HỆ</h5>
+                    <ul class="f-address">
+                        <li>
+                            <div class="row">
+                                <div class="col-1"><i class="fas fa-map-marker"></i></div>
+                                <div class="col-10">
+                                    <h6 class="font-weight-bold mb-0">ĐỊA CHỈ:</h6>
+                                    <p>48 Trần Hữu Trang, Quận Hải Châu, Tp Đà Nẵng.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-1"><i class="far fa-envelope"></i></div>
+                                <div class="col-8">
+                                    <h6 class="font-weight-bold mb-0">EMAIL</h6>
+                                    <p><a href="mailto:hoclambanhdanang@gmail.com">hoclambanhdanang@gmail.com</a></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-1"><i class="fas fa-phone-volume"></i></div>
+                                <div class="col-10">
+                                    <h6 class="font-weight-bold mb-0">PHONE</h6>
+                                    <p><a href="tel:+(84)935405489">+(84)935405489</a></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <h5 class="mb-4 font-weight-bold h5-footer">SẢN PHẨM</h5>
+                    <ul class="f-address">
+                        <li>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="/Views/Courses/index.cshtml"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="/Views/Courses/khoabanhchuyensau.cshtml"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="/Views/Courses/khoabanhngoaikhoa.cshtml"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="https://utthien.com/do-lam-banh"><h6 class="font-weight-bold mb-0">DỤNG CỤ LÀM BÁNH</h6></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <h5 class="mb-4 font-weight-bold">FANPAGE</h5>
+                    <div class="footer-info-box">
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FHocLamBanhDaNang%2F&amp;tabs=timeline&amp;width=350px&amp;height=350px&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=2339103379549737" style="border:none;overflow:hidden" id="iframefacebook" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!--Footer-->
+    <div class="fix_tel">
+        <div class="phonering-alo-phone phonering-alo-green phonering-alo-show" id="phonering-alo-phoneIcon">
+            <div class="phonering-alo-ph-circle"></div>
+            <div class="phonering-alo-ph-circle-fill"></div>
+            <a href="tel:+(84)935405489" class="pps-btn-img" title="Liên hệ">
+                <div class="phonering-alo-ph-img-circle"></div>
+            </a>
+        </div>
+
+    </div>
+    <div class="fixed-footer">
+        <span class="amp-wp-2a6fb2a">TƯ VẤN TRỰC TIẾP:&nbsp;</span>
+        <span class="numb"><a href="tel:+(84)935405489" rel="nofollow" class="numb"><i class="fa fa-phone"></i> +(84)935405489</a>&nbsp;</span>
+        <a href="lienhe.html" rel="nofollow" class="btn btn-primary btn-dktv">ĐĂNG KÝ ĐỂ ĐƯỢC TƯ VẤN MIỄN PHÍ</a>
+    </div>
+    <div class="hotline-footer">
+        <div class="left">
+            <a href="lienhe.html">Đăng ký tư vấn</a>
+        </div>
+        <div class="middle">
+            <a href="tel:+(84)935405489">Gọi tư vấn</a>
+        </div>
+        <div class="right">
+            <a href="#dat-mua">Chat ngay</a>
+        </div>
+        <div class="clearboth"></div>
+    </div>
+    <!--====== nut cuon trang ======-->
+    <div class='lentop'>
+        <div>
+            <img src='https://1.bp.blogspot.com/-k6sikOdzFXQ/VwqCKDosmEI/AAAAAAAAKxE/nLxLhkTIO6o3iE5ZWmtxo2bf4QHdzPQNQ/s1600/top.png' />
+        </div>
+    </div>
+    <!--====== Javascripts & Jquery ======-->
+
+
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/circle-progress.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+</body>
+</html>

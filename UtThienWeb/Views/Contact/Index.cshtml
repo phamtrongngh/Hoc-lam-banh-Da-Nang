@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    
+    <div class="smform-block amp-wp-71f5b60" style="background-image: url(../img/bannerlienhe.jpg);">
+        <div class="smform-content form-full-page amp-wp-496fdb7">
+            <h3 class="text-center">Đăng Ký Để Được Tư Vấn Miễn Phí</h3>
+            <div class="hidden text-center">
+                <p class="h4" style="color: #ffe600;">Gọi cho chúng tôi khi cần tư vấn</p>
+                <div class="fix_tel1" i-amphtml-fixedid="F1">
+
+                    <div class="tel">
+                        <p class="fone"><a href="tel:+(84) 935405489" rel="nofollow">0935405489</a></p>
+                    </div>
+                </div>
+            </div>
+            <div id="smform-23114" class="smform smform-contact">
+                <amp-state id="categories_data" src="#" class="i-amphtml-element i-amphtml-layout-container" i-amphtml-layout="container" hidden="" aria-hidden="true"></amp-state>
+                <form action-xhr="#" method="post" on="submit: smform_submit.hide, smform_loading.show; submit-success: smform_fields.hide; submit-error: smform_submit.show, smform_loading.hide" target="_top" novalidate="" class="i-amphtml-form amp-form-dirty">
+                    <fieldset id="smform_fields">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Name" id="Name" placeholder="Nhập họ tên của bạn *" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Phone" id="Phone" placeholder="Nhập số điện thoại * (ví dụ: 0912345678)" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="SoLuong" id="SoLuong" placeholder="Số lượng học viên" required="">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="Major" id="Major" required="" on="change: AMP.setState({
+                                    courses: categories_data.categories.filter(x=>
+                                x.code == event.value)[0]
+                                })">
+                                <option value="">Chọn chuyên đề *</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <amp-list height="48">
+                                <template type="amp-mustache">
+                                    <select class="form-control" name="Course" id="Course" required="">
+                                        <option value="">Chọn khóa học *</option>
+
+
+
+                                    </select>
+                                </template>
+                                <div role="list" class="i-amphtml-fill-content i-amphtml-replaced-content">
+                                    <select required="" id="Course" name="Course" class="form-control" role="listitem">
+                                        <option value="">Chọn khóa học *</option>
+                                    </select>
+                                </div>
+                            </amp-list>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="Time" id="Time">
+                                <option value="">Chọn thời gian tư vấn</option>
+                                <option value="07h00 - 09h30">07h00 - 09h30</option>
+                                <option value="09h30 - 11h00">09h30 - 11h00</option>
+                                <option value="11h00 - 13h30">11h00 - 13h30</option>
+                                <option value="13h30 - 17h00">13h30 - 17h00</option>
+                                <option value="17h00 - 20h30">17h00 - 20h30</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="Email" id="Email" placeholder="Nhập email của bạn">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="Address" id="Address">
+                                <option value="">Chọn địa điểm học</option>
+
+                            </select>
+                        </div>
+                        <div submit-error="">
+                            <template type="amp-mustache">
+                                {{msg}}
+                            </template>
+                        </div>
+                        <div class="form-group">
+
+                            <button type="button" class="btn btn-danger">GỬI</button>
+                        </div>
+
+                    </fieldset>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="map-brand amp-wp-784be51">
+        <div class="wrap">
+            <h2 class="text-center">Cửa hàng Út Thiện</h2>
+            <p class="text-center"><i class="fa fa-phone"></i> 0935405489(Tư vấn miễn phí)</p>
+            <p class="text-center"><i class="fa fa-envelope"></i> hoclambanhdanang@gmail.com</p>
+            <div class="size-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.5457290602903!2d108.21659701479788!3d16.03714624455681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219ebc11b6713%3A0x885911b0d2e24bc9!2zNDggVHLhuqduIEjhu691IFRyYW5nLCBIb8OgIEPGsOG7nW5nIELhuq9jLCBI4bqjaSBDaMOidSwgxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1574940573581!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </div>>
+    
+
+

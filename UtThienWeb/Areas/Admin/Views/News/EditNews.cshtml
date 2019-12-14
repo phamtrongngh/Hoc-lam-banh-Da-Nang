@@ -1,0 +1,109 @@
+﻿@model Admin.Models.News
+@{
+    ViewBag.Title = "EditNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Upload</h4>
+
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" id="formUpload">
+                        @using (Html.BeginForm("EditNews", "News", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.NewsTitle, "Tiêu Đề Bài Viết", new { @class = "bmd-label-floating" })
+                                        @Html.TextBoxFor(model => model.NewsTitle, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.NewsAuthor, "Tác Giả", new { @class = "bmd-label-floating" })
+                                        @Html.TextBoxFor(model => model.NewsAuthor, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select class="custom-select" name="catalog">
+                                            <option value="@Model.NewsCatalog.NewsCatalogId">@Model.NewsCatalog.NewsCatalogName</option>
+                                            @foreach (var item in (IEnumerable<Admin.Models.NewsCatalog>) ViewBag.catalog)
+                                            {
+                                                <option value="@item.NewsCatalogId">@item.NewsCatalogName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                         
+
+                                <h3>Soạn Bài Viết</h3>
+
+                                <div action="/" method="post">
+                                    <input id="fileUpload" type="file" multiple name="filess" style="display:none" />
+                                </div>
+                                <!-- The toolbar will be rendered in this container. -->
+                                <div id="toolbar-container"></div>
+
+                                <!-- This container will become the editable. -->
+                                @Html.TextAreaFor(model => model.NewsContent, new { @id = "editor" })
+                                <script>
+                                    CKEDITOR.replace("editor");
+                                </script>
+                                <input type="button" class="btn btn-primary btn-add-img" value="Thêm Hình" id="uploadButton" />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.NewsThumbails, "Ảnh Bìa Bài Viết", new { @class = "bmd-label-floating" })
+
+                                    </div>
+
+                                    <input type="file" class="filestyle" name="file"
+                                           data-classButton="btn-white" data-input="true"
+                                           data-classIcon="icon-plus" data-buttonText="sadasda" >
+                                </div>
+
+                          
+
+                            <input type="submit" name="submit" value="Delete" onclick="confirm('Bạn Có Chắc Chắn Muốn Xóa Bài Viết??')" class="btn btn-primary pull-right">
+                            <input type="submit" name="submit" value="Update" class="btn btn-primary pull-right">
+                        }
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#uploadButton").click(function () {
+            $("#fileUpload").click();
+        })
+        $("#fileUpload").change(function () {
+            var formData = new FormData($("#formUpload")[0]);
+            $.ajax({
+                method: "post",
+                url: "/Home/UploadImages/",
+                processData: false,
+                contentType: false,
+                data: formData
+            }).done(function (e) {
+                var img = "";
+                for (var i = 0; i < e.length; i++) {
+                    img += "<img src='/img/" + e[i]+"' alt='' style='width:300px;heigh:300px;' /></br>";
+                }
+                var v = $('#editor').val();
+                CKEDITOR.instances.editor.insertHtml(img);
+
+            });
+        })
+    })
+</script>

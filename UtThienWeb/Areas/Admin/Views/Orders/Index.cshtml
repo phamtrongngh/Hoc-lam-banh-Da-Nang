@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Admin.Models.Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Các Khóa Học</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Tên Người Đặt
+                                    </th>
+                                    <th>
+                                        Số Điện Thoại
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Vào lúc
+                                    </th>
+                                    <th>
+                                        Các Khóa Học Đã Đặt
+                                    </th>
+                                    <th>
+                                        Tình Trạng
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Account.AccountName
+                                        </td>
+                                        <td>
+                                            @item.Account.AccountPhone
+                                        </td>
+                                        <td>
+                                            @item.Account.AccountEmail
+                                        </td>
+                                        <td>
+                                            @item.CreationDate
+                                        </td>
+                                        <td>
+                                            <table class="table">
+                                                
+                                                @foreach (var subitem in item.OrderDetails)
+                                                {
+                                                    <tr>
+                                                        <td>@subitem.Course.CourseName</td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <p>Đang chờ liên lạc...</p>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary">Xác nhận liên lạc</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
