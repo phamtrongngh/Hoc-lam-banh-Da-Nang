@@ -7,7 +7,7 @@ $(document).ready(function () {
         check = check ? "1" : "0";
         $.ajax({
             type: "POST",
-            url: "/Home/Login/",
+            url: "/Accounts/Login/",
             data: {
                 userLogin: user,
                 passwordLogin: password,
@@ -16,7 +16,7 @@ $(document).ready(function () {
             dataType: "json"
         }).done(function (result) {
             if (result == "") {
-                location.reload();
+                location.href="";
             }
             else {
                 $(".error-login").css("display", "block");
@@ -85,7 +85,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: "POST",
-            url: "/Home/Register/",
+            url: "Accounts/Register/",
             data: {
                 userregister: user,
                 passwordregister: password,

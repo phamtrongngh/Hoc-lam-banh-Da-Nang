@@ -1,5 +1,4 @@
-﻿
-<html lang="zxx">
+﻿<html lang="zxx">
 <head>
     <title></title>
     <meta charset="UTF-8">
@@ -34,45 +33,10 @@
         </div>
         <div class="navbar-collapse collapse" id="navbarCustom" style="">
             <ul class="navbar-nav mr-auto">
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Trang Chủ</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Khóa học bánh
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Lớp Bánh Âu gia đình</a>
-                        <a class="dropdown-item" href="#">Lớp bánh chuyên sâu</a>
-                        <a class="dropdown-item" href="#">Lớp bánh ngoại khóa</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Đồ Làm Bánh</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Lịch học
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" href="#">Nội qui lớp học</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Hoạt động Học viên</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cùng học làm bánh</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tuyển dụng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Chi nhánh</a>
-                </li>-->
+               
                 @foreach (var item in (IEnumerable<UtThienWeb.Models.Menu>)HttpContext.Current.Application["menu"])
                 {
-                    if (item.MenuSubLi == null)
+                    if (item.MenuSubLi == null && item.Menu1.Count > 0)
                     {
                         <li class="nav-item dropdown" data-toggle="dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,7 +49,14 @@
                                 }
                             </div>
                         </li>
+                    };
+                    if (item.MenuSubLi == null && item.Menu1.Count==0)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">@item.MenuLiName</a>
+                        </li>
                     }
+                    
 
 
                 }
@@ -105,7 +76,7 @@
                 <div class="number-cart">0</div>
             </div>
             <div class="icon-menu user-login">
-                <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><i class="fa fa-user"></i><span>Đăng nhập</span></a>
+                <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><span>@Html.Raw(Session["user"])</span></a>
             </div>
         </div>
 
@@ -344,7 +315,6 @@
     <script src="~/js/circle-progress.min.js"></script>
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 </body>
 </html>
