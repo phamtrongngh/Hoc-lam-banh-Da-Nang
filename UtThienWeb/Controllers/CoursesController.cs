@@ -6,11 +6,10 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 namespace UtThienWeb.Controllers
 {
-    [RoutePrefix("khoa-hoc")]
     public class CoursesController : CommonController
     {
         ModelCakes db = new ModelCakes();
-        [Route]
+
         public ActionResult Index()
         {
             return View(db.Courses);
@@ -19,15 +18,33 @@ namespace UtThienWeb.Controllers
         {
             return View();
         }
-        [Route("khoa-banh-chuyen-sau")]
-        public ActionResult khoabanhchuyensau()
+        public ActionResult CoursesItem(string name)
         {
-            return View();
+            var list = db.CourseCatalogs;
+            var id = 0;
+            foreach (var item in list)
+            {
+                if (HomeController.RemoveUnicode(item.CourseCatalogName).Equals(name))
+                {
+                    id = item.CourseCatalogId;
+                }
+            }
+            return View(db.Courses.Where(a=>a.CourseCatalogId==id));
         }
-        [Route("khoa-banh-ngoai-khoa")]
-        public ActionResult khoabanhngoaikhoa()
+        
+        public ActionResult CourseDetails(string name)
         {
-            return View();
+          
+            var list = db.Courses;
+            var id = 0;
+            foreach (var item in list)
+            {
+                if (HomeController.RemoveUnicode(item.CourseName).Equals(name))
+                {
+                    id = item.CourseId;
+                }
+            }
+            return View(db.Courses.Find(id));
         }
         public ActionResult baivietkhoahoc()
         {

@@ -1,4 +1,5 @@
-﻿<html lang="zxx">
+﻿
+<html lang="zxx">
 <head>
     <title></title>
     <meta charset="UTF-8">
@@ -21,6 +22,7 @@
     <!------->
 
 </head>
+@using UtThienWeb.Controllers;
 
 <body class="" style="">
 
@@ -33,10 +35,10 @@
         </div>
         <div class="navbar-collapse collapse" id="navbarCustom" style="">
             <ul class="navbar-nav mr-auto">
-               
+
                 @foreach (var item in (IEnumerable<UtThienWeb.Models.Menu>)HttpContext.Current.Application["menu"])
                 {
-                    if (item.MenuSubLi == null && item.Menu1.Count > 0)
+                    if (item.MenuSubLi == null && item.Menu1.Count > 0 && item.MenuLiId != 2)
                     {
                         <li class="nav-item dropdown" data-toggle="dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,18 +47,32 @@
                             <div class="dropdown-menu" style="width:225px">
                                 @foreach (var i in item.Menu1)
                                 {
-                                    <a style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item @i.MenuLiId">@i.MenuLiName</a>
+                                    <a id="" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item @i.MenuLiId">@i.MenuLiName</a>
                                 }
                             </div>
                         </li>
                     };
-                    if (item.MenuSubLi == null && item.Menu1.Count==0)
+                    if (item.MenuSubLi == null && item.Menu1.Count > 0 && item.MenuLiId == 2)
+                    {
+                        <li class="nav-item dropdown" data-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @item.MenuLiName
+                            </a>
+                            <div class="dropdown-menu" style="width:225px">
+                                @foreach (var i in (IEnumerable<UtThienWeb.Models.CourseCatalog>)HttpContext.Current.Application["course"])
+                                {
+                                    <a href="" id="khoa-hoc/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
+                                }
+                            </div>
+                        </li>
+                    };
+                    if (item.MenuSubLi == null && item.Menu1.Count == 0)
                     {
                         <li class="nav-item">
                             <a class="nav-link" href="#">@item.MenuLiName</a>
                         </li>
                     }
-                    
+
 
 
                 }
@@ -286,7 +302,7 @@
     <div class="fixed-footer">
         <span class="amp-wp-2a6fb2a">TƯ VẤN TRỰC TIẾP:&nbsp;</span>
         <span class="numb"><a href="tel:+(84)935405489" rel="nofollow" class="numb"><i class="fa fa-phone"></i> +(84)935405489</a>&nbsp;</span>
-        <a href="lienhe.html" rel="nofollow" class="btn btn-primary btn-dktv">ĐĂNG KÝ ĐỂ ĐƯỢC TƯ VẤN MIỄN PHÍ</a>
+        <a href="/lien-he" rel="nofollow" class="btn btn-primary btn-dktv">ĐĂNG KÝ ĐỂ ĐƯỢC TƯ VẤN MIỄN PHÍ</a>
     </div>
     <div class="hotline-footer">
         <div class="left">
@@ -315,6 +331,10 @@
     <script src="~/js/circle-progress.min.js"></script>
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
-
 </body>
+<script>
+    $(".dropdown-item").click(function () {
+        location.href = $(this).attr("id");
+    })
+</script>
 </html>

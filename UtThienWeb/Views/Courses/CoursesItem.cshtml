@@ -19,13 +19,10 @@
                 </div>
                 <div class="aside-content">
                     <div class="list-blogs list-blogs-page-blog">
-
                         <article class="blog-item">
                             <div class="blog-item-thumbnail">
                                 <a href="/lam-banh-tranh-games">
-
                                     <img src="~/img/bep-nong.jpg" alt="Làm bánh, tránh... games">
-
                                 </a>
                             </div>
                             <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">Làm bánh, tránh... games</a></h3>
@@ -51,7 +48,6 @@
                                 </div>
                             </div>
                         </article>
-
                         <article class="blog-item">
                             <h3 class="blog-item-name"><a href="/cach-lam-banh-matcha-delight">Cách Làm Bánh Matcha Delight</a></h3>
                             <div class="postby">
@@ -79,8 +75,10 @@
                     </div>
                 </div>
             </div>
-
         </aside>
+        @using UtThienWeb.Controllers
+        @using System.Globalization
+        @using System
         <section class="right right-content col-md-9 col-md-push-4 right-coure">
             <div class="box-heading hidden-xs hidden-sm hidden-md hidden-lg">
                 <h1 class="title-head">CHUYÊN ĐỀ BÁNH NGOẠI KHÓA</h1>
@@ -93,11 +91,11 @@
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <article class="blog-item">
                                 <div class="blog-item-thumbnail">
-                                    <a href="/banh-au-gia-dinh-cao-cap">
+                                    <a href="/chi-tiet-khoa-hoc/@HomeController.RemoveUnicode(item.CourseName)">
                                         <img class="img-khoahoc" src="~/img/@item.CourseThumbails" alt="LỊCH HỌC" width="100" height="200">
                                     </a>
                                 </div>
-                                <h3 class="blog-item-name"><a href="/banh-au-gia-dinh-cao-cap" class="line-clamp line-clamp-2">BÁNH ÂU GIA ĐÌNH CAO CẤP</a></h3>
+                                <h3 class="blog-item-name"><a href="/chi-tiet-khoa-hoc/@HomeController.RemoveUnicode(item.CourseName)" class="line-clamp line-clamp-2">@item.CourseName</a></h3>
                                 <div class="postby">
                                     <div class="pull-left">
                                         <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
@@ -113,7 +111,7 @@
                                     </p>
                                 </div>
                                 <div style="margin-bottom: 8px;">
-                                    <button class="btn btn-success" style="width: 100%;"><a href="baivietkhoahoc.html" style="color: white;">CHI TIẾT</a></button>
+                                    <a href="/chi-tiet-khoa-hoc/@HomeController.RemoveUnicode(item.CourseName)" style="color: white;"><button class="btn btn-success" style="width: 100%;">CHI TIẾT</button></a>
                                 </div>
                                 <div style="width: 100%;">
                                     <input value="ĐẶT KHÓA HỌC" name="@item.CourseId" type="submit" class="btn btn-danger" style="width: 100%;">
@@ -121,32 +119,27 @@
                             </article>
                         </div>
                     }
+                    <!---<nav aria-label="Something.." class="pagenumber">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item ">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>-->
+                    </div>
 
-
-
-
-
-                    <nav aria-label="Something.." class="pagenumber">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item ">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
+                </section>
             </section>
-        </section>
+        </div>
     </div>
-</div>
 

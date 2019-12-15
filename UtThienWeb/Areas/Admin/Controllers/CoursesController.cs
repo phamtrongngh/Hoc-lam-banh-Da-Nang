@@ -1,7 +1,9 @@
 ﻿using Admin.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,6 +44,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
             {
                 newCourse.TimeCreate = DateTime.Now;
                 var catalog = Request.Form["catalog"];
+                Debug.WriteLine(newCourse.CourseDescription);
                 newCourse.CourseCatalogId = int.Parse(catalog);
                 db.Courses.Add(newCourse);
                 db.SaveChanges();
@@ -77,6 +80,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
                         }
                         model.CoursePrice = course.CoursePrice;
                         model.CourseDescription = course.CourseDescription;
+                        model.CourseTeacherName = course.CourseTeacherName;
                         model.CourseName = course.CourseName;
                         var catalog = Request.Form["catalog"];
                         model.CourseCatalogId = int.Parse(catalog);

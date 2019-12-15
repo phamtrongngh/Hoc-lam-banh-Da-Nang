@@ -57,6 +57,15 @@
                             <!-- This container will become the editable. -->
                             @Html.TextAreaFor(model => model.CourseDescription, new { @id = "editor" })
                             <script>
+                                CKEDITOR.config.pasteFromWordPromptCleanup = true;
+                                CKEDITOR.config.pasteFromWordRemoveFontStyles = false;
+                                CKEDITOR.config.pasteFromWordRemoveStyles = false;
+                                CKEDITOR.config.language = "vi";
+                                CKEDITOR.config.htmlEncodeOutput = false;
+                                CKEDITOR.config.ProcessHTMLEntities = false;
+                                CKEDITOR.config.entities = false;
+                                CKEDITOR.config.entities_latin = false;
+                                CKEDITOR.config.ForceSimpleAmpersand = true;
                                 CKEDITOR.replace("editor");
                             </script>
                             <input type="button" class="btn btn-primary btn-add-img" value="Thêm Hình Vào TextBox" id="uploadButton" />

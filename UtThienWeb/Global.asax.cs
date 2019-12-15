@@ -28,6 +28,8 @@ namespace UtThienWeb
             }
             HttpContext.Current.Application["menu"] = menu;
             
+            HttpContext.Current.Application["course"] = db.CourseCatalogs;
+            
         }
     }
 }
