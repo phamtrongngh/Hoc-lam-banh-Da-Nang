@@ -69,7 +69,7 @@
                     if (item.MenuSubLi == null && item.Menu1.Count == 0)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="#">@item.MenuLiName</a>
+                            <a class="nav-link" href="@item.MenuUrl">@item.MenuLiName</a>
                         </li>
                     }
 
@@ -85,12 +85,7 @@
                     <i class="fa fa-search icon-search"></i>
                 </form>
             </div>
-            <div class="icon-menu cart-box">
-                <a href="" class="cart-btn">
-                    <i class="fa fa-cart-plus"></i>
-                </a>
-                <div class="number-cart">0</div>
-            </div>
+
             <div class="icon-menu user-login">
                 <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><span>@Html.Raw(Session["user"])</span></a>
             </div>
@@ -191,6 +186,18 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div class="cart-button-fixed">
+        <span>
+            @{ if (Session["cart"] != null)
+                {
+                    <b>
+                        @(((List<UtThienWeb.Models.Course>)Session["cart"]).Count)
+                    </b>
+                }
+            }
+        </span>
+        <img src="~/img/shopping-circle-blue-512.png" width="80" height="80" alt="Alternate Text" />
     </div>
     <div id="body-render">
         @RenderBody()
@@ -332,9 +339,31 @@
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
 </body>
+@{ if (Session["cart"] != null)
+    {
+
+        <script>
+            $(".cart-button-fixed").css("display", "block");
+        </script>
+    }
+}
 <script>
-    $(".dropdown-item").click(function () {
-        location.href = $(this).attr("id");
+    $(document).ready(function () {
+        $(".dropdown-item").click(function () {
+            location.href = $(this).attr("id");
+        })
+        $(".button-order").click(function () {
+            $(".cart-button-fixed").css("display", "block");
+            $.ajax({
+                method:"post",
+                url: "/Courses/PutToCart",
+                data: { id: $(this).find("input").attr("id") },
+                success: function (e) {
+                    $(".cart-button-fixed b").html(e);
+                    alert("Đã thêm khóa học vào giỏ hàng, bạn có thể chọn thêm khóa học và sau đó bấm vào icon giỏ hàng bên trái để đặt khóa!!!");
+                }
+            })
+        })
     })
 </script>
 </html>

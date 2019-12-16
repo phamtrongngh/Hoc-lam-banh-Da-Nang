@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace UtThienWeb.Areas.Admin.Models
 {
     using System;
     using System.Data.Entity;
@@ -36,10 +36,6 @@ namespace Admin.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Course>()
-                .Property(e => e.CourseDescription)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Course>()
                 .HasMany(e => e.Images)
                 .WithRequired(e => e.Course)
                 .HasForeignKey(e => e.ImageTypeId)
@@ -50,19 +46,14 @@ namespace Admin.Models
                 .WithRequired(e => e.Course)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CourseCatalog>()
-                .HasMany(e => e.Courses)
-                .WithRequired(e => e.CourseCatalog)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Menu>()
+                .Property(e => e.MenuUrl)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Menu>()
                 .HasMany(e => e.Menu1)
                 .WithOptional(e => e.Menu2)
                 .HasForeignKey(e => e.MenuSubLi);
-
-            modelBuilder.Entity<News>()
-                .Property(e => e.NewsContent)
-                .IsUnicode(false);
 
             modelBuilder.Entity<News>()
                 .HasMany(e => e.Images)

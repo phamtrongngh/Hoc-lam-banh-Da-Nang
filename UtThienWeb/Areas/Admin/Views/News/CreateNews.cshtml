@@ -1,4 +1,4 @@
-﻿@model Admin.Models.News
+﻿@model UtThienWeb.Areas.Admin.Models.News
 @{
     ViewBag.Title = "CreateNews";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -10,9 +10,9 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">Upload</h4>
                 </div>
-                <div class="card-body"> 
+                <div class="card-body">
                     <form method="post" enctype="multipart/form-data" id="formUpload">
-                        @using (Html.BeginForm("CreateNews", "News", FormMethod.Post, 
+                        @using (Html.BeginForm("CreateNews", "News", FormMethod.Post,
                             new { enctype = "multipart/form-data" }))
                         {
                             <div class="row">
@@ -30,46 +30,55 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        
+
                                         <select class="custom-select" name="catalog">
-                                            <option >Chọn loại bài viết</option>
-                                            @foreach (var item in (IEnumerable<Admin.Models.NewsCatalog>)ViewBag.catalog)
+                                            <option>Chọn loại bài viết</option>
+                                            @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.NewsCatalog>)ViewBag.catalog)
                                             {
                                                 <option value="@item.NewsCatalogId">@item.NewsCatalogName</option>
                                             }
                                         </select>
-                                        
+
                                     </div>
                                 </div>
                             </div>
-                            
 
 
-                                <h3><b>Nội dung bài viết</b></h3>
-                            
-                                <div action="/" method="post">
-                                    <input id="fileUpload" type="file" multiple name="filess" style="display:none" />
+
+                            <h3><b>Nội dung bài viết</b></h3>
+
+                            <div action="/" method="post">
+                                <input id="fileUpload" type="file" multiple name="filess" style="display:none" />
+                            </div>
+                            <!-- The toolbar will be rendered in this container. -->
+                            <div id="toolbar-container"></div>
+
+                            <!-- This container will become the editable. -->
+                            @Html.TextAreaFor(model => model.NewsContent, new { @id = "editor" })
+                            <script>
+                                CKEDITOR.config.pasteFromWordPromptCleanup = true;
+                                CKEDITOR.config.pasteFromWordRemoveFontStyles = false;
+                                CKEDITOR.config.pasteFromWordRemoveStyles = false;
+                                CKEDITOR.config.language = "vi";
+                                CKEDITOR.config.htmlEncodeOutput = false;
+                                CKEDITOR.config.ProcessHTMLEntities = false;
+                                CKEDITOR.config.entities = false;
+                                CKEDITOR.config.entities_latin = false;
+                                CKEDITOR.config.ForceSimpleAmpersand = true;
+                                CKEDITOR.replace("editor");
+                            </script>
+                            <input type="button" class="btn btn-primary btn-add-img" value="Thêm Hình Vào TextBox" id="uploadButton" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NewsThumbails, "Chọn Ảnh Bìa Bài Viết", new { @class = "bmd-label-floating" })
+
                                 </div>
-                                <!-- The toolbar will be rendered in this container. -->
-                                <div id="toolbar-container"></div>
+                                <input type="file" class="filestyle" name="file"
+                                       data-classButton="btn-white" data-input="true"
+                                       data-classIcon="icon-plus" data-buttonText="sadasda">
+                            </div>
 
-                                <!-- This container will become the editable. -->
-                                @Html.TextAreaFor(model => model.NewsContent, new { @id = "editor" })
-                                <script>
-                                    CKEDITOR.replace("editor");
-                                </script>
-                                <input type="button" class="btn btn-primary btn-add-img" value="Thêm Hình Vào TextBox" id="uploadButton" />
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.NewsThumbails, "Chọn Ảnh Bìa Bài Viết", new { @class = "bmd-label-floating" })
 
-                                    </div>
-                                    <input type="file" class="filestyle" name="file"
-                                           data-classButton="btn-white" data-input="true"
-                                           data-classIcon="icon-plus" data-buttonText="sadasda">
-                                </div>
-
-                            
 
                             <input type="submit" name="submit" value="Đăng" class="btn btn-primary pull-right">
                         }
@@ -98,11 +107,11 @@
             }).done(function (e) {
                 var img = "";
                 for (var i = 0; i < e.length; i++) {
-                    img += "<img src='/img/" + e[i]+"' alt='' style='width:300px;heigh:300px;' /></br>";
+                    img += "<img src='/img/" + e[i] + "' alt='' style='width:300px;heigh:300px;' /></br>";
                 }
-                var v = $('#editor').val();  
+                var v = $('#editor').val();
                 CKEDITOR.instances.editor.insertHtml(img);
-                
+
             });
         })
     })

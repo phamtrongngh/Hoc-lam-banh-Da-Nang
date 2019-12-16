@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace UtThienWeb.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
@@ -22,7 +22,6 @@ namespace Admin.Models
         [StringLength(255)]
         public string NewsShortContent { get; set; }
 
-        [Column(TypeName = "text")]
         public string NewsContent { get; set; }
 
         [StringLength(50)]

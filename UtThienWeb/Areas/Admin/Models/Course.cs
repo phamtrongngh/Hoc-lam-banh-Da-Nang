@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace UtThienWeb.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
@@ -23,7 +23,6 @@ namespace Admin.Models
 
         public long? CoursePrice { get; set; }
 
-        [Column(TypeName = "text")]
         public string CourseDescription { get; set; }
 
         public int? CourseTeacherId { get; set; }
@@ -42,9 +41,8 @@ namespace Admin.Models
         [StringLength(50)]
         public string CourseImagesList { get; set; }
 
-        public int CourseCatalogId { get; set; }
+        public int? CourseCatalogId { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string CourseTeacherName { get; set; }
 

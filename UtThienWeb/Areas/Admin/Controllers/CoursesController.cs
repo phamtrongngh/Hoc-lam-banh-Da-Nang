@@ -1,4 +1,4 @@
-﻿using Admin.Models;
+﻿using UtThienWeb.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,11 +40,14 @@ namespace UtThienWeb.Areas.Admin.Controllers
                 file.SaveAs(path);
                 newCourse.CourseThumbails = fileName;
             }
+            else
+            {
+                newCourse.CourseThumbails = "no-image-available-icon-6.jpg";
+            }
             if (ModelState.IsValid)
             {
                 newCourse.TimeCreate = DateTime.Now;
                 var catalog = Request.Form["catalog"];
-                Debug.WriteLine(newCourse.CourseDescription);
                 newCourse.CourseCatalogId = int.Parse(catalog);
                 db.Courses.Add(newCourse);
                 db.SaveChanges();
@@ -77,6 +80,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
                             string path = System.IO.Path.Combine(Server.MapPath("~/img/"), fileName);
                             file.SaveAs(path);
                             model.CourseThumbails = fileName;
+                        }
+                        else
+                        {
+                            model.CourseThumbails = "no-image-available-icon-6.jpg";
                         }
                         model.CoursePrice = course.CoursePrice;
                         model.CourseDescription = course.CourseDescription;

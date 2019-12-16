@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Admin.Models.Menu>
+﻿@model IEnumerable<UtThienWeb.Areas.Admin.Models.Menu>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -72,10 +72,10 @@
     <h3><b>Tùy Chỉnh Ảnh Slide Trang Chủ</b></h3>
     <div class="container-fluid">
         <div class="row">
-            @foreach (var item in (IEnumerable<Admin.Models.Slide>)ViewBag.slide)
+            @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.Slide>)ViewBag.slide)
             {
                 <div class="col-md-4 card-slide" style="position:relative">
-                    <form class="form" action="/Menus/ChangeSlide" method="post"  enctype = "multipart/form-data">
+                    <form class="form" action="~/Admin/Menus/ChangeSlide" method="post"  enctype = "multipart/form-data">
                         <input style="display:none" type="text" name="slideNumber" value="@item.SlideId" />
                         <button type="button"  class="change-card-button btn btn-info">Thay Đổi</button>
                         <input style="display:none" class="file-upload" type="file" name="file" />

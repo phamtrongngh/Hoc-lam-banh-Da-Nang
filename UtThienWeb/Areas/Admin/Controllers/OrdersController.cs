@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Admin.Models;
+using UtThienWeb.Areas.Admin.Models;
 namespace UtThienWeb.Areas.Admin.Controllers
 {
     public class OrdersController : Controller

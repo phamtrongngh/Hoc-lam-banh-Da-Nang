@@ -18,6 +18,7 @@ namespace UtThienWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+       
             var menu = db.Menus;
             foreach (var item in menu)
             {

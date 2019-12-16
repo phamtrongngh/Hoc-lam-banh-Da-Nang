@@ -49,6 +49,12 @@
     font-size: 22px;
     background-color: rgb(255, 255, 255,0.2);
 }
+.row {
+    word-break: break-word;
+}
+.col-lg-5 .block-td {
+    word-break: break-all;
+}
 /*11/12*/
 #body-render {
     margin-top: 45px;
@@ -64,7 +70,50 @@
     margin-bottom: 20px;
     float: right;
 }
+.cart-button-fixed{
+    position:fixed;
+    left:65px;
+    bottom:35%;
+    z-index:99;
+    cursor:pointer;
+    display:none;
+}
+    .cart-button-fixed span {
+        position: absolute;
+        display: block;
+        left: 50%;
+        top: -1px;
+        color: #fece00;
+    }
 
+body:hover .cart-button-fixed {
+    
+    animation: shake 1s cubic-bezier(.36,.07,.19,.97) both infinite;
+    transform: translate3d(0, 0, 0);
+    ani backface-visibility: hidden;
+    perspective: 1000px;
+}
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+        filter: brightness(110%);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+        filter: brightness(120%);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+        filter: brightness(130%);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+        filter: brightness(140%);
+    }
+}
 .title-detail {
     color: wheat;
     margin-bottom: 0px;
@@ -93,7 +142,7 @@
     border-radius: 10px;
     margin-left: 5%;
     margin-bottom: 10px;
-    height: 100%;
+    height:initial;
 }
 
 .job-vt {

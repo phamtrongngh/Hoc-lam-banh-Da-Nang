@@ -1,8 +1,9 @@
-﻿@model Admin.Models.Course
+﻿@model UtThienWeb.Areas.Admin.Models.Course
 @{
     ViewBag.Title = "EditCourse";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -39,7 +40,7 @@
                                     <div class="form-group">
                                         <select class="custom-select" name="catalog">
                                             <option value="@Model.CourseCatalog.CourseCatalogId">@Model.CourseCatalog.CourseCatalogName</option>
-                                            @foreach (var item in (IEnumerable<Admin.Models.CourseCatalog>)ViewBag.catalog)
+                                            @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.CourseCatalog>)ViewBag.catalog)
                                             {
                                                 <option value="@item.CourseCatalogId">@item.CourseCatalogName</option>
                                             }

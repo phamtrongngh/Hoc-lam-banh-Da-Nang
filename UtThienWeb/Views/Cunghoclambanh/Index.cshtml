@@ -1,136 +1,139 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+@using UtThienWeb.Controllers
+@using System.Text.RegularExpressions
 @model IEnumerable<UtThienWeb.Models.News>
-    <div class="container">
-        <ul class="breadcrumb corlor_white">
-            <li><a href="#" style="color:white">Trang Chủ</a></li>
-            <li><a href="#" style="color:white">Cùng học làm bánh</a></li>
-        </ul>
-    </div>
-    <div class="container body-baiviet">
-        <div class="row">
-            <aside class="left left-content  col-md-3 col-md-pull-9 left-coure">
-                <div class="aside-item collection-category">
-                    <div class="aside-heading">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <h2 class="title-head"><a href="kinh-nghiem-lam-banh">Tin tức nổi bật</a></h2>
-                    </div>
-                    <div class="aside-content">
-                        <div class="list-blogs list-blogs-page-blog">
+<div class="container">
+    <ul class="breadcrumb corlor_white">
+        <li><a href="#" style="color:white">Trang Chủ</a></li>
+        <li><a href="#" style="color:white">Cùng học làm bánh</a></li>
+    </ul>
+</div>
 
-                            <article class="blog-item">
-                                <div class="blog-item-thumbnail">
-                                    <a href="/lam-banh-tranh-games">
+<div class="container body-baiviet">
+    <div class="row">
+        <aside class="left left-content  col-md-3 col-md-pull-9 left-coure">
+            <div class="aside-item collection-category">
+                <div class="aside-heading">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <h2 class="title-head"><a href="kinh-nghiem-lam-banh">Tin tức nổi bật</a></h2>
+                </div>
+                <div class="aside-content">
+                    <div class="list-blogs list-blogs-page-blog">
 
-                                        <img src="" alt="Làm bánh, tránh... games">
+                        <article class="blog-item">
+                            <div class="blog-item-thumbnail">
+                                <a href="/lam-banh-tranh-games">
 
-                                    </a>
+                                    <img src="" alt="Làm bánh, tránh... games">
+
+                                </a>
+                            </div>
+                            <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">Làm bánh, tránh... games</a></h3>
+                            <div class="postby">
+                                <div class="pull-left">
+                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                 </div>
-                                <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">Làm bánh, tránh... games</a></h3>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 27/09/2019
-                                    </div>
+                                <div class="pull-left">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> 27/09/2019
                                 </div>
-                                <p class="blog-item-summary"> Trong căn nhà được trang trí màu vàng như lòng quả trứng gà rộn vang tiếng ríu rít của các bạn nhỏ. Một cậu bé nói với bạn: "mẹ...</p>
-                            </article>
+                            </div>
+                            <p class="blog-item-summary"> Trong căn nhà được trang trí màu vàng như lòng quả trứng gà rộn vang tiếng ríu rít của các bạn nhỏ. Một cậu bé nói với bạn: "mẹ...</p>
+                        </article>
 
-                            <article class="blog-item">
-                                <h3 class="blog-item-name"><a href="">Cách Làm Mousse Chanh Leo</a></h3>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                    </div>
+                        <article class="blog-item">
+                            <h3 class="blog-item-name"><a href="">Cách Làm Mousse Chanh Leo</a></h3>
+                            <div class="postby">
+                                <div class="pull-left">
+                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                 </div>
-                            </article>
-
-                            <article class="blog-item">
-                                <h3 class="blog-item-name"><a href="/cach-lam-banh-matcha-delight">Cách Làm Bánh Matcha Delight</a></h3>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                    </div>
+                                <div class="pull-left">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
                                 </div>
-                            </article>
+                            </div>
+                        </article>
 
-                            <article class="blog-item">
-                                <h3 class="blog-item-name"><a href="/8-bi-quyet-de-nuong-banh-thanh-cong">8 bí quyết để nướng bánh thành công</a></h3>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                    </div>
+                        <article class="blog-item">
+                            <h3 class="blog-item-name"><a href="/cach-lam-banh-matcha-delight">Cách Làm Bánh Matcha Delight</a></h3>
+                            <div class="postby">
+                                <div class="pull-left">
+                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                 </div>
-                            </article>
+                                <div class="pull-left">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
+                                </div>
+                            </div>
+                        </article>
 
-                        </div>
+                        <article class="blog-item">
+                            <h3 class="blog-item-name"><a href="/8-bi-quyet-de-nuong-banh-thanh-cong">8 bí quyết để nướng bánh thành công</a></h3>
+                            <div class="postby">
+                                <div class="pull-left">
+                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                                </div>
+                                <div class="pull-left">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
+                                </div>
+                            </div>
+                        </article>
+
                     </div>
                 </div>
+            </div>
 
-            </aside>
-            <section class="right-content col-md-9 col-md-push-4 right-coure1">
-                <article class="article-main">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            @foreach (var item in Model)
-                            {
-
-
-                                <div class="post-item">
-                                    <div class="img-block">
-                                        <a href="#"><img src="~/img/bep-nong.jpg" alt="Alternate Text" /></a>
-                                    </div>
-                                    <div class="content-block">
-                                        <h2>
-                                            <a href="#">@item.NewsTitle</a>
-                                        </h2>
-                                        <div class="postby">
-                                            <div class="pull-left">
-                                                <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                            </div>
-                                            <div class="pull-left">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i> 02/10/2019
-                                            </div>
-                                        </div>
-                                        <div class="excerpt">
-                                            Bánh trôi tàu là món ăn không thể thiếu vắng trong danh sách ẩm thực mùa lạnh của Hà Nội. Cùng vào bếp trổ tài làm món này và ghim ngay những bí kíp quý ...
-                                        </div>
-                                    </div>
+        </aside>
+        <section class="right-content col-md-9 col-md-push-4 right-coure1">
+            <article class="article-main">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @foreach (var item in Model)
+                        {
+                            <div class="post-item">
+                                <div class="img-block">
+                                    <a href="/cung-hoc-lam-banh/@HomeController.RemoveUnicode(item.NewsTitle)"><img height="100%" width="100%" src="~/img/@item.NewsThumbails" alt="Alternate Text" /></a>
                                 </div>
-                            }
-                        </div>
-                        <nav aria-label="Something.." class="pagenumber">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item ">
-                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
+                                <div class="content-block">
+                                    <h2>
+                                        <a href="/cung-hoc-lam-banh/@HomeController.RemoveUnicode(item.NewsTitle)">@item.NewsTitle</a>
+                                    </h2>
+                                    <div class="postby">
+                                        <div class="pull-left">
+                                            <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> @item.NewsDate
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="excerpt">
+                                        @(Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Length>80?Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Substring(0,80):Regex.Replace(item.NewsContent, "<.*?>", String.Empty)) ...
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
                     </div>
-                </article>
-            </section>
-        </div>
+                    @*<nav aria-label="Something.." class="pagenumber">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item ">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>*@
+                </div>
+            </article>
+        </section>
     </div>
+</div>
 

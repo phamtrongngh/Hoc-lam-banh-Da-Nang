@@ -1,4 +1,4 @@
-﻿using Admin.Models;
+﻿using UtThienWeb.Areas.Admin.Models;
 using System;
 using System.Linq;
 using System.Web.Mvc;

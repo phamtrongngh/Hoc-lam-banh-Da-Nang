@@ -23,6 +23,8 @@ namespace UtThienWeb.Models
         public string MenuLiName { get; set; }
 
         public int? MenuSubLi { get; set; }
+        [StringLength(255)]
+        public string MenuUrl { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menu1 { get; set; }

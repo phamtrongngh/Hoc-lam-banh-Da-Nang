@@ -46,9 +46,24 @@ namespace UtThienWeb.Controllers
             }
             return View(db.Courses.Find(id));
         }
-        public ActionResult baivietkhoahoc()
+        [HttpPost]
+        public JsonResult PutToCart(int id)
         {
-            return View();
+            if (Session["cart"] == null) {
+                Session["cart"] = new List<Course>();
+            }
+            bool t = true;
+            foreach (var item in (List<Course>)Session["cart"])
+            {
+                if (item.CourseId==id)
+                {
+                    t = false;
+                }
+            }
+            if (t)
+            ((List<Course>)Session["cart"]).Add(db.Courses.Find(id));
+            int count = ((List<Course>)Session["cart"]).Count;
+            return Json(count);
         }
     }
 }

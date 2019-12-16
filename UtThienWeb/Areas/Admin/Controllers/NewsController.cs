@@ -1,4 +1,4 @@
-﻿using Admin.Models;
+﻿using UtThienWeb.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +40,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
                 file.SaveAs(path);
                 news.NewsThumbails = fileName;
             }
+            else
+            {
+                news.NewsThumbails = "no-image-available-icon-6.jpg";
+            }
             if (ModelState.IsValid)
             {
                 news.NewsDate = DateTime.Now;
@@ -47,9 +51,8 @@ namespace UtThienWeb.Areas.Admin.Controllers
                 news.NewsTypeId = int.Parse(catalog);
                 db.News.Add(news);
                 db.SaveChanges();
-                return RedirectToAction("Index", "News");
             }
-            return View();
+            return RedirectToAction("Index");
         }
         public ActionResult EditNews(int? NewsId)
         {
@@ -76,6 +79,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
                             string path = System.IO.Path.Combine(Server.MapPath("~/img/"), fileName);
                             file.SaveAs(path);
                             model.NewsThumbails = fileName;
+                        }
+                        else
+                        {
+                            model.NewsThumbails = "no-image-available-icon-6.jpg";
                         }
                         model.NewsAuthor = news.NewsAuthor;
                         model.NewsCatalog = news.NewsCatalog;

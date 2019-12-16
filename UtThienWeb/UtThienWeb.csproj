@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="AttributeRouting, Version=3.4.2.0, Culture=neutral, PublicKeyToken=c10f85d521a011a9, processorArchitecture=MSIL">
       <HintPath>..\packages\AttributeRouting.Core.3.4.2\lib\net40\AttributeRouting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="AttributeRouting.Web, Version=3.4.2.0, Culture=neutral, PublicKeyToken=c10f85d521a011a9, processorArchitecture=MSIL">
       <HintPath>..\packages\AttributeRouting.Core.Web.3.4.2\lib\net40\AttributeRouting.Web.dll</HintPath>
@@ -150,6 +151,7 @@
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Models\Account.cs" />
     <Compile Include="Areas\Admin\Models\Course.cs" />
     <Compile Include="Areas\Admin\Models\CourseCatalog.cs" />
@@ -162,7 +164,6 @@
     <Compile Include="Areas\Admin\Models\OrderDetail.cs" />
     <Compile Include="Areas\Admin\Models\Slide.cs" />
     <Compile Include="Areas\Admin\Models\Teacher.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -305,6 +306,7 @@
     <Content Include="img\bv1.jpg" />
     <Content Include="img\bv2.jpg" />
     <Content Include="img\chi-nhanh-hnaau.png" />
+    <Content Include="img\click.png" />
     <Content Include="img\cong-cu-dung-cu.png" />
     <Content Include="img\dvp-icon.png" />
     <Content Include="img\favicon.ico" />
@@ -332,9 +334,11 @@
     <Content Include="img\milestones-bg.jpg" />
     <Content Include="img\nghanh-nghe-bep-gia-dinh.png" />
     <Content Include="img\nguyen-vat-lieu.png" />
+    <Content Include="img\no-image-available-icon-6.jpg" />
     <Content Include="img\pha-che.png" />
     <Content Include="img\phong-hoc-hnaau.png" />
     <Content Include="img\quan-ly-nha-hang-khach-san.png" />
+    <Content Include="img\shopping-circle-blue-512.png" />
     <Content Include="img\sign.png" />
     <Content Include="img\thiet-bi-may-moc.png" />
     <Content Include="img\tuyen-sinh-bep-nong.png" />
@@ -515,6 +519,8 @@
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Hoatdonghocvien\Index.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Cunghoclambanh\Details.cshtml" />
+    <Content Include="Views\Hoatdonghocvien\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

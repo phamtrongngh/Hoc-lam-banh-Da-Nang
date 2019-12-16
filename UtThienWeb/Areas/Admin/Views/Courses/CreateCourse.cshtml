@@ -1,4 +1,4 @@
-﻿@model Admin.Models.Course
+﻿@model UtThienWeb.Areas.Admin.Models.Course
 @{
     ViewBag.Title = "CreateCourse";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <select class="custom-select" name="catalog">
                                             <option>Thuộc Khóa Học</option>
-                                            @foreach (var item in (IEnumerable<Admin.Models.CourseCatalog>)ViewBag.catalog)
+                                            @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.CourseCatalog>)ViewBag.catalog)
                                             {
                                                 <option value="@item.CourseCatalogId">@item.CourseCatalogName</option>
                                             }
@@ -69,19 +69,21 @@
                                 CKEDITOR.replace("editor");
                             </script>
                             <input type="button" class="btn btn-primary btn-add-img" value="Thêm Hình Vào TextBox" id="uploadButton" />
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.CourseThumbails, "Chọn Ảnh Bìa", new { @class = "bmd-label-floating" })
+                            <div class="row">
+                                <div class="col-md-8">
 
                                 </div>
-                                <input type="file" class="filestyle" name="file"
-                                       data-classButton="btn-white" data-input="true"
-                                       data-classIcon="icon-plus" data-buttonText="sadasda">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CourseThumbails, "Chọn Ảnh Bìa", new { @class = "bmd-label-floating" })
 
+                                    </div>
+                                    <input type="file" class="filestyle" name="file"
+                                           data-classButton="btn-white" data-input="true"
+                                           data-classIcon="icon-plus" data-buttonText="sadasda">
+                                </div>
 
                             </div>
-
-
 
                             <input type="submit" name="submit" value="Đăng" class="btn btn-primary pull-right">
                         }

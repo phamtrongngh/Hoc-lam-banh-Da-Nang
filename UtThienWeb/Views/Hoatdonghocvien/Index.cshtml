@@ -1,14 +1,13 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-     Layout = "~/Views/Shared/_LayoutPage.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
+@using UtThienWeb.Controllers
+@using System.Text.RegularExpressions
+@model IEnumerable<UtThienWeb.Models.News>
 <div class="container">
     <ul class="breadcrumb corlor_white">
         <li><a href="#" style="color:white">Trang Chủ</a></li>
-        <li><a href="#" style="color:white">Hoạt động học viên</a></li>
-
+        <li><a href="#" style="color:white">Cùng học làm bánh</a></li>
     </ul>
 </div>
 <div class="container body-baiviet">
@@ -87,112 +86,53 @@
             <article class="article-main">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="post-item">
-                            <div class="img-block">
-                                <a href="#"><img src="~/img/bep-nong.jpg" alt="Alternate Text" /></a>
-                            </div>
-                            <div class="content-block">
-                                <h2>
-                                    <a href="#">Cách làm bánh Âu gia đình cao cấp</a>
-                                </h2>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 02/10/2019
-                                    </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="post-item">
+                                <div class="img-block">
+                                    <a href="/hoat-dong-hoc-vien/@HomeController.RemoveUnicode(item.NewsTitle)"><img height="100%" width="100%" src="~/img/@item.NewsThumbails" alt="Alternate Text" /></a>
                                 </div>
-                                <div class="excerpt">
-                                    Bánh trôi tàu là món ăn không thể thiếu vắng trong danh sách ẩm thực mùa lạnh của Hà Nội. Cùng vào bếp trổ tài làm món này và ghim ngay những bí kíp quý ...
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="img-block">
-                                <a href="#"><img src="~/img/bep-nong.jpg" alt="Alternate Text" /></a>
-                            </div>
-                            <div class="content-block">
-                                <h2>
-                                    <a href="#">Cách làm bánh Âu gia đình cao cấp</a>
-                                </h2>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                                <div class="content-block">
+                                    <h2>
+                                        <a href="/hoat-dong-hoc-vien/@HomeController.RemoveUnicode(item.NewsTitle)">@item.NewsTitle</a>
+                                    </h2>
+                                    <div class="postby">
+                                        <div class="pull-left">
+                                            <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                                        </div>
+                                        <div class="pull-left">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> @item.NewsDate
+                                        </div>
                                     </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 02/10/2019
+
+                                    <div class="excerpt">
+                                        @(Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Length > 80 ? Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Substring(0, 80) : Regex.Replace(item.NewsContent, "<.*?>", String.Empty)) ...
                                     </div>
-                                </div>
-                                <div class="excerpt">
-                                    Bánh trôi tàu là món ăn không thể thiếu vắng trong danh sách ẩm thực mùa lạnh của Hà Nội. Cùng vào bếp trổ tài làm món này và ghim ngay những bí kíp quý ...
+
                                 </div>
                             </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="img-block">
-                                <a href="#"><img src="~/img/bep-nong.jpg" alt="Alternate Text" /></a>
-                            </div>
-                            <div class="content-block">
-                                <h2>
-                                    <a href="#">Cách làm bánh Âu gia đình cao cấp</a>
-                                </h2>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 02/10/2019
-                                    </div>
-                                </div>
-                                <div class="excerpt">
-                                    Bánh trôi tàu là món ăn không thể thiếu vắng trong danh sách ẩm thực mùa lạnh của Hà Nội. Cùng vào bếp trổ tài làm món này và ghim ngay những bí kíp quý ...
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="img-block">
-                                <a href="#"><img src="~/img/bep-nong.jpg" alt="Alternate Text" /></a>
-                            </div>
-                            <div class="content-block">
-                                <h2>
-                                    <a href="#">Cách làm bánh Âu gia đình cao cấp</a>
-                                </h2>
-                                <div class="postby">
-                                    <div class="pull-left">
-                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                    </div>
-                                    <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> 02/10/2019
-                                    </div>
-                                </div>
-                                <div class="excerpt">
-                                    Bánh trôi tàu là món ăn không thể thiếu vắng trong danh sách ẩm thực mùa lạnh của Hà Nội. Cùng vào bếp trổ tài làm món này và ghim ngay những bí kíp quý ...
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
-                    <nav aria-label="Something.." class="pagenumber">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item ">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    @*<nav aria-label="Something.." class="pagenumber">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item ">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>*@
                 </div>
             </article>
         </section>
     </div>
 </div>
-
 

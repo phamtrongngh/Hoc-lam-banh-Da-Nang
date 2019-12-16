@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace UtThienWeb.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
