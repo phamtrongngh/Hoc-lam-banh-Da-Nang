@@ -187,18 +187,27 @@
             </div>
         </div>
     </div>
-    <div class="cart-button-fixed">
-        <span>
-            @{ if (Session["cart"] != null)
-                {
-                    <b>
-                        @(((List<UtThienWeb.Models.Course>)Session["cart"]).Count)
-                    </b>
+    <a href="../gio-hang">
+
+        <div class="cart-button-fixed">
+            <span>
+                @{ if (Session["cart"] != null)
+                    {
+                        <b>
+                            @(((List<UtThienWeb.Models.Course>)Session["cart"]).Count)
+                        </b>
+                    }
+                    else
+                    {
+                        <b>
+                            0
+                        </b>
+                    }
                 }
-            }
-        </span>
-        <img src="~/img/shopping-circle-blue-512.png" width="80" height="80" alt="Alternate Text" />
-    </div>
+            </span>
+            <img src="~/img/shopping-circle-blue-512.png" width="80" height="80" alt="Alternate Text" />
+        </div>
+    </a>
     <div id="body-render">
         @RenderBody()
     </div>

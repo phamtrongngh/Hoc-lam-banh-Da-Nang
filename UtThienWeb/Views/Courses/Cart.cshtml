@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@using System.Globalization
+
+<style>
+    .cart-button-fixed{
+        display:none !important;
+    }
+</style>
+<div class="body-cart">
+ 
+
+    <div class="shopping-cart">
+
+        
+        <div>
+            <div class="column-labels">
+                <label class="product-image"></label>
+                <label class="product-details">Tên chuyên đề khóa học</label>
+                <label class="product-price">Giá</label>
+                <label class="product-removal">Xóa khỏi giỏ hàng</label>
+            </div>
+            <div class="container">
+                @foreach (var item in (List<UtThienWeb.Models.Course>)Session["cart"])
+                {
+                    <div class="row a">
+                        <div class="col-md-3 s">
+                            <img src="~/img/@item.CourseThumbails" width="80px" height="150px">
+                        </div>
+                        <div class="col-md-3 s">
+                            <a href="../chi-tiet-khoa-hoc/@item.CourseName"><div style="font-size:20px" class="product-title">@item.CourseName</div></a>
+
+                        </div>
+                        <div class="col-md-3 s"><b>@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice) đ</b></div>
+                        <div class="product-removal col-md-3 s">
+                            <button id=@item.CourseId class="remove-product btn btn-danger">
+                                Xóa khỏi giỏ hàng
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @*<div class="totals">
+            <div class="totals-item">
+                <label>Total</label>
+                <div class="totals-value" id="cart-subtotal">71.97</div>
+            </div>
+
+
+
+        </div>*@
+
+        <button class="checkout">Đặt Khóa Học</button>
+    </div>
+    <!--====== Javascripts & Jquery ======-->
+
+</div>

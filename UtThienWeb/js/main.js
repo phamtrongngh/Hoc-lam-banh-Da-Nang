@@ -136,6 +136,14 @@ $(document).ready(function () {
 
     $('.product-removal button').click(function () {
         removeItem(this);
+        $.ajax({
+            method:"post",
+            url: "/Courses/RemoveCart/",
+            data: { id: $(this).attr("id") },
+            success: function (e) {
+
+            }
+        })
     });
 
 

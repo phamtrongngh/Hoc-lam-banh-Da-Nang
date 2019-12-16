@@ -62,8 +62,26 @@ namespace UtThienWeb.Controllers
             }
             if (t)
             ((List<Course>)Session["cart"]).Add(db.Courses.Find(id));
-            int count = ((List<Course>)Session["cart"]).Count;
-            return Json(count);
+            
+            return Json("");
+        }
+        public ActionResult Cart()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public JsonResult RemoveCart(int id)
+        {
+            foreach (var item in ((List<Course>)Session["cart"]))
+            {
+                if (item.CourseId == id)
+                {
+                    ((List<Course>)Session["cart"]).Remove(item);
+                    break;
+                }
+            }
+            return Json("");
         }
     }
 }

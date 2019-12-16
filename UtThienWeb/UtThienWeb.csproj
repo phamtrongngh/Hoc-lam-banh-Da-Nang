@@ -487,7 +487,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Courses\CoursesItem.cshtml" />
     <Content Include="Views\Courses\CourseDetails.cshtml" />
-    <None Include="Views\Courses\giohang.cshtml" />
+    <Content Include="Views\Courses\Cart.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\circle-progress.min.js" />

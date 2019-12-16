@@ -2577,7 +2577,7 @@ a:hover {
     /* Apply clearfix in a few places */
     /* Apply dollar signs */
     .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-        content: '$';
+      
     }
 
 /* Body/Header stuff */
@@ -2588,11 +2588,18 @@ a:hover {
     margin-top: 50px;
     color: white;
 }
-
+.product-title{
+    margin-left:5%;
+}
 .totals label {
     color: wheat;
 }
-
+.s{
+ text-align:center;
+}
+.a{
+    margin-top:10px;
+}
 h1 {
     font-weight: 100;
 }

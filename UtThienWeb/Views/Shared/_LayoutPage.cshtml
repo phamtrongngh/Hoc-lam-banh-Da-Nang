@@ -193,29 +193,28 @@
             </div>
         </div>
     </div>
-    <div class="cart-button-fixed">
-        <span><b>0</b></span>
-        <img src="~/img/shopping-circle-blue-512.png" width="80" height="80" alt="Alternate Text" />
+    <a href="/gio-hang">
 
-    </div>
-    <div class="cart-button-fixed">
-        <span>
-            @{ if (Session["cart"] != null)
-                {
-                    <b>
-                        @(((List<UtThienWeb.Models.Course>)Session["cart"]).Count)
-                    </b>
+
+        <div class="cart-button-fixed">
+            <span>
+                @{ if (Session["cart"] != null)
+                    {
+                        <b>
+                            @(((List<UtThienWeb.Models.Course>)Session["cart"]).Count)
+                        </b>
+                    }
+                    else
+                    {
+                        <b>
+                            0
+                        </b>
+                    }
                 }
-                else
-                {
-                    <b>
-                        0
-                    </b>
-                }
-            }
-        </span>
-        <img src="~/img/shopping-circle-blue-512.png" width="80" height="80" alt="Alternate Text" />
-    </div>
+            </span>
+            <img src="~/img/shopping-circle-blue-512.png" width="80" height="80" alt="Alternate Text" />
+        </div>
+    </a>
     <!-- Model Register-->
     @RenderBody()
     <!--Footer-->
@@ -378,7 +377,8 @@
                 url: "/Courses/PutToCart",
                 data: { id: $(this).find("input").attr("id") },
                 success: function (e) {
-                    $(".cart-button-fixed b").html(e);
+                    
+                    $(".cart-button-fixed b").html(@(((List<UtThienWeb.Models.Course>)Session["cart"]).Count));
                     alert("Đã thêm khóa học vào giỏ hàng, bạn có thể chọn thêm khóa học và sau đó bấm vào icon giỏ hàng bên trái để đặt khóa!!!")
                 }
             })
