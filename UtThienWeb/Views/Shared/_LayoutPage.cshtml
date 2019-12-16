@@ -378,7 +378,7 @@
                 data: { id: $(this).find("input").attr("id") },
                 success: function (e) {
                     
-                    $(".cart-button-fixed b").html(@(((List<UtThienWeb.Models.Course>)Session["cart"]).Count));
+                  
                     alert("Đã thêm khóa học vào giỏ hàng, bạn có thể chọn thêm khóa học và sau đó bấm vào icon giỏ hàng bên trái để đặt khóa!!!")
                 }
             })

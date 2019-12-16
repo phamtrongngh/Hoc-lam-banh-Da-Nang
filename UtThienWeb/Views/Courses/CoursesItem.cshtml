@@ -22,7 +22,7 @@
                         <article class="blog-item">
                             <div class="blog-item-thumbnail">
                                 <a href="/lam-banh-tranh-games">
-                                    <img src="~/img/bep-nong.jpg" alt="Làm bánh, tránh... games">
+                                    <img class="img-khoahoc" src="~/img/bep-nong.jpg" alt="Làm bánh, tránh... games">
                                 </a>
                             </div>
                             <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">Làm bánh, tránh... games</a></h3>
@@ -101,7 +101,7 @@
                                         <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                     </div>
                                     <div class="pull-left">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> @item.TimeCreate
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> @DateTime.Parse(item.TimeCreate.ToString()).ToShortDateString()
                                     </div>
                                 </div>
                                 <p class="blog-item-summary"> Trung Tâm Út Thiện - Học Làm Bánh Đà Nẵng </p>

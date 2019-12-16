@@ -1,4 +1,7 @@
-﻿.lentop {
+﻿.job-detail img{
+    width: 250px !important;
+}
+.lentop {
     display: none;
     bottom: 25%;
     left: 80px;
@@ -40,13 +43,13 @@
     }
 .price-wrapper .price {
     display: block;
-    padding: 22px 15px;
+    padding: 20px 15px;
     color: wheat;
     text-align: center;
     /* border-bottom: 1px dashed #e8e8e8; */
     border: 1px solid #947c7c;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 20px;
     background-color: rgb(255, 255, 255,0.2);
 }
 .row {
@@ -220,7 +223,8 @@ body:hover .cart-button-fixed {
 .img-block {
     display: inline-block;
     width: 25%;
-    margin-right: 5%;
+    margin-right: 2%;
+    height:160px;
 }
 
 .text-chuyendebanhau a {
@@ -320,10 +324,13 @@ body:hover .cart-button-fixed {
         flex: 0 0 100%;
     }
 }
-
+.img-khoahoc{
+    min-width:100%;
+}
 @media only screen and (max-width: 575px) {
     .img-khoahoc {
         width: 75%;
+        
     }
 
     .right-coure {
@@ -612,9 +619,7 @@ td {
     color: white;
 }
 
-img {
-    min-width: 100%;
-}
+
 
 @media only screen and (max-width: 420px) {
     .search-box {
@@ -1724,6 +1729,7 @@ ul.breadcrumb {
     .img-nguoihuongdan {
         height: 310px;
         width: 180px;
+        margin-left: 22px;
     }
 
     .f-address li a {
@@ -2351,6 +2357,7 @@ article {
 
 .blog-item-thumbnail {
     position: relative;
+    height: 200px;
 }
 
 .list-blogs-page-blog .blog-item-name {
@@ -2361,6 +2368,7 @@ article {
     margin-bottom: 8px;
     overflow: hidden;
     max-height: 48px;
+    height: -webkit-fill-available;
 }
 
 h3 {
