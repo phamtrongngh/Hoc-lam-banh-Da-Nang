@@ -15,6 +15,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         ModelCakes db2 = new ModelCakes();
         public ActionResult Index()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var courseList = db.Courses;
             foreach (var item in courseList)
             {
@@ -26,6 +30,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult CreateCourse()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             ViewBag.catalog = db.CourseCatalogs;
             return View();
         }
@@ -57,6 +65,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult EditCourse(int? CourseId)
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             ViewBag.catalog = db.CourseCatalogs;
 
             var newObj = db.Courses.Find(CourseId);

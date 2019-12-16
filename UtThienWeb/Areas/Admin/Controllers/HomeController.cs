@@ -11,13 +11,13 @@ namespace UtThienWeb.Areas.Admin.Controllers
         
         public ActionResult Index()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
-        //public ActionResult Redirect(string page)
-        //{
-        //    if (Session["uName"]==null) return RedirectToAction("Login", "Account");
-        //    return RedirectToAction("Index", page);
-        //}
+        
         
         [HttpPost]
         public JsonResult UploadImages()

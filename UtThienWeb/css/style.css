@@ -1,4 +1,15 @@
-﻿.job-detail img{
+﻿.box-lichhoc{
+    text-align:center;
+}
+.img-lichhoc {
+    
+    margin-top: 60px;
+    /* text-align: center; */
+    max-width: 100%;
+    /* display: flex; */
+    margin-bottom: 20px;
+}
+.job-detail img{
     width: 250px !important;
 }
 .lentop {

@@ -165,12 +165,14 @@
     <Compile Include="Areas\Admin\Models\Slide.cs" />
     <Compile Include="Areas\Admin\Models\Teacher.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\ChinhanhController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CunghoclambanhController.cs" />
     <Compile Include="Controllers\HoatdonghocvienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LichhocController.cs" />
     <Compile Include="Controllers\TestFilter.cs" />
     <Compile Include="Controllers\TuyendungController.cs" />
     <Compile Include="Global.asax.cs">
@@ -323,6 +325,7 @@
     <Content Include="img\icon-lich-hoc.png" />
     <Content Include="img\icon-nghe-bep.png" />
     <Content Include="img\img-gv.png" />
+    <Content Include="img\lichhoc.png" />
     <Content Include="img\logo-contact.png" />
     <Content Include="img\logo-light.png" />
     <Content Include="img\logo.jpg" />
@@ -521,6 +524,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Cunghoclambanh\Details.cshtml" />
     <Content Include="Views\Hoatdonghocvien\Details.cshtml" />
+    <Content Include="Views\Chinhanh\Index.cshtml" />
+    <Content Include="Views\Lichhoc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

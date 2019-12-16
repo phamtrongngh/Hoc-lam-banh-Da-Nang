@@ -12,9 +12,13 @@ namespace UtThienWeb.Areas.Admin.Controllers
         
         public ActionResult Index()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(db.Accounts);
         }
-
+        
         public ActionResult Login()
         {
             return View();
@@ -29,7 +33,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
                 if (account != null)
                 {
 
-                    if (account.AccountPassword.Equals(password))
+                    if (account.AccountPassword.Equals(password) && account.AccountRole==1)
                     {
                         Session["uName"] = username;
                         return RedirectToAction("Index", "Home");
@@ -53,6 +57,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         }
         public ActionResult AccountDetails(int? AccountId)
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(db.Accounts.Find(AccountId));
         }
     }

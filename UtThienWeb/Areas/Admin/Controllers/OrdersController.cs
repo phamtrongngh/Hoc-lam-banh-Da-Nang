@@ -11,6 +11,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         ModelCakes db = new ModelCakes();
         public ActionResult Index()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var ordersList = db.Orders;
             foreach (var item in ordersList)
             {
