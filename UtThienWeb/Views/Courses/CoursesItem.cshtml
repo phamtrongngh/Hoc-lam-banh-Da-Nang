@@ -107,7 +107,7 @@
                                 <p class="blog-item-summary"> Trung Tâm Út Thiện - Học Làm Bánh Đà Nẵng </p>
                                 <div class="price-wrapper">
                                     <p class="price product-page-price ">
-                                        <span class="woocommerce-Price-amount amount">@item.CoursePrice<span class="woocommerce-Price-currencySymbol"> ₫/người</span></span>
+                                        <span class="woocommerce-Price-amount amount">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice)<span class="woocommerce-Price-currencySymbol"> ₫/người</span></span>
                                     </p>
                                 </div>
                                 <div style="margin-bottom: 8px;">

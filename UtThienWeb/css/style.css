@@ -133,7 +133,14 @@ body:hover .cart-button-fixed {
     margin-bottom: 0px;
     font-weight: 600;
 }
-
+.title-cart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    font-size:20px;
+}
 .job-detail {
     color: white;
 }
@@ -1501,17 +1508,15 @@ footer .input-group-addon {
     padding-bottom: 40px;
 }
 
-#logo-footer {
-    width: 60px;
+#logo-footer{
+    width:60px;
+    min-width: 100%;
 }
 
 .h5-footer {
     margin-left: 40px;
 }
 
-.modal-footer {
-    justify-content: flex-start !important;
-}
 
 .corlor_white {
     background-color: rgba(0,0,0,0.5) !important;

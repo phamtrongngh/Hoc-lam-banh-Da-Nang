@@ -28,6 +28,18 @@ namespace UtThienWeb
                 new[] { "UtThienWeb.Controllers" }
             );
             routes.MapRoute(
+                name: "Chi Nhanh",
+                url: "chi-nhanh",
+                defaults: new { controller = "Chinhanh", action = "Index", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Noi Quy",
+                url: "noi-quy",
+                defaults: new { controller = "Lichhoc", action = "Index", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
+            routes.MapRoute(
                name: "Cung hoc lam banh",
                url: "hoat-dong-hoc-vien",
                defaults: new { controller = "Hoatdonghocvien", action = "Index", id = UrlParameter.Optional },

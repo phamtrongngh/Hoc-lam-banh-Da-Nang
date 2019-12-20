@@ -34,6 +34,8 @@ namespace UtThienWeb.Controllers
                 Session["user"] += " </a>";
                 Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
             }
+
+            ViewBag.course = db.Courses.Take(6);
             return View(db.Slides.ToArray());
         }
         public static string RemoveUnicode(string text)

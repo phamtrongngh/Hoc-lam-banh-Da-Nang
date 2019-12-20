@@ -99,10 +99,10 @@
         <div class="flex-gioithieu">
             <div class="wrap-gioithieu">
                 <p class="text-gioithieu">
-                    Bài báo mang tên:"Làm bánh, tránh...games" được biên tập và đăng tải trên báo Công An Tp.Đà Nẵng(cadn.com.vn) và báo mới(baomoi.com) đã làm động lực rất lớn sau những nổ lực, không ngừng phấn đấu của Trung Tâm Út Thiện - Học làm bánh Đà Nẵng.
-                    <br>
-                    Báo Mới: <a href="https://baomoi.com/lam-banh-tranh-games/c/30967964.epi?fbclid=IwAR2bewXvrDeVdVJ6v6JDhtXRgldyPW931_2OLlmcn5YMsEBVnSrIRPFa3z8">Link bài báo</a>
-                    <br> Báo Công An Tp.Đà Nẵng: <a href="http://cadn.com.vn/news/64_207271_lam-banh-tranh-games.aspx">Link bài báo</a>
+                    Bài báo mang tên:" Làm bánh, tránh...games" được biên tập và đăng tải trên báo Công 
+                    An Tp. Đà Nẵng (cadn.com.vn) và báo mới (baomoi.com) đã làm động lực 
+                        rất lớn sau những nổ lực, không ngừng phấn đấu của Trung Tâm Út Thiện - Học làm bánh Đà Nẵng.
+                    
                 </p>
 
             </div>
@@ -156,49 +156,17 @@
             <h1 class="tittle-chuyende two text-center">Các Chuyên Đề Làm Bánh</h1>
         </div>
         <div class=" wrap-cd">
-            <div class="wrap-chuyende">
-                <div class="img-chuyendebanhau">
-                    <a href="#"><img class="img-hoc-vien" src="~/img/mien-xao-cua.jpg" alt=""></a>
+            @foreach (var item in (IEnumerable<UtThienWeb.Models.Course>) ViewBag.course)
+            {
+                <div class="wrap-chuyende">
+                    <div class="img-chuyendebanhau">
+                        <a href="#"><img class="img-hoc-vien" src="~/img/@item.CourseThumbails" alt=""></a>
+                    </div>
+                    <div class="text-chuyendebanhau">
+                        <a href="#">@item.CourseName (cơ bản đến nâng cao)</a>
+                    </div>
                 </div>
-                <div class="text-chuyendebanhau">
-                    <a href="#">Chuyên Đề Bánh Âu Gia đình (cơ bản đến nâng cao)</a>
-                </div>
-            </div>
-            <div class="wrap-chuyende">
-                <div class="img-chuyendebanhau">
-                    <a href="#"><img class="img-hoc-vien" src="~/img/mien-xao-cua.jpg" alt=""></a>
-                </div>
-                <div class="text-chuyendebanhau">
-                    <a href="#">Chuyên Đề Bánh bánh Tết (Cơ bản đến nâng cao)</a>
-                </div>
-            </div>
-            <div class="wrap-chuyende">
-                <div class="img-chuyendebanhau">
-                    <a href="#"><img class="img-hoc-vien" src="~/img/mien-xao-cua.jpg" alt=""></a>
-                </div>
-                <div class="text-chuyendebanhau">
-                    <a href="#"><p>Chuyên Đề Bánh Âu Gia đình (cơ bản đến nâng cao)</p></a>
-                </div>
-            </div>
-            <div class="wrap-chuyende">
-                <div class="img-chuyendebanhau">
-                    <a href="#"><img class="img-hoc-vien" src="~/img/mien-xao-cua.jpg" alt=""></a>
-                </div>
-                <div class="text-chuyendebanhau">
-                    <a href="#">Chuyên Đề Bánh Trung Thu</a>
-                    <br />Bánh Noel
-                </div>
-            </div>
-            <div class="wrap-chuyende">
-                <div class="img-chuyendebanhau">
-                    <a href="#"><img class="img-hoc-vien" src="~/img/mien-xao-cua.jpg" alt=""></a>
-                </div>
-                <div class="text-chuyendebanhau">
-                    <a href="#">Chuyên Đề Bánh Trung Thu</a>
-                    <br />Bánh Noel
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 </div>
@@ -303,7 +271,6 @@
                         Hình ảnh (bổ sung sau)
                         Đang xây dựng ^^
                     </h3>
-
                 </div>
             </div>
 
