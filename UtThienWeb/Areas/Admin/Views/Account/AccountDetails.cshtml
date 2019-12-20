@@ -76,8 +76,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group bmd-form-group">
                                         <label class="bmd-label-floating">
-                                            Giới Tính
-                                            @Html.DisplayFor(model => model.AccountGender)
+                                            Giới Tính:
+                                            @(Model.AccountGender==true?"Nam":"Nữ")
                                         </label>
                                         <input type="text" class="form-control" disabled="">
                                     </div>

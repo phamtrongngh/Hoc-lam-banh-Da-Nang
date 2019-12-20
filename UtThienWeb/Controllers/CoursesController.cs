@@ -91,6 +91,26 @@ namespace UtThienWeb.Controllers
             }
             return Redirect("../");
         }
+      
+        public ActionResult Order()
+        {
+            try
+            {
+                var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = ((Account)Session["current_user"]).AccountId }).OrderId;
+                foreach (var item in (IEnumerable<Course>)Session["cart"])
+                {
+                    db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
+                }
+
+                db.SaveChanges();
+                Session.Remove("cart");
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Redirect("../");
+        }
         [HttpPost]
         public JsonResult RemoveCart(int id)
         {

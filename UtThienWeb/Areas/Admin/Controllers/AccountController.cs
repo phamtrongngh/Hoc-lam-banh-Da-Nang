@@ -16,7 +16,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            return View(db.Accounts);
+            return View(db.Accounts.Where(a=>a.AccountRole!=1));
         }
         
         public ActionResult Login()
