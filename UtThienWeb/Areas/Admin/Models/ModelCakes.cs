@@ -4,7 +4,7 @@ namespace UtThienWeb.Areas.Admin.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using System.Data.Entity;
+
     public partial class ModelCakes : DbContext
     {
         public ModelCakes()
@@ -12,9 +12,11 @@ namespace UtThienWeb.Areas.Admin.Models
         {
         }
 
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<CourseCatalog> CourseCatalogs { get; set; }
+        public virtual DbSet<Form> Forms { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<News> News { get; set; }
@@ -30,11 +32,6 @@ namespace UtThienWeb.Areas.Admin.Models
                 .Property(e => e.AccountPhone)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
-                .HasMany(e => e.Orders)
-                .WithRequired(e => e.Account)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Course>()
                 .HasMany(e => e.Images)
                 .WithRequired(e => e.Course)
@@ -45,6 +42,10 @@ namespace UtThienWeb.Areas.Admin.Models
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Course)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Form>()
+                .Property(e => e.FormExperience)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Menu>()
                 .Property(e => e.MenuUrl)

@@ -17,7 +17,7 @@ namespace UtThienWeb.Areas.Admin.Models
 
         public int OrderId { get; set; }
 
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         public DateTime? CreationDate { get; set; }
 
