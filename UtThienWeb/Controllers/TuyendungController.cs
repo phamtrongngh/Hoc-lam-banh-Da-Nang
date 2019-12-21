@@ -31,5 +31,19 @@ namespace UtThienWeb.Controllers
             }
             return View(db.News.Where(a=>a.NewsTypeId==2));
         }
+        [HttpPost]
+        public ActionResult SendForm(string email, string name, string phone, string exp, int submit, string title)
+        {
+            try
+            {
+                db.Forms.Add(new Form { FormEmail= email, FormName=name, FormPhone= phone, FormExperience = exp, NewsId=submit, NewsTitle=title, FormCreationDate=DateTime.Now, FormStatus="Đang chờ liên lạc"});
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Redirect("/tuyen-dung");
+        }
     }
 }

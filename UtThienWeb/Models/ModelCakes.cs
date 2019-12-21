@@ -18,6 +18,7 @@ namespace UtThienWeb.Models
         public virtual DbSet<CourseCatalog> CourseCatalogs { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<Form> Forms { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsCatalog> NewsCatalogs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }

@@ -147,6 +147,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FormsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
@@ -155,6 +156,8 @@
     <Compile Include="Areas\Admin\Models\Account.cs" />
     <Compile Include="Areas\Admin\Models\Course.cs" />
     <Compile Include="Areas\Admin\Models\CourseCatalog.cs" />
+    <Compile Include="Areas\Admin\Models\C__MigrationHistory.cs" />
+    <Compile Include="Areas\Admin\Models\Form.cs" />
     <Compile Include="Areas\Admin\Models\Image.cs" />
     <Compile Include="Areas\Admin\Models\Menu.cs" />
     <Compile Include="Areas\Admin\Models\ModelCakes.cs" />
@@ -193,6 +196,14 @@
     <Compile Include="Migrations\201912210741479_Form.cs" />
     <Compile Include="Migrations\201912210741479_Form.designer.cs">
       <DependentUpon>201912210741479_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912210750528_FormExperience.cs" />
+    <Compile Include="Migrations\201912210750528_FormExperience.designer.cs">
+      <DependentUpon>201912210750528_FormExperience.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs" />
+    <Compile Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.designer.cs">
+      <DependentUpon>201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -413,6 +424,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Forms\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -574,6 +586,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912210741479_Form.resx">
       <DependentUpon>201912210741479_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210750528_FormExperience.resx">
+      <DependentUpon>201912210750528_FormExperience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.resx">
+      <DependentUpon>201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
