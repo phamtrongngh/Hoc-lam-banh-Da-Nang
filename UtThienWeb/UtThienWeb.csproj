@@ -517,7 +517,6 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Cunghoclambanh\Index.cshtml" />
     <Content Include="Views\Tuyendung\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />

@@ -13,19 +13,28 @@ namespace UtThienWeb.Areas.Admin.Controllers
     {
         ModelCakes db = new ModelCakes();
         ModelCakes db2 = new ModelCakes();
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             if (Session["uName"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-            var courseList = db.Courses;
+            var courseList = new List<Course>();
+            if (id == null)
+            {
+                courseList = db.Courses.ToList();
+            }
+            else
+            {
+                courseList = db.Courses.Where(a => a.CourseCatalogId == id).ToList();
+            }
             foreach (var item in courseList)
             {
                 item.CourseCatalog = db2.CourseCatalogs.Find(item.CourseCatalogId);
 
             }
-            return View(db.Courses);
+            ViewBag.catalog = db.CourseCatalogs;
+            return View(courseList);
         }
         [HttpGet]
         public ActionResult CreateCourse()

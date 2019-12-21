@@ -11,20 +11,31 @@ namespace UtThienWeb.Areas.Admin.Controllers
     {
         ModelCakes db = new ModelCakes();
         ModelCakes db2 = new ModelCakes();
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(int? id)
         {
             if (Session["uName"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-            var newList = db.News;
+            var newList = new List<News>();
+            if (id == null)
+            {
+                newList = db.News.ToList();
+            }
+            else
+            {
+                newList = db.News.Where(a=>a.NewsTypeId==id).ToList();
+            }
             foreach (var item in newList)
             {
                 item.NewsCatalog = db2.NewsCatalogs.Find(item.NewsTypeId);
- 
+
             }
+            ViewBag.catalog = db.NewsCatalogs;
             return View(newList);
         }
+
         [HttpGet]
         public ActionResult CreateNews()
         {
@@ -39,7 +50,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult CreateNews(News news, HttpPostedFileBase file)
         {
-            
+
             if (file != null)
             {
                 string fileName = System.IO.Path.GetFileName(file.FileName);

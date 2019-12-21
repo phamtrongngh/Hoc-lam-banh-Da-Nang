@@ -3,65 +3,89 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Các Khóa Học</h4>
-                    <p class="card-category"></p>
+
+    <div class="container-fluid">
+        <form class="navbar-form">
+            <span class="bmd-form-group">
+                <div class="input-group no-border">
+                    <input type="text" value="" class="form-control" placeholder="Search...">
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th>
-                                        Ảnh Bìa
-                                    </th>
-                                    <th>
-                                        Tên Khóa Học
-                                    </th>
-                                    <th>
-                                        Giá
-                                    </th>
-                                    <th>
-                                        Thời Gian Tạo
-                                    </th>
-                                    <th>
-                                        Khóa Học
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
+            </span>
+        </form>
+        <select onchange="location = this.value;" style="text-align:center;padding-left:10px">
+            <option>Lọc khóa học </option>
+            @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.CourseCatalog>)ViewBag.catalog)
+            {
+
+                <option value="/Admin/Courses/Index/@item.CourseCatalogId">
+                    @item.CourseCatalogName
+                </option>
+            }
+
+        </select>
+        <i class="fa fa-caret-down"></i>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Các Khóa Học</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
                                     <tr>
-                                        <td>
-                                            <img src="~/img/@item.CourseThumbails" width="100" height="100" alt="Alternate Text" />
-                                        </td>
-                                        <td>
-                                            @item.CourseName
-                                        </td>
-                                        <td class="text-primary">
-                                            @item.CoursePrice
-                                        </td>
-                                        <td>
-                                            @item.TimeCreate
-                                        </td>
-                                        <td>
-                                            @item.CourseCatalog.CourseCatalogName
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Chỉnh Sửa Khóa Học", "EditCourse", "Courses", new { CourseId = item.CourseId }, null)
-                                        </td>
+                                        <th>
+                                            Ảnh Bìa
+                                        </th>
+                                        <th>
+                                            Tên Khóa Học
+                                        </th>
+                                        <th>
+                                            Giá
+                                        </th>
+                                        <th>
+                                            Thời Gian Tạo
+                                        </th>
+                                        <th>
+                                            Khóa Học
+                                        </th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="~/img/@item.CourseThumbails" width="100" height="100" alt="Alternate Text" />
+                                            </td>
+                                            <td>
+                                                @item.CourseName
+                                            </td>
+                                            <td class="text-primary">
+                                                @item.CoursePrice
+                                            </td>
+                                            <td>
+                                                @item.TimeCreate
+                                            </td>
+                                            <td>
+                                                @item.CourseCatalog.CourseCatalogName
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Chỉnh Sửa Khóa Học", "EditCourse", "Courses", new { CourseId = item.CourseId }, null)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

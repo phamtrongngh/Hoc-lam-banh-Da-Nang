@@ -31,6 +31,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        @Html.LabelFor(model => model.NewsCatalog, "Loại Bài Viết", new { @class = "bmd-label-floating" })
                                         <select class="custom-select" name="catalog">
                                             <option value="@Model.NewsCatalog.NewsCatalogId">@Model.NewsCatalog.NewsCatalogName</option>
                                             @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.NewsCatalog>)ViewBag.catalog)
@@ -74,7 +75,7 @@
                                        data-classButton="btn-white" data-input="true"
                                        data-classIcon="icon-plus" data-buttonText="sadasda">
                             </div>
-                            <input id="delete-hidden" type="submit" hiden name="submit" value="Delete">
+                            <input id="delete-hidden" hidden type="submit" hiden name="submit" value="Delete">
                             <input type="submit" name="submit" value="Delete" onclick="if (confirm('Bạn Có Chắc Chắn Muốn Xóa Bài Viết??')) $('#delete-hidden').click(); return false;" class="btn btn-primary pull-right">
                             <input type="submit" name="submit" value="Update" class="btn btn-primary pull-right">
                         }

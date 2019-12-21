@@ -15,17 +15,28 @@
             </div>
         </span>
     </form>
-    <select>
-        <option>
-            Loại bài viết
-        </option>
+
+    <select onchange="location = this.value;" style="padding-left:10px">
+        <option>Lọc loại bài viết </option>
+        @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.NewsCatalog>)ViewBag.catalog)
+        {
+
+            <option value="/Admin/News/Index/@item.NewsCatalogId">
+                @item.NewsCatalogName
+            </option>
+        }
+
     </select>
+    <i class="fa fa-caret-down"></i>
     <div class="row">
+
         <div class="col-md-12">
+
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Quản Lí Bài Viết</h4>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
