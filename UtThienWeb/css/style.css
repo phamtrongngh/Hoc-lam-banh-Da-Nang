@@ -1,5 +1,31 @@
-﻿.des-info{
-    padding: 0 35 10 35;
+﻿.post-thumbnail{
+    max-width:100%;
+}
+.post-thumbnail:hover{
+        opacity: 0.5;
+}
+.icon-img {
+    width: 63px;
+    position: absolute;
+    top: 0;
+    margin-top: -40px;
+    margin-left: -36px;
+    left: 50%;
+}
+.content1 {
+    text-align: center;
+    border: 1px solid #feffff;
+    padding: 20px 5px 20px;
+    position: relative;
+    min-height: 418px;
+    margin-bottom: 20px;
+}
+.content1:hover{
+    border: 2px solid #feffff;
+}
+    .des-info{
+    padding: 0 23 10 23;
+    text-align:justify;
 }
 .box-lichhoc {
     text-align: center;
@@ -1103,9 +1129,7 @@ td {
 }
 
 .img-hoc-vien1 {
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-    transition: ease 0.2ms;
+
     margin-right: 10px;
     width: 184px;
     height: 182px;
@@ -1125,10 +1149,7 @@ td {
     }
 
     .img-hoc-vien1:hover {
-        -webkit-filter: grayscale(0);
-        filter: grayscale(0);
-        position: relative;
-        top: -10px;
+        opacity:0.7;
     }
 .text-top-huongnghiep {
     font-size: 28px;
@@ -1163,11 +1184,11 @@ td {
     height: 400px;
     min-width: 600px;
 }
-.wrap-vitri{
+.wrap-vitri {
     text-align: center;
-    display:flex;
-    margin-right:20px;
-    
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .wrap-gv {
     display: inline-block;
