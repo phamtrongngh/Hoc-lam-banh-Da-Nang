@@ -1,5 +1,8 @@
-﻿.box-lichhoc{
-    text-align:center;
+﻿.des-info{
+    padding: 0 35 10 35;
+}
+.box-lichhoc {
+    text-align: center;
 }
 .img-lichhoc {
     
@@ -171,6 +174,10 @@ body:hover .cart-button-fixed {
 }
 
 @media only screen and (max-width: 768px) {
+    .flex-hocvien {
+        
+        padding-bottom: 25px !important;
+    }
     .btn-co-so {
         /* margin: 0 50px 50px 50px; */
         margin: auto !important;
@@ -461,7 +468,13 @@ input, textarea, select, fieldset {
     #phonering-alo-phoneIcon {
         display: none;
     }
-
+    .fb-root{
+        display:none;
+    }
+    .fb-customerchat{
+        display:none;
+    }
+    .
     .hotline-footer {
         color: white;
         display: inline-block;
@@ -1045,6 +1058,7 @@ td {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding-bottom: 80px;
 }
 
 .btn-co-so {
@@ -1088,11 +1102,19 @@ td {
     margin: 15px;
 }
 
+.img-hoc-vien1 {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transition: ease 0.2ms;
+    margin-right: 10px;
+    width: 184px;
+    height: 182px;
+}
 .img-hoc-vien {
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
     transition: ease 0.2ms;
-    max-width: 100%;
+    margin-bottom: 10px;
 }
 
     .img-hoc-vien:hover {
@@ -1102,6 +1124,12 @@ td {
         top: -10px;
     }
 
+    .img-hoc-vien1:hover {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+        position: relative;
+        top: -10px;
+    }
 .text-top-huongnghiep {
     font-size: 28px;
     font-weight: 400;
@@ -1135,7 +1163,12 @@ td {
     height: 400px;
     min-width: 600px;
 }
-
+.wrap-vitri{
+    text-align: center;
+    display:flex;
+    margin-right:20px;
+    
+}
 .wrap-gv {
     display: inline-block;
     width: 75%;
@@ -1259,7 +1292,7 @@ td {
 }
 
 .wrap-img-gv {
-    display: inline-block;
+    display: block;
 }
 
 .text-coutthien {
@@ -1471,7 +1504,7 @@ footer .input-group-addon {
     margin-left: 5%;
 }
 
-@media only screen and (max-width: 1286px) {
+@media only screen and (max-width: 1020px) {
     .wrap-chuyende {
         width: 100%;
         margin-bottom: 30px;
@@ -1723,8 +1756,15 @@ ul.breadcrumb {
         height: 200px;
         min-width: 240px;
     }
-}
 
+    .wrap-chuyende {
+        
+        display: block
+    }
+    .text-chuyendebanhau {
+        text-align:justify;
+    }
+}
 @media only screen and (max-width: 370px) {
     .img-nguoihuongdan {
         height: 310px;
