@@ -1,0 +1,25 @@
+﻿
+
+namespace UtThienWeb.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+    [Table("Form")]
+    public class Form
+    {
+        [Key]
+        public int FormId { get; set; }
+        [StringLength(50)]
+        public string FormEmail { get; set; }
+        [StringLength(60)]
+        public string FormName { get; set; }
+        [StringLength(12)]
+        public string FormPhone { get; set; }
+        public int NewsId { get; set; }
+        public string NewsTitle { get; set; }
+        public virtual News News { get; set; }
+    }
+}

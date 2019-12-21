@@ -39,7 +39,7 @@ namespace UtThienWeb.Models
         public string NewsImagesList { get; set; }
 
         public int? NewsViews { get; set; }
-
+        public virtual ICollection<Form> Forms { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }

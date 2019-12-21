@@ -190,10 +190,15 @@
     <Compile Include="Migrations\201912210603345_NewViews.designer.cs">
       <DependentUpon>201912210603345_NewViews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912210741479_Form.cs" />
+    <Compile Include="Migrations\201912210741479_Form.designer.cs">
+      <DependentUpon>201912210741479_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCatalog.cs" />
+    <Compile Include="Models\Form.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\ModelCakes.cs" />
@@ -566,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912210603345_NewViews.resx">
       <DependentUpon>201912210603345_NewViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210741479_Form.resx">
+      <DependentUpon>201912210741479_Form.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
