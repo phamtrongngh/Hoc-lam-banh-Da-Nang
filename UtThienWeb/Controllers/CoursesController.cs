@@ -7,10 +7,11 @@ using UtThienWeb.Models;
 namespace UtThienWeb.Controllers
 {
     delegate string dele(string name);
+    
     public class CoursesController : CommonController
     {
         ModelCakes db = new ModelCakes();
-
+        dele i = new dele(HomeController.RemoveUnicode);
         public ActionResult Index()
         {
             HttpCookie cookie = Request.Cookies["cookieCHLB"];
@@ -85,10 +86,7 @@ namespace UtThienWeb.Controllers
                 }
             }
             var courses = db.Courses.Where(a => a.CourseCatalogId == id);
-
-            dele i = new dele(HomeController.RemoveUnicode);
             ViewBag.catalog = db.CourseCatalogs.AsEnumerable().Where(a => i(a.CourseCatalogName).Equals(name)).ToList().Single();
-
             return View(courses);
         }
 
@@ -113,15 +111,16 @@ namespace UtThienWeb.Controllers
                 Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
             }
             var list = db.Courses;
-            var id = 0;
+            Course id = new Course();
             foreach (var item in list)
             {
                 if (HomeController.RemoveUnicode(item.CourseName).Equals(name))
                 {
-                    id = item.CourseId;
+                    id = item;
                 }
             }
-            return View(db.Courses.Find(id));
+            ViewBag.catalog = db.CourseCatalogs.SingleOrDefault(a => a.CourseCatalogId==id.CourseCatalogId).CourseCatalogName;
+            return View(db.Courses.Find(id.CourseId));
         }
         [HttpPost]
         public JsonResult PutToCart(int id)
