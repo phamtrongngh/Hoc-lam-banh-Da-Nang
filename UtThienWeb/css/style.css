@@ -164,7 +164,15 @@ body:hover .cart-button-fixed {
 }
 
 @media only screen and (max-width: 768px) {
-    .post-item {
+    .btn-co-so {
+        /* margin: 0 50px 50px 50px; */
+        margin: auto !important;
+        margin-bottom: 30px !important;
+        margin-top: 0 !important;
+        width: 30%;
+        text-align: center;
+    }
+        .post-item {
         display: block !important;
     }
 
@@ -458,6 +466,11 @@ input, textarea, select, fieldset {
         font-weight: bold;
         text-decoration: none;
     }
+    .lentop{
+        display:none;
+
+    }
+    
 
         .hotline-footer:hover {
             text-decoration: none;
@@ -1072,6 +1085,7 @@ td {
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
     transition: ease 0.2ms;
+    max-width: 100%;
 }
 
     .img-hoc-vien:hover {
@@ -1151,11 +1165,7 @@ td {
         vertical-align: top;
     }
 
-    .wrap-img-gv {
-        display: inline-block;
-        margin-left: 40%;
-        vertical-align: top;
-    }
+    
 }
 
 @media screen and (max-width: 920px) {
@@ -1165,11 +1175,7 @@ td {
         vertical-align: top;
     }
 
-    .wrap-img-gv {
-        display: block;
-        margin-left: 25%;
-        vertical-align: top;
-    }
+    
 
     .img-gioithieu {
         height: 400px;
@@ -1183,55 +1189,33 @@ td {
 }
 
 @media screen and (max-width: 730px) {
-    .wrap-img-gv {
-        display: block;
-        margin-left: 25%;
-        vertical-align: top;
-    }
+    
 
     .img-nguoihuongdan {
         min-height: 300px;
         min-width: 200px;
     }
 }
-
+.img-dolambanh {
+    max-width:100%;
+}
 @media only screen and (max-width: 630px) {
-    .img-dolambanh {
-        width: 150px;
-        height: 150px;
-    }
+    
 
     .img-gioithieu {
         height: 200px;
         min-width: 350px;
     }
 
-    .wrap-img-gv {
-        display: block;
-        margin-left: 18%;
-        vertical-align: top;
-    }
+    
 }
 
 @media only screen and (max-width: 475px) {
 
 
-    .wrap-img-gv {
-        display: block;
-        margin-left: 15%;
-        vertical-align: top;
-    }
 }
 
-@media only screen and (max-width: 475px) {
 
-
-    .wrap-img-gv {
-        display: block;
-        margin-left: 10%;
-        vertical-align: top;
-    }
-}
 
 .wrap-gioithieu {
     padding: 10px;
@@ -1297,7 +1281,9 @@ td {
     .box-vi-tri:hover {
         border: 2px solid white;
     }
-
+.flex-gv{
+    text-align:center;
+}
 .text-box-vi-tri {
     margin: 14px;
     text-align: center;
@@ -1358,6 +1344,7 @@ footer {
         line-height: 35px;
         background-color: #3a5a95;
         color: #fff;
+        padding-top: 10px;
     }
 
     .social-pet li:nth-child(2) a {
@@ -1462,13 +1449,14 @@ footer .input-group-addon {
 .text-chuyendebanhau {
     width: 50%;
     display: inline-block;
+    text-align: justify;
 }
 
 .wrap-chuyende {
     width: 33%;
-    margin-bottom: 1%;
-    margin-top: 1%;
-    display: inline-block;
+    margin-bottom: 30px;
+    
+    display: inline-flex;
 }
 
 .wrap-cd {
@@ -1478,21 +1466,18 @@ footer .input-group-addon {
 
 @media only screen and (max-width: 1286px) {
     .wrap-chuyende {
-        width: 49%;
-        margin-bottom: 2%;
-        margin-top: 2%;
+        width: 100%;
+        margin-bottom: 30px;
+        
+        display: flex;
+    }
+    .text-chuyendebanhau {
+        width: 80%;
         display: inline-block;
     }
 }
 
-@media only screen and (max-width: 900px) {
-    .wrap-chuyende {
-        width: 100%;
-        margin-bottom: 2%;
-        margin-top: 2%;
-        display: inline-block;
-    }
-}
+
 
 .wrap-hv {
     display: flex;
@@ -1502,7 +1487,7 @@ footer .input-group-addon {
 }
 
 #logo-footer {
-    width: 60px;
+    max-width: 100%;
 }
 
 .h5-footer {
