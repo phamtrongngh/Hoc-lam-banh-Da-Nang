@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 namespace UtThienWeb.Controllers
 {
+    delegate string dele(string name);
     public class CoursesController : CommonController
     {
         ModelCakes db = new ModelCakes();
@@ -83,7 +84,12 @@ namespace UtThienWeb.Controllers
                     id = item.CourseCatalogId;
                 }
             }
-            return View(db.Courses.Where(a => a.CourseCatalogId == id));
+            var courses = db.Courses.Where(a => a.CourseCatalogId == id);
+
+            dele i = new dele(HomeController.RemoveUnicode);
+            ViewBag.catalog = db.CourseCatalogs.AsEnumerable().Where(a => i(a.CourseCatalogName).Equals(name)).ToList().Single();
+
+            return View(courses);
         }
 
         public ActionResult CourseDetails(string name)
@@ -147,8 +153,8 @@ namespace UtThienWeb.Controllers
             try
             {
                 var idAccount = db.Accounts.Add(new Account { AccountName = name, AccountPhone = phone, AccountEmail = email }).AccountId;
-                var idOrder= db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId=idAccount }).OrderId;
-                foreach (var item in (IEnumerable<Course>) Session["cart"])
+                var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = idAccount }).OrderId;
+                foreach (var item in (IEnumerable<Course>)Session["cart"])
                 {
                     db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
                 }
@@ -162,7 +168,7 @@ namespace UtThienWeb.Controllers
             }
             return Redirect("../");
         }
-      
+
         public ActionResult Order()
         {
             try
