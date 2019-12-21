@@ -6,20 +6,76 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 namespace UtThienWeb.Controllers
 {
+    delegate string dele(string name);
+    
     public class CoursesController : CommonController
     {
         ModelCakes db = new ModelCakes();
-
+        dele i = new dele(HomeController.RemoveUnicode);
         public ActionResult Index()
         {
+            HttpCookie cookie = Request.Cookies["cookieCHLB"];
+
+            if (cookie != null)
+            {
+                Session["current_user"] = db.Accounts.Find(int.Parse(cookie["id"]));
+            }
+
+            if (Session["current_user"] == null)
+            {
+                Session["user"] = "<a href='' class='cart-btn' data-target='#login' data-toggle='modal'><i class='fa fa-user'></i><span>Đăng nhập</span></a>";
+            }
+            else
+            {
+                Session["user"] = "<a href='#'>Chào ";
+                Session["user"] += ((UtThienWeb.Models.Account)Session["current_user"]).AccountName;
+                Session["user"] += " </a>";
+                Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
+            }
             return View(db.Courses);
         }
         public ActionResult GioHang()
         {
+            HttpCookie cookie = Request.Cookies["cookieCHLB"];
+
+            if (cookie != null)
+            {
+                Session["current_user"] = db.Accounts.Find(int.Parse(cookie["id"]));
+            }
+
+            if (Session["current_user"] == null)
+            {
+                Session["user"] = "<a href='' class='cart-btn' data-target='#login' data-toggle='modal'><i class='fa fa-user'></i><span>Đăng nhập</span></a>";
+            }
+            else
+            {
+                Session["user"] = "<a href='#'>Chào ";
+                Session["user"] += ((UtThienWeb.Models.Account)Session["current_user"]).AccountName;
+                Session["user"] += " </a>";
+                Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
+            }
             return View();
         }
         public ActionResult CoursesItem(string name)
         {
+            HttpCookie cookie = Request.Cookies["cookieCHLB"];
+
+            if (cookie != null)
+            {
+                Session["current_user"] = db.Accounts.Find(int.Parse(cookie["id"]));
+            }
+
+            if (Session["current_user"] == null)
+            {
+                Session["user"] = "<a href='' class='cart-btn' data-target='#login' data-toggle='modal'><i class='fa fa-user'></i><span>Đăng nhập</span></a>";
+            }
+            else
+            {
+                Session["user"] = "<a href='#'>Chào ";
+                Session["user"] += ((UtThienWeb.Models.Account)Session["current_user"]).AccountName;
+                Session["user"] += " </a>";
+                Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
+            }
             var list = db.CourseCatalogs;
             var id = 0;
             foreach (var item in list)
@@ -29,22 +85,42 @@ namespace UtThienWeb.Controllers
                     id = item.CourseCatalogId;
                 }
             }
-            return View(db.Courses.Where(a => a.CourseCatalogId == id));
+            var courses = db.Courses.Where(a => a.CourseCatalogId == id);
+            ViewBag.catalog = db.CourseCatalogs.AsEnumerable().Where(a => i(a.CourseCatalogName).Equals(name)).ToList().Single();
+            return View(courses);
         }
 
         public ActionResult CourseDetails(string name)
         {
+            HttpCookie cookie = Request.Cookies["cookieCHLB"];
 
+            if (cookie != null)
+            {
+                Session["current_user"] = db.Accounts.Find(int.Parse(cookie["id"]));
+            }
+
+            if (Session["current_user"] == null)
+            {
+                Session["user"] = "<a href='' class='cart-btn' data-target='#login' data-toggle='modal'><i class='fa fa-user'></i><span>Đăng nhập</span></a>";
+            }
+            else
+            {
+                Session["user"] = "<a href='#'>Chào ";
+                Session["user"] += ((UtThienWeb.Models.Account)Session["current_user"]).AccountName;
+                Session["user"] += " </a>";
+                Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
+            }
             var list = db.Courses;
-            var id = 0;
+            Course id = new Course();
             foreach (var item in list)
             {
                 if (HomeController.RemoveUnicode(item.CourseName).Equals(name))
                 {
-                    id = item.CourseId;
+                    id = item;
                 }
             }
-            return View(db.Courses.Find(id));
+            ViewBag.catalog = db.CourseCatalogs.SingleOrDefault(a => a.CourseCatalogId==id.CourseCatalogId).CourseCatalogName;
+            return View(db.Courses.Find(id.CourseId));
         }
         [HttpPost]
         public JsonResult PutToCart(int id)
@@ -76,8 +152,8 @@ namespace UtThienWeb.Controllers
             try
             {
                 var idAccount = db.Accounts.Add(new Account { AccountName = name, AccountPhone = phone, AccountEmail = email }).AccountId;
-                var idOrder= db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId=idAccount }).OrderId;
-                foreach (var item in (IEnumerable<Course>) Session["cart"])
+                var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = idAccount }).OrderId;
+                foreach (var item in (IEnumerable<Course>)Session["cart"])
                 {
                     db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
                 }
@@ -91,7 +167,7 @@ namespace UtThienWeb.Controllers
             }
             return Redirect("../");
         }
-      
+
         public ActionResult Order()
         {
             try
