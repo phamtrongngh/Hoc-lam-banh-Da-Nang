@@ -4,9 +4,10 @@
 @model IEnumerable<UtThienWeb.Models.Course>
 <div class="container">
     <ul class="breadcrumb corlor_white">
-        <li><a href="#" style="color:white">Trang Chủ</a></li>
+        <li><a href="../" style="color:white">Trang Chủ</a></li>
         <li><a href="#" style="color:white">Khóa Học Bánh</a></li>
-        <li><a href="#" style="color:white">Lớp Bánh Ngoại Khóa</a></li>
+        <li><a href="#" style="color:white">@(((UtThienWeb.Models.CourseCatalog)ViewBag.catalog).CourseCatalogName)</a></li>
+
     </ul>
 </div>
 <div class="container">
@@ -83,7 +84,6 @@
             <div class="box-heading hidden-xs hidden-sm hidden-md hidden-lg">
                 <h1 class="title-head">CHUYÊN ĐỀ BÁNH NGOẠI KHÓA</h1>
             </div>
-
             <section class="list-blogs blog-main list-blogs-page-blog">
                 <div class="row row-right-bv">
                     @foreach (var item in Model)
@@ -107,7 +107,7 @@
                                 <p class="blog-item-summary"> Trung Tâm Út Thiện - Học Làm Bánh Đà Nẵng </p>
                                 <div class="price-wrapper">
                                     <p class="price product-page-price ">
-                                        <span class="woocommerce-Price-amount amount">@item.CoursePrice<span class="woocommerce-Price-currencySymbol"> ₫/người</span></span>
+                                        <span class="woocommerce-Price-amount amount">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice)<span class="woocommerce-Price-currencySymbol"> ₫/người</span></span>
                                     </p>
                                 </div>
                                 <div style="margin-bottom: 8px;">

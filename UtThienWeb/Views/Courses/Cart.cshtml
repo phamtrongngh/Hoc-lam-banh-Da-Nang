@@ -4,16 +4,13 @@
 @using System.Globalization
 
 <style>
-    .cart-button-fixed{
-        display:none !important;
+    .cart-button-fixed {
+        display: none !important;
     }
 </style>
+@using UtThienWeb.Controllers;
 <div class="body-cart">
- 
-
     <div class="shopping-cart">
-
-        
         <div>
             <div class="column-labels">
                 <label class="product-image"></label>
@@ -24,17 +21,17 @@
             <div class="container">
                 @foreach (var item in (List<UtThienWeb.Models.Course>)Session["cart"])
                 {
-                    <div class="row a">
+                    <div class="row a" style="background: rgba(0,0,0,0.3)">
                         <div class="col-md-3 s">
-                            <img src="~/img/@item.CourseThumbails" width="80px" height="150px">
+                            <img src="~/img/@item.CourseThumbails" height="150px" width="100%">
                         </div>
                         <div class="col-md-3 s">
-                            <a href="../chi-tiet-khoa-hoc/@item.CourseName"><div style="font-size:20px" class="product-title">@item.CourseName</div></a>
+                            <a class="title-cart" href="../chi-tiet-khoa-hoc/@HomeController.RemoveUnicode(item.CourseName)">@item.CourseName</a>
 
                         </div>
-                        <div class="col-md-3 s"><b>@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice) đ</b></div>
+                        <div class="col-md-3 s"><p style="font-size:20px;margin-top:25%">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice) đ</p></div>
                         <div class="product-removal col-md-3 s">
-                            <button id=@item.CourseId class="remove-product btn btn-danger">
+                            <button style="margin-top:25%" id=@item.CourseId class="remove-product btn btn-danger">
                                 Xóa khỏi giỏ hàng
                             </button>
                         </div>
@@ -42,19 +39,61 @@
                 }
             </div>
         </div>
-
-        @*<div class="totals">
-            <div class="totals-item">
-                <label>Total</label>
-                <div class="totals-value" id="cart-subtotal">71.97</div>
-            </div>
-
-
-
-        </div>*@
-
-        <button class="checkout">Đặt Khóa Học</button>
+        <button class="checkout btn-create-order">Đặt Khóa Học</button>
     </div>
     <!--====== Javascripts & Jquery ======-->
-
 </div>
+<form action="/Courses/OrderAnonymoues" method="post" class="modal fade" id="modalinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Thông tin liên hệ</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="orangeForm-name"><i class="fas fa-user prefix grey-text"></i> Họ tên </label>
+                    <input type="text" required id="#" name="name" class="form-control validate">
+                </div>
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="orangeForm-email"><i class="fas fa-envelope prefix grey-text"></i> Email</label>
+                    <input type="email" required id="orangeForm-email" name="email" class="form-control validate">
+                </div>
+
+                <div class="md-form mb-4">
+                    <label data-error="wrong" data-success="right" for="orangeForm-pass"><i class="fa fa-phone-volume"></i> Số điện thoại</label>
+                    <input type="text" required id="orangeForm-pass" name="phone" class="form-control validate">
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-danger" style="width:20%">Đặt khóa</button>
+            </div>
+        </div>
+    </div>
+</form>
+<input class="btn btn-danger btn-show-modal" hidden data-toggle="modal" data-target="#modalinfo">
+<script>
+    $(document).ready(function () {
+        $(".btn-create-order").click(function () {
+            @if (Session["current_user"] == null)
+            {
+                    <text>
+                $(".btn-show-modal").click();
+                    </text>
+            }
+            else
+            {
+                
+                <text>
+            alert("Cảm ơn bạn đã đặt khóa học, Út Thiện sẽ liên hệ với bạn ngay!");
+            location.href="/Courses/Order"
+                </text>
+            }
+            
+        })
+    })
+</script>

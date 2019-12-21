@@ -133,7 +133,14 @@ body:hover .cart-button-fixed {
     margin-bottom: 0px;
     font-weight: 600;
 }
-
+.title-cart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    font-size:20px;
+}
 .job-detail {
     color: white;
 }
@@ -1494,9 +1501,6 @@ footer .input-group-addon {
     margin-left: 40px;
 }
 
-.modal-footer {
-    justify-content: flex-start !important;
-}
 
 .corlor_white {
     background-color: rgba(0,0,0,0.5) !important;

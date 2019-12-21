@@ -15,16 +15,23 @@ namespace UtThienWeb
 
             routes.MapMvcAttributeRoutes();
 
-            //routes.MapRoute(
-            //    name: "CourseItem",
-            //    url: "{name}-{id}",
-            //    defaults: new { controller = "Courses", action = "CoursesItem", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }
-            //);
+            
             routes.MapRoute(
                 name: "CourseItem",
                 url: "khoa-hoc/{name}",
                 defaults: new { controller = "Courses", action = "CoursesItem", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Chi Nhanh",
+                url: "chi-nhanh",
+                defaults: new { controller = "Chinhanh", action = "Index", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Noi Quy",
+                url: "noi-quy",
+                defaults: new { controller = "Lichhoc", action = "Index", id = UrlParameter.Optional },
                 new[] { "UtThienWeb.Controllers" }
             );
             routes.MapRoute(

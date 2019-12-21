@@ -21,8 +21,6 @@ namespace UtThienWeb.Controllers
             var password = Request.Form["passwordLogin"];
             var checkbox = Request.Form["remember"];
             string mess = "";
-
-
             var check = db.Accounts.FirstOrDefault(a => a.AccountUser.Equals(user));
             if (check != null)
             {

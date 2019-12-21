@@ -22,14 +22,47 @@
     <!-- Main Stylesheets -->
 
     <link rel="stylesheet" href="~/css/style.css" />
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/circle-progress.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/main.js"></script>
     <title>Khoa Hoc</title>
 </head>
 @using UtThienWeb.Controllers
 <body style="background-image: url(../../img/bg-body.jpg);">
     <!-- Header section  -->
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v5.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="427039971391140"
+         logged_in_greeting="Hi! Bạn cần giúp đỡ gì?"
+         logged_out_greeting="Hi! Bạn cần giúp đỡ gì?">
+    </div>
+
     <nav class="navbar navbar-expand-xl navbar-custom">
         <div class="logo-box">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="../">
                 <img class="logo" src="~/img/logo.png" alt="">
             </a>
         </div>
@@ -47,7 +80,7 @@
                             <div class="dropdown-menu" style="width:225px">
                                 @foreach (var i in item.Menu1)
                                 {
-                                    <a id="" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item @i.MenuLiId">@i.MenuLiName</a>
+                                    <a href="" id="@i.MenuUrl" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item @i.MenuLiId">@i.MenuLiName</a>
                                 }
                             </div>
                         </li>
@@ -193,9 +226,8 @@
             </div>
         </div>
     </div>
+    
     <a href="/gio-hang">
-
-
         <div class="cart-button-fixed">
             <span>
                 @{ if (Session["cart"] != null)
@@ -273,21 +305,21 @@
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="~/Views/Courses/index.cshtml"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
+                                    <a href="/khoa-hoc/khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="~/Views/Courses/khoabanhchuyensau.cshtml"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
+                                    <a href="/khoa-hoc/khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="~/Views/Courses/khoabanhngoaikhoa.cshtml"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
+                                    <a href="/khoa-hoc/khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
                                 </div>
                             </div>
                         </li>
@@ -347,13 +379,7 @@
         </div>
     </div>
     <!--====== Javascripts & Jquery ======-->
-    <script src="~/js/jquery-3.2.1.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.slicknav.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/circle-progress.min.js"></script>
-    <script src="~/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/js/main.js"></script>
+    
 
 </body>
 @{ if (Session["cart"] != null)
@@ -377,8 +403,7 @@
                 url: "/Courses/PutToCart",
                 data: { id: $(this).find("input").attr("id") },
                 success: function (e) {
-                    
-                  
+                    $(".cart-button-fixed b").html(e);
                     alert("Đã thêm khóa học vào giỏ hàng, bạn có thể chọn thêm khóa học và sau đó bấm vào icon giỏ hàng bên trái để đặt khóa!!!")
                 }
             })
