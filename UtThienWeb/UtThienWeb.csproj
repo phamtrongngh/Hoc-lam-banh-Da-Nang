@@ -178,6 +178,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912210554257_Initial.cs" />
+    <Compile Include="Migrations\201912210554257_Initial.designer.cs">
+      <DependentUpon>201912210554257_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912210556440_ConFirmEmail.cs" />
+    <Compile Include="Migrations\201912210556440_ConFirmEmail.designer.cs">
+      <DependentUpon>201912210556440_ConFirmEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912210603345_NewViews.cs" />
+    <Compile Include="Migrations\201912210603345_NewViews.designer.cs">
+      <DependentUpon>201912210603345_NewViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCatalog.cs" />
@@ -544,6 +557,17 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912210554257_Initial.resx">
+      <DependentUpon>201912210554257_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210556440_ConFirmEmail.resx">
+      <DependentUpon>201912210556440_ConFirmEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210603345_NewViews.resx">
+      <DependentUpon>201912210603345_NewViews.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -577,7 +601,6 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-   
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />

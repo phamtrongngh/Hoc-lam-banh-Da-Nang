@@ -2,12 +2,12 @@
 @{
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
+@using UtThienWeb.Controllers;
 <div class="container">
     <ul class="breadcrumb corlor_white">
         <li><a href="#" style="color:white">Trang Chủ</a></li>
         <li><a href="#" style="color:white">Khóa Học Bánh</a></li>
-        <li><a href="#" style="color:white">Lớp Bánh Âu Gia Đình</a></li>
+        <li><a href="/khoa-hoc/@HomeController.RemoveUnicode(ViewBag.catalog)" style="color:white">@ViewBag.catalog</a></li>
         <li><a href="#" style="color:white">@Model.CourseName</a></li>
     </ul>
 </div>
