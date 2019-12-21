@@ -1,4 +1,16 @@
-﻿.post-thumbnail{
+﻿.page .social-pet li a {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    text-align: center;
+    display: block;
+    line-height: 35px;
+    background-color: #3a5a95;
+    color: #fff;
+    padding-top: 0px;
+}
+}
+.post-thumbnail{
     max-width:100%;
 }
 .post-thumbnail:hover{
@@ -200,6 +212,12 @@ body:hover .cart-button-fixed {
 }
 
 @media only screen and (max-width: 768px) {
+    .wrap-vitri {
+        margin-top: 68px;
+    }
+    .content1 {
+        margin-bottom: 86px;
+    }
     .flex-hocvien {
         
         padding-bottom: 25px !important;
@@ -500,7 +518,7 @@ input, textarea, select, fieldset {
     .fb-customerchat{
         display:none;
     }
-    .
+   
     .hotline-footer {
         color: white;
         display: inline-block;
@@ -513,11 +531,8 @@ input, textarea, select, fieldset {
         text-decoration: none;
     }
     .lentop{
-        display:none;
-
+        display:none !important;
     }
-    
-
         .hotline-footer:hover {
             text-decoration: none;
         }
@@ -1189,6 +1204,7 @@ td {
     display: flex;
     margin-left: 20px;
     margin-right: 20px;
+    padding-bottom: 30px;
 }
 .wrap-gv {
     display: inline-block;
