@@ -45,7 +45,7 @@ namespace UtThienWeb.Models
         public string AccountUser { get; set; }
 
         public bool? AccountGender { get; set; }
-
+        public bool? AccountConfirmEmail { get; set; }
         [Column(TypeName = "date")]
         public DateTime? AccountBOD { get; set; }
 
