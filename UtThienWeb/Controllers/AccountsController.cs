@@ -6,6 +6,10 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 using Facebook;
 using System.Configuration;
+using System.Web.Hosting;
+using System.Text;
+using System.Net.Mail;
+
 namespace UtThienWeb.Controllers
 {
     [RoutePrefix("Accounts")]
@@ -183,6 +187,16 @@ namespace UtThienWeb.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult ConfirmEmail()
+        {
+            return View();
+        }
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
 
     }
 }
