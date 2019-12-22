@@ -176,6 +176,7 @@
     <Compile Include="Controllers\HoatdonghocvienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LichhocController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\TestFilter.cs" />
     <Compile Include="Controllers\TuyendungController.cs" />
     <Compile Include="Global.asax.cs">
@@ -561,6 +562,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Accounts\" />
     <Folder Include="Views\Common\" />
+    <Folder Include="Views\News\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -29,6 +29,7 @@ namespace UtThienWeb.Controllers
                 Session["user"] += " </a>";
                 Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
             }
+            ViewBag.topViews = db.News.OrderByDescending(a=>a.NewsViews);
             return View(db.News.Where(a=>a.NewsTypeId==1));
         }
         public ActionResult Details(string name)

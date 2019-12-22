@@ -23,24 +23,24 @@
                         <article class="blog-item">
                             <div class="blog-item-thumbnail">
                                 <a href="/lam-banh-tranh-games">
-                                    <img src="@Model.OrderByDescending(a=>a.NewsViews).First().NewsThumbails" alt="Làm bánh, tránh... games">
+                                    <img width="100%" height="100%" src="/img/@(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsThumbails)" alt="Làm bánh, tránh... games">
                                 </a>
                             </div>
-                            <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">@Model.OrderByDescending(a => a.NewsViews).First().NewsTitle</a></h3>
+                            <h3 class="blog-item-name"><a href="/cung-hoc-lam-banh/@(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsTitle))">@Model.OrderByDescending(a => a.NewsViews).First().NewsTitle</a></h3>
                             <div class="postby">
                                 <div class="pull-left">
                                     <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                 </div>
                                 <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> @Model.OrderByDescending(a => a.NewsViews).First().NewsDate
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> @(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsDate)
                                 </div>
                             </div>
                             @*<p class="blog-item-summary">@Model.OrderByDescending(a => a.NewsViews).First().NewsContent.Substring(GetHashCode)</p>*@
                         </article>
-                        @foreach (var item in Model.OrderByDescending(a=>a.NewsViews).Skip(1))
+                        @foreach (var item in ((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).Skip(1))
                         {
                             <article class="blog-item">
-                                <h3 class="blog-item-name"><a href="">@item.NewsTitle</a></h3>
+                                <h3 class="blog-item-name"><a href="/cung-hoc-lam-banh/@HomeController.RemoveUnicode(item.NewsTitle)">@item.NewsTitle</a></h3>
                                 <div class="postby">
                                     <div class="pull-left">
                                         <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
@@ -62,9 +62,9 @@
                     <div class="col-lg-12">
                         @foreach (var item in Model)
                         {
-                            <div class="post-item">
+                            <div class="post-item" id="@item.NewsId">
                                 <div class="img-block">
-                                    <a href="/cung-hoc-lam-banh/@HomeController.RemoveUnicode(item.NewsTitle)"><img height="100%" width="100%" src="~/img/@item.NewsThumbails" alt="Alternate Text" /></a>
+                                    <a href="/chi-tiet-khoa-hoc/@HomeController.RemoveUnicode(item.NewsTitle)"><img height="100%" width="100%" src="~/img/@item.NewsThumbails" alt="Alternate Text" /></a>
                                 </div>
                                 <div class="content-block">
                                     <h2>
@@ -110,3 +110,14 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $(".post-item").click(function () {
+            $.ajax({
+                method:"post",
+                url: "/News/Views",
+                data: { id: $(this).attr("id") }
+            })
+        })
+    })
+</script>
