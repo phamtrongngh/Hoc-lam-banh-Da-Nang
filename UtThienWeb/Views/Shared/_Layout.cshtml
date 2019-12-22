@@ -26,7 +26,6 @@
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
     <!------->
-
 </head>
 @using UtThienWeb.Controllers;
 
@@ -384,6 +383,7 @@
 }
 <script>
     $(document).ready(function () {
+        $("nut").click();
         $(".dropdown-item").click(function () {
             location.href = $(this).attr("id");
         })

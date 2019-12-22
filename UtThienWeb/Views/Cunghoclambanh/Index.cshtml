@@ -16,67 +16,41 @@
             <div class="aside-item collection-category">
                 <div class="aside-heading">
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <h2 class="title-head"><a href="kinh-nghiem-lam-banh">Tin tức nổi bật</a></h2>
+                    <h2 class="title-head"><a href="kinh-nghiem-lam-banh">Bài viết nổi bật</a></h2>
                 </div>
                 <div class="aside-content">
                     <div class="list-blogs list-blogs-page-blog">
-
                         <article class="blog-item">
                             <div class="blog-item-thumbnail">
                                 <a href="/lam-banh-tranh-games">
-
-                                    <img src="" alt="Làm bánh, tránh... games">
-
+                                    <img src="@Model.OrderByDescending(a=>a.NewsViews).First().NewsThumbails" alt="Làm bánh, tránh... games">
                                 </a>
                             </div>
-                            <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">Làm bánh, tránh... games</a></h3>
+                            <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">@Model.OrderByDescending(a => a.NewsViews).First().NewsTitle</a></h3>
                             <div class="postby">
                                 <div class="pull-left">
                                     <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                 </div>
                                 <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 27/09/2019
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> @Model.OrderByDescending(a => a.NewsViews).First().NewsDate
                                 </div>
                             </div>
-                            <p class="blog-item-summary"> Trong căn nhà được trang trí màu vàng như lòng quả trứng gà rộn vang tiếng ríu rít của các bạn nhỏ. Một cậu bé nói với bạn: "mẹ...</p>
+                            @*<p class="blog-item-summary">@Model.OrderByDescending(a => a.NewsViews).First().NewsContent.Substring(GetHashCode)</p>*@
                         </article>
-
-                        <article class="blog-item">
-                            <h3 class="blog-item-name"><a href="">Cách Làm Mousse Chanh Leo</a></h3>
-                            <div class="postby">
-                                <div class="pull-left">
-                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                        @foreach (var item in Model.OrderByDescending(a=>a.NewsViews).Skip(1))
+                        {
+                            <article class="blog-item">
+                                <h3 class="blog-item-name"><a href="">@item.NewsTitle</a></h3>
+                                <div class="postby">
+                                    <div class="pull-left">
+                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                                    </div>
+                                    <div class="pull-left">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> @item.NewsDate
+                                    </div>
                                 </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="blog-item">
-                            <h3 class="blog-item-name"><a href="/cach-lam-banh-matcha-delight">Cách Làm Bánh Matcha Delight</a></h3>
-                            <div class="postby">
-                                <div class="pull-left">
-                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="blog-item">
-                            <h3 class="blog-item-name"><a href="/8-bi-quyet-de-nuong-banh-thanh-cong">8 bí quyết để nướng bánh thành công</a></h3>
-                            <div class="postby">
-                                <div class="pull-left">
-                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                </div>
-                            </div>
-                        </article>
-
+                            </article>
+                        }
                     </div>
                 </div>
             </div>
