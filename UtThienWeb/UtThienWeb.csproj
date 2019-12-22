@@ -557,12 +557,12 @@
     <Content Include="Views\Hoatdonghocvien\Details.cshtml" />
     <Content Include="Views\Chinhanh\Index.cshtml" />
     <Content Include="Views\Lichhoc\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Accounts\" />
     <Folder Include="Views\Common\" />
-    <Folder Include="Views\News\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

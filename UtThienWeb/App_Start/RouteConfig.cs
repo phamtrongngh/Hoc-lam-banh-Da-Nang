@@ -35,6 +35,12 @@ namespace UtThienWeb
                 new[] { "UtThienWeb.Controllers" }
             );
             routes.MapRoute(
+                name: "Tuyen Dung",
+                url: "tuyen-dung",
+                defaults: new { controller = "Tuyendung", action = "Index", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
+            routes.MapRoute(
                name: "Cung hoc lam banh",
                url: "hoat-dong-hoc-vien",
                defaults: new { controller = "Hoatdonghocvien", action = "Index", id = UrlParameter.Optional },
@@ -65,17 +71,18 @@ namespace UtThienWeb
                 new[] { "UtThienWeb.Controllers" }
             );
             routes.MapRoute(
+                name: "News",
+                url: "{name}",
+                defaults: new { controller = "News", action = "Details", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
+            routes.MapRoute(
                 name: "CungHocLamBanh Details",
                 url: "cung-hoc-lam-banh/{name}",
                 defaults: new { controller = "Cunghoclambanh", action = "Details", id = UrlParameter.Optional },
                 new[] { "UtThienWeb.Controllers" }
             );
-            routes.MapRoute(
-                name: "Tuyen Dung",
-                url: "tuyen-dung",
-                defaults: new { controller = "Tuyendung", action = "Index", id = UrlParameter.Optional },
-                new[] { "UtThienWeb.Controllers" }
-            );
+            
             routes.MapRoute(
                 name: "Gio Hang",
                 url: "gio-hang",

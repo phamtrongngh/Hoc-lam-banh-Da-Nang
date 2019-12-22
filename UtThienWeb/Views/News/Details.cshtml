@@ -1,16 +1,16 @@
-﻿@model UtThienWeb.Models.Course
+﻿@model UtThienWeb.Models.News
 @{
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-@using UtThienWeb.Controllers;
+
 <div class="container">
     <ul class="breadcrumb corlor_white">
         <li><a href="#" style="color:white">Trang Chủ</a></li>
-        <li><a href="#" style="color:white">Khóa Học Bánh</a></li>
-        <li><a href="/khoa-hoc/@HomeController.RemoveUnicode(ViewBag.catalog)" style="color:white">@ViewBag.catalog</a></li>
-        <li><a href="#" style="color:white">@Model.CourseName</a></li>
+        <li><a href="#" style="color:white">@ViewBag.catalog</a></li>
+        <li><a href="#" style="color:white">@Model.NewsTitle</a></li>
     </ul>
 </div>
+@using UtThienWeb.Controllers;
 <div class="container body-baiviet">
     <div class="row">
         <aside class="left left-content  col-md-3 col-md-pull-9 left-coure">
@@ -63,14 +63,14 @@
                     <div class="col-lg-12">
 
                         <div class="article-details list-blogs-page-blog">
-                            <h1 class="article-title"><a href="#" itemprop="name" class="title-bv">@Model.CourseName</a></h1>
+                            <h1 class="article-title"><a href="#" itemprop="name" class="title-bv">@Model.NewsTitle</a></h1>
 
                             <div class="postby">
                                 <div class="pull-left">
                                     <i class="fa fa-user" aria-hidden="true"></i>Út Thiện
                                 </div>
                                 <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> @Model.TimeCreate
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> @Model.NewsDate
                                 </div>
                             </div>
                             <ul class="posts-by-tags">
@@ -78,7 +78,7 @@
 
                             <div class="article-content" itemprop="description">
                                 <div class="rte">
-                                    @Html.Raw(@Model.CourseDescription)
+                                    @Html.Raw(@Model.NewsContent)
                                 </div>
 
                             </div>
@@ -86,13 +86,13 @@
                     </div>
 
                     @*<div class="article-tags col-md-6 col-sm-6 col-xs-12">
-                        <span style="color: white;">tags:</span>
-                        <ul class="list-unstyled tags">
+                            <span style="color: white;">tags:</span>
+                            <ul class="list-unstyled tags">
 
-                            <li><a href="/blogs/all/tagged/cong-ty-rikkeisoft">Công Ty RikkeiSoft</a></li>
+                                <li><a href="/blogs/all/tagged/cong-ty-rikkeisoft">Công Ty RikkeiSoft</a></li>
 
-                        </ul>
-                    </div>*@
+                            </ul>
+                        </div>*@
 
                     <!--<div class="col-xs-12 col-sm-12 social-sharing">
 

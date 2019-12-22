@@ -85,6 +85,7 @@ namespace UtThienWeb.Controllers
                     id = item.CourseCatalogId;
                 }
             }
+            ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
             var courses = db.Courses.Where(a => a.CourseCatalogId == id);
             ViewBag.catalog = db.CourseCatalogs.AsEnumerable().Where(a => i(a.CourseCatalogName).Equals(name)).ToList().Single();
             return View(courses);
@@ -119,6 +120,7 @@ namespace UtThienWeb.Controllers
                     id = item;
                 }
             }
+            ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
             ViewBag.catalog = db.CourseCatalogs.SingleOrDefault(a => a.CourseCatalogId==id.CourseCatalogId).CourseCatalogName;
             return View(db.Courses.Find(id.CourseId));
         }
