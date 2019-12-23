@@ -65,9 +65,16 @@ namespace UtThienWeb.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
+        [HttpGet]
+        public ActionResult ConfirmEmail(string code)
+        {
+            var s = db.Accounts.SingleOrDefault(a => a.AccountRePassword.Equals(code));
+            s.AccountConfirmEmail = true;
+            s.AccountRePassword = null;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         [HttpPost]
-
         public JsonResult Register()
         {
             var user = Request.Form["userregister"];
@@ -97,8 +104,11 @@ namespace UtThienWeb.Controllers
                 account.AccountGender = gender;
                 account.AccountRole = 0;
                 account.AccountAddress = address;
+                Random random = new Random();
+                string num = random.Next(9000).ToString();
                 account.AccountBOD = DateTime.Parse(dob).Date;
                 account.TimeCreate = DateTime.Now;
+                account.AccountRePassword = num;
                 db.Accounts.Add(account);
                 db.SaveChanges();
                 var check = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(account.AccountUser));
@@ -107,6 +117,13 @@ namespace UtThienWeb.Controllers
                 cookie["username"] = check.AccountUser;
                 cookie["id"] = check.AccountId.ToString();
                 cookie["password"] = check.AccountPassword;
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
+                    EnableSsl = true
+                };
+                var url = "https://localhost:44396/Accounts/ConfirmEmail?code=" + num;
+                client.Send("hoclambanhdanangpass@gmail.com",email,"Kích Hoạt Email Học Làm Bánh Đà Nẵng", "Để kích hoạt email cho tài khoản "+user+", vui lòng nhấp vào link sau: "+url);
                 Response.Cookies.Add(cookie);
                 return Json("Success");
             }

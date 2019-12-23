@@ -154,8 +154,8 @@
 
                     <input type="checkbox" id="remmember-password" value="1">
                     <label for="">Nhớ mật khẩu</label><br />
-
                     <span class="error error-login">Sai tên đăng nhập hoặc mật khẩu</span>
+                    <a href="" data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên mật khẩu?</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-dismiss="modal"
@@ -226,7 +226,27 @@
             </div>
         </div>
     </div>
-    
+    <form action="/Accounts/MailResetPassword" class="modal fade" id="ResetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" method="post" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header title-login">
+                    <h5 class="modal-title" id="exampleModalLabel">Đặt Lại Mật Khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>Tên đăng nhập</label>
+                    <input class="form-control" name="username" type="text" required>
+                    <label>Địa Chỉ Email</label>
+                    <input class="form-control" name="email" type="email" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Gửi về email mật khẩu mới</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <a href="/gio-hang">
         <div class="cart-button-fixed">
             <span>
