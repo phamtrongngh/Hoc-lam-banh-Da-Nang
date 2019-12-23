@@ -17,6 +17,10 @@
         <a href="../">Quay lại trang chủ</a>
     </body>
     </html>
-    <script>
-        
-    </script>
+    @if (Model.Equals("Sai mã xác nhận"))
+    {
+        <script>
+            alert("Sai mã xác nhận");
+            location.href = "../";
+        </script>
+    }

@@ -228,7 +228,7 @@ namespace UtThienWeb.Controllers
                         Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
                         EnableSsl = true
                     };
-                    client.Send("hoclambanhdanangpass@gmail.com", "nghialovetran@gmail.com", "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mã xác nhận của bạn là: " + finalString);
+                    client.Send("hoclambanhdanangpass@gmail.com",email, "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mã xác nhận của bạn là: " + finalString);
                     s.AccountRePassword = finalString;
                     db.SaveChanges();
                     ViewData["username"] = s.AccountUser;
