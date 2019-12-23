@@ -206,7 +206,7 @@ namespace UtThienWeb.Controllers
                 EnableSsl = true
             };
             client.Send("hoclambanhdanangpass@gmail.com", "nghialovetran@gmail.com", "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mật khẩu khôi phục của bạn là: " + finalString);
-            return Redirect("../");
+            return View();
         }
     }
 }

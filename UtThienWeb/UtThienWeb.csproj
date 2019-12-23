@@ -623,10 +623,10 @@
     <Content Include="Views\Chinhanh\Index.cshtml" />
     <Content Include="Views\Lichhoc\Index.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\Accounts\Mailer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Accounts\" />
     <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
