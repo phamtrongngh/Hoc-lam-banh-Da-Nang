@@ -148,6 +148,7 @@
 
                     <input type="checkbox" id="remmember-password" value="1">
                     <label for="">Nhớ mật khẩu</label><br>
+                    <label><a  data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên Mật Khẩu ?</a></label>
 
                     <span class="error error-login">Sai tên đăng nhập hoặc mật khẩu</span>
                 </div>
@@ -217,6 +218,29 @@
             </div>
         </div>
     </div>
+
+    <!--Model Reset Password-->
+    <form class="modal fade" id="ResetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" method="post" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header title-login">
+                    <h5 class="modal-title" id="exampleModalLabel">Đặt Lại Mật Khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <label>Địa Chỉ Email</label>
+                    <input class="form-control" name="email" type="text" id="email">
+                    <span class="error error-login">@ViewBag</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-dismiss="modal" data-target="#register">Gửi Email Đặt Lại Mật Khẩu</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <a href="../gio-hang">
 
         <div class="cart-button-fixed">
@@ -371,7 +395,7 @@
     <!--====== Javascripts & Jquery ======-->
 
 
-    
+
 </body>
 @{ if (Session["cart"] != null)
     {
