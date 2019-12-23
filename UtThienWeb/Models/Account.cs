@@ -21,6 +21,8 @@ namespace UtThienWeb.Models
 
         [StringLength(20)]
         public string AccountPassword { get; set; }
+        [StringLength(20)]
+        public string AccountRePassword { get; set; }
 
         public byte? AccountRole { get; set; }
 

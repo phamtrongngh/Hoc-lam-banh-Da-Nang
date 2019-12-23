@@ -271,6 +271,10 @@
     <Compile Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.designer.cs">
       <DependentUpon>201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912230357578_RePassword.cs" />
+    <Compile Include="Migrations\201912230357578_RePassword.designer.cs">
+      <DependentUpon>201912230357578_RePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
@@ -623,7 +627,8 @@
     <Content Include="Views\Chinhanh\Index.cshtml" />
     <Content Include="Views\Lichhoc\Index.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
-    <Content Include="Views\Accounts\Mailer.cshtml" />
+    <Content Include="Views\Accounts\MailResetPassword.cshtml" />
+    <Content Include="Views\Accounts\ChangePass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -659,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.resx">
       <DependentUpon>201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912230357578_RePassword.resx">
+      <DependentUpon>201912230357578_RePassword.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

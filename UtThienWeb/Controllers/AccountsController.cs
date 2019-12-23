@@ -189,24 +189,61 @@ namespace UtThienWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
-        public ActionResult Mailer(string userName)
+        public ActionResult MailResetPassword(string username, string email)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-            for (int i = 0; i < stringChars.Length; i++)
+            var s = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(username));
+            object mess;
+            if (s != null)
             {
-                stringChars[i] = chars[random.Next(chars.Length)];
+                if (s.AccountEmail.Equals(email) && s.AccountConfirmEmail == true)
+                {
+                    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                    var stringChars = new char[8];
+                    var random = new Random();
+                    for (int i = 0; i < stringChars.Length; i++)
+                    {
+                        stringChars[i] = chars[random.Next(chars.Length)];
+                    }
+                    var finalString = new String(stringChars);
+                    finalString += "Aa";
+                    var client = new SmtpClient("smtp.gmail.com", 587)
+                    {
+                        Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
+                        EnableSsl = true
+                    };
+                    client.Send("hoclambanhdanangpass@gmail.com", "nghialovetran@gmail.com", "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mã xác nhận của bạn là: " + finalString);
+                    s.AccountRePassword = finalString;
+                    db.SaveChanges();
+                    ViewData["username"] = s.AccountUser;
+                    mess = "Chúng tôi đã gửi mã xác nhận về email của bạn, hãy kiểm tra email và tiến hành đổi mật khẩu mới";
+                }
+                else
+                {
+                    mess = "Email không khớp với tên đăng nhập hoặc bạn chưa kích hoạt email cho tài khoản này";
+                }
             }
-            var finalString = new String(stringChars);
-            finalString += "Aa";
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            else
             {
-                Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
-                EnableSsl = true
-            };
-            client.Send("hoclambanhdanangpass@gmail.com", "nghialovetran@gmail.com", "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mật khẩu khôi phục của bạn là: " + finalString);
-            return View();
+                mess = "Tên đăng nhập không tồn tại";
+            }
+            
+            return View(mess);
+        }
+        [HttpPost]
+        public ActionResult ChangePass(string username,string code, string pass)
+        {
+            var account = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(username));
+            object mess;
+            if (account.AccountRePassword.Equals(code)){
+                account.AccountPassword = pass;
+                mess = "Đã đổi thành công mặt khẩu, vui lòng đăng nhập lại";
+                db.SaveChanges();
+            }
+            else
+            {
+                mess = "Sai mã xác nhận";
+            }
+            return View(mess);
         }
     }
 }
