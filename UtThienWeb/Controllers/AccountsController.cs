@@ -6,15 +6,20 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 using Facebook;
 using System.Configuration;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Configuration;
+using System.Net.Configuration;
+
 namespace UtThienWeb.Controllers
 {
-    [RoutePrefix("Accounts")]
+
     public class AccountsController : Controller
     {
         ModelCakes db = new ModelCakes();
         // GET: Accounts
         [HttpPost]
-        [Route("Login")]
+
         public ActionResult Login()
         {
             var user = Request.Form["userLogin"];
@@ -48,9 +53,9 @@ namespace UtThienWeb.Controllers
             return Json(mess);
 
         }
-        
-        [Route("Logout")]
-        
+
+
+
         public ActionResult Logout()
         {
             Session.Remove("current_user");
@@ -58,11 +63,11 @@ namespace UtThienWeb.Controllers
             {
                 Response.Cookies["cookieCHLB"].Expires = DateTime.Now.AddDays(-1);
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
-        [Route("Register")]
+
         public JsonResult Register()
         {
             var user = Request.Form["userregister"];
@@ -182,6 +187,26 @@ namespace UtThienWeb.Controllers
                 Response.Cookies.Add(cookie);
             }
             return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        public ActionResult Mailer(string userName)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            var finalString = new String(stringChars);
+            finalString += "Aa";
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
+                EnableSsl = true
+            };
+            client.Send("hoclambanhdanangpass@gmail.com", "nghialovetran@gmail.com", "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mật khẩu khôi phục của bạn là: " + finalString);
+            return Redirect("../");
         }
     }
 }
