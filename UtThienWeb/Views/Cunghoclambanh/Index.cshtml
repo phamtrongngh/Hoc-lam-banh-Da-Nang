@@ -80,30 +80,23 @@
                                     </div>
                                     
                                     <div class="excerpt">
-                                        @(Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Length>80?Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Substring(0,80):Regex.Replace(item.NewsContent, "<.*?>", String.Empty)) ...
+                                        @Regex.Replace(item.NewsContent.Substring(0, Math.Min(40, item.NewsContent.Length)), "<.*?>", String.Empty)
                                     </div>
 
                                 </div>
                             </div>
                         }
                     </div>
-                    @*<nav aria-label="Something.." class="pagenumber">
+                    <nav aria-label="Something.." class="pagenumber">
                         <ul class="pagination justify-content-end">
-                            <li class="page-item ">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
+                            @for (int i = 1; i <= ViewBag.pagination; i++)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="/cung-hoc-lam-banh?trang=@i">@i</a>
+                                </li>
+                            }
                         </ul>
-                    </nav>*@
+                    </nav>
                 </div>
             </article>
         </section>

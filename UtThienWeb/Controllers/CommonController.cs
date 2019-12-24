@@ -11,7 +11,7 @@ namespace UtThienWeb.Controllers
     {
         ModelCakes db = new ModelCakes();
  
-        public ActionResult ShowDetails(string name)
+        public ActionResult ShowDetails(string name, string trang)
         {
             HttpCookie cookie = Request.Cookies["cookieCHLB"];
 
@@ -36,6 +36,7 @@ namespace UtThienWeb.Controllers
             {
                 ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
                 ViewBag.catalog = db.CourseCatalogs.SingleOrDefault(a => a.CourseCatalogId == course.CourseCatalogId).CourseCatalogName;
+                
                 return View("ShowDetailsCourses",course);
             }
             News news = (from s in db.News select s).AsEnumerable().SingleOrDefault(a => HomeController.RemoveUnicode(a.NewsTitle) == name);
@@ -52,7 +53,8 @@ namespace UtThienWeb.Controllers
                 ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
                 var courses = db.Courses.Where(a => a.CourseCatalogId.Equals(catalog.CourseCatalogId)).AsEnumerable().ToList();
                 ViewBag.catalog = catalog;
-                return View("ShowListCourses",courses);
+                ViewBag.pagination = Math.Ceiling((decimal)courses.Count / 9);
+                return View("ShowListCourses",courses.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
             }
         }
     }

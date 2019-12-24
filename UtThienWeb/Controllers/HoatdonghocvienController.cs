@@ -9,7 +9,7 @@ namespace UtThienWeb.Controllers
     public class HoatdonghocvienController : CommonController
     {
         ModelCakes db = new ModelCakes();
-        public ActionResult Index()
+        public ActionResult Index(string trang)
         {
             HttpCookie cookie = Request.Cookies["cookieCHLB"];
 
@@ -30,7 +30,9 @@ namespace UtThienWeb.Controllers
                 Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
             }
             ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
-            return View(db.News.Where(a=>a.NewsTypeId==3));
+            var news = db.News.Where(a => a.NewsTypeId == 3).ToList();
+            ViewBag.pagination = Math.Ceiling(((decimal)news.Count) / 9);
+            return View(news.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
         }
         
     }

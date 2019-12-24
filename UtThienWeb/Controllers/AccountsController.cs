@@ -13,7 +13,6 @@ using System.Net.Configuration;
 
 namespace UtThienWeb.Controllers
 {
-
     public class AccountsController : Controller
     {
         ModelCakes db = new ModelCakes();
