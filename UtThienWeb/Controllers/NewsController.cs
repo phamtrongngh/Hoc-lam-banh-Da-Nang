@@ -10,7 +10,8 @@ namespace UtThienWeb.Controllers
     public class NewsController : Controller
     {
         ModelCakes db = new ModelCakes();
-        public ActionResult Details(string name)
+        [ValidateInput(false)]
+        public ActionResult Details(News news)
         {
             HttpCookie cookie = Request.Cookies["cookieCHLB"];
 
@@ -30,18 +31,18 @@ namespace UtThienWeb.Controllers
                 Session["user"] += " </a>";
                 Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
             }
-            var list = db.News;
-            News id = new News();
-            foreach (var item in list)
-            {
-                if (HomeController.RemoveUnicode(item.NewsTitle).Equals(name))
-                {
-                    id = item;
-                }
-            }
+            //var list = db.News;
+            //News id = new News();
+            //foreach (var item in list)
+            //{
+            //    if (HomeController.RemoveUnicode(item.NewsTitle).Equals(name))
+            //    {
+            //        id = item;
+            //    }
+            //}
             ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
-            ViewBag.catalog=db.NewsCatalogs.Find(id.NewsTypeId).NewsCatalogName;
-            return View(db.News.Find(id.NewsId));
+            ViewBag.catalog=db.NewsCatalogs.Find(news.NewsTypeId).NewsCatalogName;
+            return View(news);
         }
         [HttpPost]
         public JsonResult Views(int? id)

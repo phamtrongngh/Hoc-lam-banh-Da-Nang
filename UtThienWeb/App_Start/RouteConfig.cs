@@ -16,12 +16,7 @@ namespace UtThienWeb
             routes.MapMvcAttributeRoutes();
 
 
-            //routes.MapRoute(
-            //    name: "CourseItem",
-            //    url: "khoa-hoc/{name}",
-            //    defaults: new { controller = "Courses", action = "CoursesItem", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }
-            //);
+
             routes.MapRoute(
                 name: "Chi Nhanh",
                 url: "chi-nhanh",
@@ -46,12 +41,7 @@ namespace UtThienWeb
                defaults: new { controller = "Hoatdonghocvien", action = "Index", id = UrlParameter.Optional },
                new[] { "UtThienWeb.Controllers" }
            );
-            // routes.MapRoute(
-            //    name: "Cung hoc lam banh chi tiet",
-            //    url: "hoat-dong-hoc-vien/{name}",
-            //    defaults: new { controller = "Hoatdonghocvien", action = "Details", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }
-            //);
+            
             //routes.MapRoute(
             //    name: "CourseDetails",
             //    url: "chi-tiet-khoa-hoc/{name}",
@@ -76,38 +66,18 @@ namespace UtThienWeb
                 defaults: new { controller = "Courses", action = "Cart", id = UrlParameter.Optional },
                 new[] { "UtThienWeb.Controllers" }
             );
-            //routes.MapRoute(
-            //    name: "CoursesNewsHandler",
-            //    url: "{name}",
-            //    defaults: new { controller = "Common", action = "CoursesNewsHandler", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }).RouteHandler = new CoursesNewsRouteHandler();
             routes.MapRoute(
-                name: "CoursesNewsHandler",
+                name: "DetailsShow",
                 url: "{name}",
-                defaults: new { controller = "Common", action = "CoursesNewsHandler", id = UrlParameter.Optional },
+                defaults: new { controller = "Common", action = "ShowDetails", id = UrlParameter.Optional },
                 new[] { "UtThienWeb.Controllers" }
-                );
-            //routes.MapRoute(
-            //    name: "News",
-            //    url: "{name}",
-            //    defaults: new { controller = "News", action = "Details", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }
-            //);
-
-            //routes.MapRoute(
-            //    name: "CungHocLamBanh Details",
-            //    url: "cung-hoc-lam-banh/{name}",
-            //    defaults: new { controller = "Cunghoclambanh", action = "Details", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }
-            //);
-
-            
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-            //    new[] { "UtThienWeb.Controllers" }
-            //);
+            );
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "UtThienWeb.Controllers" }
+            );
         }
     }
 }

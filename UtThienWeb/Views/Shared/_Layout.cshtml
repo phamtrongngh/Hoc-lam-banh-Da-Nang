@@ -91,7 +91,7 @@
                             <div class="dropdown-menu" style="width:225px">
                                 @foreach (var i in (IEnumerable<UtThienWeb.Models.CourseCatalog>)HttpContext.Current.Application["course"])
                                 {
-                                    <a href="" id="khoa-hoc/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
+                                    <a href="" id="/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
                                 }
                             </div>
                         </li>
@@ -320,21 +320,21 @@
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="/khoa-hoc/khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
+                                    <a href="//khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="/khoa-hoc/khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
+                                    <a href="//khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="/khoa-hoc/khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
+                                    <a href="//khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
                                 </div>
                             </div>
                         </li>

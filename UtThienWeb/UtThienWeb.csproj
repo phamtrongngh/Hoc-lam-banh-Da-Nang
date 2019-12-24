@@ -629,10 +629,12 @@
     <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\Accounts\MailResetPassword.cshtml" />
     <Content Include="Views\Accounts\ChangePass.cshtml" />
+    <Content Include="Views\Common\ShowDetailsNews.cshtml" />
+    <Content Include="Views\Common\ShowDetailsCourses.cshtml" />
+    <Content Include="Views\Common\ShowListCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
