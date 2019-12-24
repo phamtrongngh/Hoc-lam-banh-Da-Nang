@@ -149,7 +149,7 @@
 
                     <input type="checkbox" id="remmember-password" value="1">
                     <label for="">Nhớ mật khẩu</label><br>
-                    <label><a  data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên Mật Khẩu ?</a></label>
+                    <label><a data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên Mật Khẩu ?</a></label>
 
                     <span class="error error-login">Sai tên đăng nhập hoặc mật khẩu</span>
                 </div>
@@ -242,7 +242,25 @@
             </div>
         </div>
     </form>
-    <a href="../gio-hang">
+
+    <!--Model Advertisement-->
+    <div class="modal fade" id="advertisement" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Advertisement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="#" alt="Alternate Text" />
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>    <a href="../gio-hang">
 
         <div class="cart-button-fixed">
             <span>
@@ -424,5 +442,8 @@
             })
         })
     })
+    $(function () {
+        $("#advertisement").modal("show");
+    });
 </script>
 </html>
