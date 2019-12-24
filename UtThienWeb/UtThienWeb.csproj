@@ -238,11 +238,11 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CunghoclambanhController.cs" />
+    <Compile Include="Controllers\CoursesNewsRouteHandler.cs" />
     <Compile Include="Controllers\HoatdonghocvienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LichhocController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\TestFilter.cs" />
     <Compile Include="Controllers\TuyendungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
