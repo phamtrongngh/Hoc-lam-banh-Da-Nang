@@ -1,4 +1,16 @@
-﻿.page .social-pet li a {
+﻿.bottom-ft {
+    padding: 10px 102px;
+    
+}
+.footer-canhle{
+    padding-left:0 !important;
+}
+.footer-sp{
+    margin-bottom:16px;
+    padding-left:0 !important;
+}
+
+.page .social-pet li a {
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -204,7 +216,7 @@ body:hover .cart-button-fixed {
     border-radius: 10px;
     margin-left: 5%;
     margin-bottom: 10px;
-    height:initial;
+    height:initial;768px
 }
 
 .job-vt {
@@ -212,7 +224,10 @@ body:hover .cart-button-fixed {
 }
 
 @media only screen and (max-width: 768px) {
-    .wrap-vitri {
+    .bottom-ft {
+        padding: 10px 45px;
+    }
+        .wrap-vitri {
         margin-top: 68px;
     }
     .content1 {
@@ -795,7 +810,18 @@ td {
         width: 100%;
     }
 }
+@media screen and (max-width: 375px) {
+    ..bottom-ft {
+        text-align: center;
+        padding: 10px 10px;
+    }
 
+    .social-pet {
+        float: none !important;
+        text-align: center;
+        padding-left: 0px;
+    }
+}
 .search {
     position: absolute;
     top: 0;
@@ -1021,16 +1047,17 @@ td {
     -ms-background-size: cover;
     min-height: 800px;
     width: auto;
+    background-position: right top;
 }
 
 .overlay-w3ls {
-    background: rgba(0, 0, 0, 0.55);
+    
     min-height: 800px;
 }
 
 @media screen and (max-width: 1200px) {
     .overlay-w3ls {
-        background: rgba(0, 0, 0, 0.55);
+        
         min-height: 1000px;
     }
 }
@@ -1307,11 +1334,9 @@ td {
 }
 
 .text-nguoihuongdan {
-    margin-left: 20px;
-    margin-right: 40px;
     color: white;
     font-size: 22px;
-    justify-content: center;
+    margin-bottom: 215px;
     text-align: justify;
     margin-top: 0px;
 }
@@ -1329,7 +1354,8 @@ td {
 }
 
 .wrap-img-gv {
-    display: block;
+    float:right;
+    margin-right: 20px;
 }
 
 .text-coutthien {
@@ -1386,7 +1412,7 @@ td {
 .flex-dolambanh {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+   
 }
 
 /*=-footer-=*/
@@ -1445,7 +1471,9 @@ footer {
             -moz-transform: rotate(360deg);
             -webkit-transform: rotate(360deg);
         }
-
+.social-pet{
+    float:right;
+}
 .recent-post li {
     display: block;
     color: #ccc;
@@ -1492,7 +1520,10 @@ footer .input-group-addon {
     padding: 12px 0;
     font-size: 14px;
 }
+.f-address{
+    padding-left:0 !important;
 
+}
 .footer-fixed {
     position: fixed;
     bottom: 0;
@@ -1568,7 +1599,7 @@ footer .input-group-addon {
 }
 
 .h5-footer {
-    margin-left: 40px;
+    color:#ffe600;
 }
 
 
@@ -1787,7 +1818,18 @@ ul.breadcrumb {
 .navbar {
     padding: 0rem;
 }
-
+@media only screen and (max-width: 1100px) {
+    .wrap-img-gv {
+        display:block;
+        float:none;
+        margin-right: 0px;
+    }
+    .text-nguoihuongdan {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 40px;
+    }
+}
 @media only screen and (max-width: 380px) {
     .img-gioithieu {
         height: 200px;
