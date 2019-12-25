@@ -26,7 +26,6 @@
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
     <!------->
-
 </head>
 @using UtThienWeb.Controllers;
 
@@ -92,7 +91,7 @@
                             <div class="dropdown-menu" style="width:225px">
                                 @foreach (var i in (IEnumerable<UtThienWeb.Models.CourseCatalog>)HttpContext.Current.Application["course"])
                                 {
-                                    <a href="" id="khoa-hoc/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
+                                    <a href="" id="/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
                                 }
                             </div>
                         </li>
@@ -149,6 +148,7 @@
 
                     <input type="checkbox" id="remmember-password" value="1">
                     <label for="">Nhớ mật khẩu</label><br>
+                    <a href=""  data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên mật khẩu?</a>
 
                     <span class="error error-login">Sai tên đăng nhập hoặc mật khẩu</span>
                 </div>
@@ -218,7 +218,48 @@
             </div>
         </div>
     </div>
-    <a href="../gio-hang">
+
+    <!--Model Reset Password-->
+    <form action="/Accounts/MailResetPassword" class="modal fade" id="ResetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" method="post" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header title-login">
+                    <h5 class="modal-title" id="exampleModalLabel">Đặt Lại Mật Khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>Tên đăng nhập</label>
+                    <input class="form-control" name="username" type="text" required>
+                    <label>Địa Chỉ Email</label>
+                    <input class="form-control" name="email" type="email" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Gửi về email mật khẩu mới</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--Model Advertisement-->
+    <div class="modal fade" id="advertisement" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Advertisement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="#" alt="Alternate Text" />
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>    <a href="../gio-hang">
 
         <div class="cart-button-fixed">
             <span>
@@ -287,22 +328,22 @@
                     <ul class="f-address">
                         <li>
                             <div class="row">
-                                <div class="col-12 footer-sp">
-                                    <a href="/khoa-hoc/khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
+                                <div class="col-12">
+                                    <a href="//khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
-                                <div class="col-12 footer-sp">
-                                    <a href="/khoa-hoc/khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
+                                <div class="col-12">
+                                    <a href="//khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
-                                <div class="col-12 footer-sp">
-                                    <a href="/khoa-hoc/khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
+                                <div class="col-12">
+                                    <a href="//khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
                                 </div>
                             </div>
                         </li>
@@ -387,7 +428,7 @@
     <!--====== Javascripts & Jquery ======-->
 
 
-    
+
 </body>
 @{ if (Session["cart"] != null)
     {
@@ -399,6 +440,7 @@
 }
 <script>
     $(document).ready(function () {
+        $("nut").click();
         $(".dropdown-item").click(function () {
             location.href = $(this).attr("id");
         })
@@ -415,5 +457,8 @@
             })
         })
     })
+    $(function () {
+        $("#advertisement").modal("show");
+    });
 </script>
 </html>

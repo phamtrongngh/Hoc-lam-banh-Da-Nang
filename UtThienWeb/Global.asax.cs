@@ -12,6 +12,7 @@ namespace UtThienWeb
     public class MvcApplication : System.Web.HttpApplication
     {
         ModelCakes db = new ModelCakes();
+        
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

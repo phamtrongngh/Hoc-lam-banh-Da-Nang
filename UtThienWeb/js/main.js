@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     $("#button-login").on("click", function () {
         var user = $("#userlogin").val();
@@ -85,7 +85,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: "POST",
-            url: "Accounts/Register/",
+            url: "/Accounts/Register/",
             data: {
                 userregister: user,
                 passwordregister: password,
@@ -99,6 +99,7 @@ $(document).ready(function () {
             dataType: "json"
         }).done(function (result) {
             if (result == "Success") {
+                alert("Link kích hoạt đã được gửi, vui lòng mở tin nhắn mới trong Email của bạn để xác nhận!");
                 location.reload();
             };
             if (result == "existEmail") {

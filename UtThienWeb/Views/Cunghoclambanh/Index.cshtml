@@ -16,67 +16,41 @@
             <div class="aside-item collection-category">
                 <div class="aside-heading">
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <h2 class="title-head"><a href="kinh-nghiem-lam-banh">Tin tức nổi bật</a></h2>
+                    <h2 class="title-head"><a href="/@(HomeController.RemoveUnicode(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsTitle))">Bài viết nổi bật</a></h2>
                 </div>
                 <div class="aside-content">
                     <div class="list-blogs list-blogs-page-blog">
-
                         <article class="blog-item">
                             <div class="blog-item-thumbnail">
-                                <a href="/lam-banh-tranh-games">
-
-                                    <img src="" alt="Làm bánh, tránh... games">
-
+                                <a href="/@(HomeController.RemoveUnicode(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsTitle))">
+                                    <img width="100%" height="100%" src="/img/@(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsThumbails)" alt="Làm bánh, tránh... games">
                                 </a>
                             </div>
-                            <h3 class="blog-item-name"><a href="/lam-banh-tranh-games">Làm bánh, tránh... games</a></h3>
+                            <h3 class="blog-item-name"><a href="/@(HomeController.RemoveUnicode(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsTitle))">@(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsTitle)</a></h3>
                             <div class="postby">
                                 <div class="pull-left">
                                     <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
                                 </div>
                                 <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 27/09/2019
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> @(((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).First().NewsDate)
                                 </div>
                             </div>
-                            <p class="blog-item-summary"> Trong căn nhà được trang trí màu vàng như lòng quả trứng gà rộn vang tiếng ríu rít của các bạn nhỏ. Một cậu bé nói với bạn: "mẹ...</p>
+                            @*<p class="blog-item-summary">@Model.OrderByDescending(a => a.NewsViews).First().NewsContent.Substring(GetHashCode)</p>*@
                         </article>
-
-                        <article class="blog-item">
-                            <h3 class="blog-item-name"><a href="">Cách Làm Mousse Chanh Leo</a></h3>
-                            <div class="postby">
-                                <div class="pull-left">
-                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                        @foreach (var item in ((IEnumerable<UtThienWeb.Models.News>)ViewBag.topViews).Skip(1))
+                        {
+                            <article class="blog-item">
+                                <h3 class="blog-item-name"><a href="/@HomeController.RemoveUnicode(item.NewsTitle)">@item.NewsTitle</a></h3>
+                                <div class="postby">
+                                    <div class="pull-left">
+                                        <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
+                                    </div>
+                                    <div class="pull-left">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> @item.NewsDate
+                                    </div>
                                 </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="blog-item">
-                            <h3 class="blog-item-name"><a href="/cach-lam-banh-matcha-delight">Cách Làm Bánh Matcha Delight</a></h3>
-                            <div class="postby">
-                                <div class="pull-left">
-                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="blog-item">
-                            <h3 class="blog-item-name"><a href="/8-bi-quyet-de-nuong-banh-thanh-cong">8 bí quyết để nướng bánh thành công</a></h3>
-                            <div class="postby">
-                                <div class="pull-left">
-                                    <i class="fa fa-user" aria-hidden="true"></i> ÚT THIỆN
-                                </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 23/09/2019
-                                </div>
-                            </div>
-                        </article>
-
+                            </article>
+                        }
                     </div>
                 </div>
             </div>
@@ -88,13 +62,13 @@
                     <div class="col-lg-12">
                         @foreach (var item in Model)
                         {
-                            <div class="post-item">
+                            <div class="post-item" id="@item.NewsId">
                                 <div class="img-block">
-                                    <a href="/cung-hoc-lam-banh/@HomeController.RemoveUnicode(item.NewsTitle)"><img height="100%" width="100%" src="~/img/@item.NewsThumbails" alt="Alternate Text" /></a>
+                                    <a href="/@HomeController.RemoveUnicode(item.NewsTitle)"><img height="100%" width="100%" src="~/img/@item.NewsThumbails" alt="Alternate Text" /></a>
                                 </div>
                                 <div class="content-block">
                                     <h2>
-                                        <a href="/cung-hoc-lam-banh/@HomeController.RemoveUnicode(item.NewsTitle)">@item.NewsTitle</a>
+                                        <a href="/@HomeController.RemoveUnicode(item.NewsTitle)">@item.NewsTitle</a>
                                     </h2>
                                     <div class="postby">
                                         <div class="pull-left">
@@ -106,33 +80,37 @@
                                     </div>
                                     
                                     <div class="excerpt">
-                                        @(Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Length>80?Regex.Replace(item.NewsContent, "<.*?>", String.Empty).Substring(0,80):Regex.Replace(item.NewsContent, "<.*?>", String.Empty)) ...
+                                        @Regex.Replace(item.NewsContent.Substring(0, Math.Min(40, item.NewsContent.Length)), "<.*?>", String.Empty)
                                     </div>
 
                                 </div>
                             </div>
                         }
                     </div>
-                    @*<nav aria-label="Something.." class="pagenumber">
+                    <nav aria-label="Something.." class="pagenumber">
                         <ul class="pagination justify-content-end">
-                            <li class="page-item ">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
+                            @for (int i = 1; i <= ViewBag.pagination; i++)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="/cung-hoc-lam-banh?trang=@i">@i</a>
+                                </li>
+                            }
                         </ul>
-                    </nav>*@
+                    </nav>
                 </div>
             </article>
         </section>
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $(".post-item").click(function () {
+            $.ajax({
+                method:"post",
+                url: "/News/Views",
+                data: { id: $(this).attr("id") }
+            })
+        })
+    })
+</script>
