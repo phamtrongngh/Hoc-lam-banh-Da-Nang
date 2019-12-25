@@ -287,6 +287,7 @@
     <Compile Include="Models\NewsCatalog.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\Slide.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -625,6 +626,7 @@
     <Content Include="Views\Common\ShowDetailsNews.cshtml" />
     <Content Include="Views\Common\ShowDetailsCourses.cshtml" />
     <Content Include="Views\Common\ShowListCourses.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

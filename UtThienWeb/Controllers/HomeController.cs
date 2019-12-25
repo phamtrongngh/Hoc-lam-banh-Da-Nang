@@ -62,7 +62,15 @@ namespace UtThienWeb.Controllers
             
             return text.ToLower();
         }
-
+        
+        [HttpGet]
+        public ActionResult Search(string keyword)
+        {
+            keyword = HomeController.RemoveUnicode(keyword);
+            List<Search> s=(from n in db.News select n).AsEnumerable().Where(a => HomeController.RemoveUnicode(a.NewsTitle).Contains(keyword)).Select(a=>new Search {SearchName=a.NewsTitle,SearchImage=a.NewsThumbails }).ToList<Search>();
+            s.AddRange((from n in db.Courses select n).AsEnumerable().Where(a => HomeController.RemoveUnicode(a.CourseName).Contains(keyword)).Select(a => new Search { SearchName = a.CourseName, SearchImage = a.CourseThumbails }).ToList<Search>());
+            return View(s);
+        }
 
     }
 }

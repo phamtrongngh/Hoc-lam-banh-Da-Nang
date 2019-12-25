@@ -1,0 +1,28 @@
+﻿@model IEnumerable<UtThienWeb.Models.Search>
+@using UtThienWeb.Controllers;
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="border-bottom:1px solid black"><h2>Kết quả tìm kiếm</h2></div>
+    </div>
+
+</div>
+<div class="container">
+    <div class="row" style="margin-top:50px">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <a href="/@HomeController.RemoveUnicode(item.SearchName)">
+                    <div class="img-search" style="width:100%;height:200px;">
+                        <img src="~/img/@item.SearchImage" width="100%" height="100%" alt="Alternate Text" />
+                    </div>
+                    <h3>@item.SearchName</h3>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>
