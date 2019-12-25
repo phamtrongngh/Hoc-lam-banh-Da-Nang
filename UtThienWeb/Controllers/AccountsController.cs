@@ -6,19 +6,19 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 using Facebook;
 using System.Configuration;
-using System.Web.Hosting;
-using System.Text;
 using System.Net.Mail;
+using System.Net;
+using System.Web.Configuration;
+using System.Net.Configuration;
 
 namespace UtThienWeb.Controllers
 {
-    [RoutePrefix("Accounts")]
     public class AccountsController : Controller
     {
         ModelCakes db = new ModelCakes();
         // GET: Accounts
         [HttpPost]
-        [Route("Login")]
+
         public ActionResult Login()
         {
             var user = Request.Form["userLogin"];
@@ -52,9 +52,9 @@ namespace UtThienWeb.Controllers
             return Json(mess);
 
         }
-        
-        [Route("Logout")]
-        
+
+
+
         public ActionResult Logout()
         {
             Session.Remove("current_user");
@@ -62,11 +62,18 @@ namespace UtThienWeb.Controllers
             {
                 Response.Cookies["cookieCHLB"].Expires = DateTime.Now.AddDays(-1);
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
-
+        [HttpGet]
+        public ActionResult ConfirmEmail(string code)
+        {
+            var s = db.Accounts.SingleOrDefault(a => a.AccountRePassword.Equals(code));
+            s.AccountConfirmEmail = true;
+            s.AccountRePassword = null;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         [HttpPost]
-        [Route("Register")]
         public JsonResult Register()
         {
             var user = Request.Form["userregister"];
@@ -96,8 +103,11 @@ namespace UtThienWeb.Controllers
                 account.AccountGender = gender;
                 account.AccountRole = 0;
                 account.AccountAddress = address;
+                Random random = new Random();
+                string num = random.Next(9000).ToString();
                 account.AccountBOD = DateTime.Parse(dob).Date;
                 account.TimeCreate = DateTime.Now;
+                account.AccountRePassword = num;
                 db.Accounts.Add(account);
                 db.SaveChanges();
                 var check = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(account.AccountUser));
@@ -106,6 +116,13 @@ namespace UtThienWeb.Controllers
                 cookie["username"] = check.AccountUser;
                 cookie["id"] = check.AccountId.ToString();
                 cookie["password"] = check.AccountPassword;
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
+                    EnableSsl = true
+                };
+                var url = "https://localhost:44396/Accounts/ConfirmEmail?code=" + num;
+                client.Send("hoclambanhdanangpass@gmail.com",email,"Kích Hoạt Email Học Làm Bánh Đà Nẵng", "Để kích hoạt email cho tài khoản "+user+", vui lòng nhấp vào link sau: "+url);
                 Response.Cookies.Add(cookie);
                 return Json("Success");
             }
@@ -187,16 +204,62 @@ namespace UtThienWeb.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
-        public ActionResult ConfirmEmail()
+        [HttpPost]
+        public ActionResult MailResetPassword(string username, string email)
         {
-            return View();
+            var s = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(username));
+            object mess;
+            if (s != null)
+            {
+                if (s.AccountEmail.Equals(email) && s.AccountConfirmEmail == true)
+                {
+                    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                    var stringChars = new char[8];
+                    var random = new Random();
+                    for (int i = 0; i < stringChars.Length; i++)
+                    {
+                        stringChars[i] = chars[random.Next(chars.Length)];
+                    }
+                    var finalString = new String(stringChars);
+                    finalString += "Aa";
+                    var client = new SmtpClient("smtp.gmail.com", 587)
+                    {
+                        Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
+                        EnableSsl = true
+                    };
+                    client.Send("hoclambanhdanangpass@gmail.com",email, "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mã xác nhận của bạn là: " + finalString);
+                    s.AccountRePassword = finalString;
+                    db.SaveChanges();
+                    ViewData["username"] = s.AccountUser;
+                    mess = "Chúng tôi đã gửi mã xác nhận về email của bạn, hãy kiểm tra email và tiến hành đổi mật khẩu mới";
+                }
+                else
+                {
+                    mess = "Email không khớp với tên đăng nhập hoặc bạn chưa kích hoạt email cho tài khoản này";
+                }
+            }
+            else
+            {
+                mess = "Tên đăng nhập không tồn tại";
+            }
+            
+            return View(mess);
         }
-        public ActionResult ResetPassword()
+        [HttpPost]
+        public ActionResult ChangePass(string username,string code, string pass)
         {
-            return View();
+            var account = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(username));
+            object mess;
+            if (account.AccountRePassword.Equals(code)){
+                account.AccountPassword = pass;
+                mess = "Đã đổi thành công mặt khẩu, vui lòng đăng nhập lại";
+                db.SaveChanges();
+            }
+            else
+            {
+                mess = "Sai mã xác nhận";
+            }
+            return View(mess);
         }
-
-
     }
 }

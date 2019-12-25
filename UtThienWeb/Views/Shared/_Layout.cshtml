@@ -26,7 +26,6 @@
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
     <!------->
-
 </head>
 @using UtThienWeb.Controllers;
 
@@ -92,7 +91,7 @@
                             <div class="dropdown-menu" style="width:225px">
                                 @foreach (var i in (IEnumerable<UtThienWeb.Models.CourseCatalog>)HttpContext.Current.Application["course"])
                                 {
-                                    <a href="" id="khoa-hoc/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
+                                    <a href="" id="/@HomeController.RemoveUnicode(i.CourseCatalogName)" style="display:inline-block;vertical-align:middle;width:176px;" class="dropdown-item">@i.CourseCatalogName</a>
                                 }
                             </div>
                         </li>
@@ -149,7 +148,7 @@
 
                     <input type="checkbox" id="remmember-password" value="1">
                     <label for="">Nhớ mật khẩu</label><br>
-                    <label><a data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên Mật Khẩu ?</a></label>
+                    <a href=""  data-toggle="modal" data-dismiss="modal" data-target="#ResetPassword">Quên mật khẩu?</a>
 
                     <span class="error error-login">Sai tên đăng nhập hoặc mật khẩu</span>
                 </div>
@@ -221,7 +220,7 @@
     </div>
 
     <!--Model Reset Password-->
-    <form class="modal fade" id="ResetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" method="post" aria-hidden="true" style="display: none;">
+    <form action="/Accounts/MailResetPassword" class="modal fade" id="ResetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" method="post" aria-hidden="true" style="display: none;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header title-login">
@@ -231,13 +230,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <label>Tên đăng nhập</label>
+                    <input class="form-control" name="username" type="text" required>
                     <label>Địa Chỉ Email</label>
-                    <input class="form-control" name="email" type="text" id="email">
-                    <span class="error error-login">@ViewBag</span>
+                    <input class="form-control" name="email" type="email" required>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-dismiss="modal" data-target="#register">Gửi Email Đặt Lại Mật Khẩu</button>
+                    <button type="submit" class="btn btn-success">Gửi về email mật khẩu mới</button>
                 </div>
             </div>
         </div>
@@ -339,21 +338,21 @@
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="/khoa-hoc/khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
+                                    <a href="//khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="/khoa-hoc/khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
+                                    <a href="//khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="/khoa-hoc/khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
+                                    <a href="//khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
                                 </div>
                             </div>
                         </li>
@@ -426,6 +425,7 @@
 }
 <script>
     $(document).ready(function () {
+        $("nut").click();
         $(".dropdown-item").click(function () {
             location.href = $(this).attr("id");
         })

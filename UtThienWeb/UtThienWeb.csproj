@@ -212,6 +212,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FormsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
@@ -220,6 +221,8 @@
     <Compile Include="Areas\Admin\Models\Account.cs" />
     <Compile Include="Areas\Admin\Models\Course.cs" />
     <Compile Include="Areas\Admin\Models\CourseCatalog.cs" />
+    <Compile Include="Areas\Admin\Models\C__MigrationHistory.cs" />
+    <Compile Include="Areas\Admin\Models\Form.cs" />
     <Compile Include="Areas\Admin\Models\Image.cs" />
     <Compile Include="Areas\Admin\Models\Menu.cs" />
     <Compile Include="Areas\Admin\Models\ModelCakes.cs" />
@@ -235,10 +238,11 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CunghoclambanhController.cs" />
+    <Compile Include="Controllers\CoursesNewsRouteHandler.cs" />
     <Compile Include="Controllers\HoatdonghocvienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LichhocController.cs" />
-    <Compile Include="Controllers\TestFilter.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\TuyendungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,10 +259,27 @@
     <Compile Include="Migrations\201912210603345_NewViews.designer.cs">
       <DependentUpon>201912210603345_NewViews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912210741479_Form.cs" />
+    <Compile Include="Migrations\201912210741479_Form.designer.cs">
+      <DependentUpon>201912210741479_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912210750528_FormExperience.cs" />
+    <Compile Include="Migrations\201912210750528_FormExperience.designer.cs">
+      <DependentUpon>201912210750528_FormExperience.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs" />
+    <Compile Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.designer.cs">
+      <DependentUpon>201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912230357578_RePassword.cs" />
+    <Compile Include="Migrations\201912230357578_RePassword.designer.cs">
+      <DependentUpon>201912230357578_RePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCatalog.cs" />
+    <Compile Include="Models\Form.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\ModelCakes.cs" />
@@ -473,7 +494,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="EmailTemplate\Text.cshtml" />
+    <Content Include="Areas\Admin\Views\Forms\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -554,7 +575,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Views\Courses\baivietkhoahoc.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -568,8 +588,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Courses\CoursesItem.cshtml" />
-    <Content Include="Views\Courses\CourseDetails.cshtml" />
     <Content Include="Views\Courses\Cart.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="js\bootstrap.min.js" />
@@ -585,8 +603,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Courses\index.cshtml" />
-    <Content Include="Views\Courses\khoabanhchuyensau.cshtml" />
-    <Content Include="Views\Courses\khoabanhngoaikhoa.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -601,15 +617,17 @@
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Hoatdonghocvien\Index.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Cunghoclambanh\Details.cshtml" />
-    <Content Include="Views\Hoatdonghocvien\Details.cshtml" />
     <Content Include="Views\Chinhanh\Index.cshtml" />
     <Content Include="Views\Lichhoc\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\Accounts\MailResetPassword.cshtml" />
+    <Content Include="Views\Accounts\ChangePass.cshtml" />
+    <Content Include="Views\Common\ShowDetailsNews.cshtml" />
+    <Content Include="Views\Common\ShowDetailsCourses.cshtml" />
+    <Content Include="Views\Common\ShowListCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Accounts\" />
-    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -632,6 +650,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912210603345_NewViews.resx">
       <DependentUpon>201912210603345_NewViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210741479_Form.resx">
+      <DependentUpon>201912210741479_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210750528_FormExperience.resx">
+      <DependentUpon>201912210750528_FormExperience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912210839532_Form-Creation-Date&amp;Form-Form-Status.resx">
+      <DependentUpon>201912210839532_Form-Creation-Date&amp;Form-Form-Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912230357578_RePassword.resx">
+      <DependentUpon>201912230357578_RePassword.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

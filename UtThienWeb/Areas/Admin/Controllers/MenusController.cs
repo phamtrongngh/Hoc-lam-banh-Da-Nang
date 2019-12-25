@@ -37,6 +37,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
             menu.MenuSubLi = id;
             menu.MenuLiName = name;
             db.Menus.Add(menu);
+            db.CourseCatalogs.Add(new CourseCatalog { CourseCatalogName = name });
             db.SaveChanges();
             
             return Json("");

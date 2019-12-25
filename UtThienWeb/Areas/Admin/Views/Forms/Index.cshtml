@@ -1,0 +1,77 @@
+﻿@model IEnumerable<UtThienWeb.Areas.Admin.Models.Form>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Đơn xin việc</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Họ Tên
+                                    </th>
+                                    <th>
+                                        Số Điện Thoại
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Vị Trí Ứng Tuyển
+                                    </th>
+                                    <th>
+                                        Vào Lúc
+                                    </th>
+                                    <th>
+                                        Tình Trạng
+                                    </th>
+                                    <th>Xác Nhận Đơn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.FormName
+                                    </td>
+                                    <td>
+                                        @item.FormPhone
+                                    </td>
+                                    <td>
+                                        @item.FormEmail
+                                    </td>
+                                    <td>
+                                        @item.NewsTitle
+                                    </td>
+                                    <td>
+                                        @item.FormCreationDate
+                                    </td>
+                                    <td>
+                                        <p>Đang chờ liên lạc...</p>
+                                    </td>
+                                    <td>
+                                        <button style="font-size:12px;padding:4px 6px 6px 4px !important" onclick="" class="btn btn-primary">Thành công</button>
+                                        <button style="font-size:12px;padding:4px 6px 6px 4px !important" class="btn btn-primary">Hủy đơn</button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

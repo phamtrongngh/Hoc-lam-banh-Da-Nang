@@ -6,10 +6,12 @@ using System.Web.Mvc;
 using UtThienWeb.Models;
 namespace UtThienWeb.Controllers
 {
-    public class CunghoclambanhController : CommonController
+    
+    public class NewsController : Controller
     {
         ModelCakes db = new ModelCakes();
-        public ActionResult Index(string trang)
+        [ValidateInput(false)]
+        public ActionResult Details(News news)
         {
             HttpCookie cookie = Request.Cookies["cookieCHLB"];
 
@@ -29,11 +31,26 @@ namespace UtThienWeb.Controllers
                 Session["user"] += " </a>";
                 Session["user"] += "<a href='/Accounts/Logout' class='cart-btn'><i class='fas fa-sign-out-alt'></i><span>Đăng xuất</span></a>";
             }
-            ViewBag.topViews = db.News.OrderByDescending(a=>a.NewsViews).Take(6);
-            var news = db.News.Where(a => a.NewsTypeId == 1).ToList();
-            ViewBag.pagination = Math.Ceiling(((decimal)news.Count) / 9);
-            return View(news.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
+            //var list = db.News;
+            //News id = new News();
+            //foreach (var item in list)
+            //{
+            //    if (HomeController.RemoveUnicode(item.NewsTitle).Equals(name))
+            //    {
+            //        id = item;
+            //    }
+            //}
+            ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
+            ViewBag.catalog=db.NewsCatalogs.Find(news.NewsTypeId).NewsCatalogName;
+            return View(news);
         }
-        
+        [HttpPost]
+        public JsonResult Views(int? id)
+        {
+            var s = db.News.Find(id);
+            s.NewsViews += 1;
+            db.SaveChanges();
+            return Json("");
+        }
     }
 }

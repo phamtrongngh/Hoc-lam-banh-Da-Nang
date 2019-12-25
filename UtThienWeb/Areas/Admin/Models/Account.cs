@@ -49,6 +49,8 @@ namespace UtThienWeb.Areas.Admin.Models
         [Column(TypeName = "date")]
         public DateTime? AccountBOD { get; set; }
 
+        public bool? AccountConfirmEmail { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }

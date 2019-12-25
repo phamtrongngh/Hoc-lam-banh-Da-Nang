@@ -13,7 +13,7 @@ namespace UtThienWeb.Controllers
     public class HomeController : CommonController
     {
         ModelCakes db = new ModelCakes();
-        [Route]
+
         public ActionResult Index()
         {
             HttpCookie cookie = Request.Cookies["cookieCHLB"];
