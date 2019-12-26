@@ -23,5 +23,18 @@ namespace UtThienWeb.Areas.Admin.Controllers
             }           
             return View(ordersList);
         }
+        public ActionResult Apply(int id, string apply)
+        {
+            if (apply.Equals("success"))
+            {
+                db.Orders.Find(id).OrderStatus = true;
+            }
+            if (apply.Equals("failed"))
+            {
+                db.Orders.Find(id).OrderStatus = false;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

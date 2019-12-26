@@ -35,7 +35,30 @@ namespace UtThienWeb.Areas.Admin.Controllers
             ViewBag.catalog = db.NewsCatalogs;
             return View(newList);
         }
+        [HttpGet]
+        public ActionResult Search(string keyword)
+        {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var newList = new List<News>();
+            if (keyword == null)
+            {
+                newList = db.News.ToList();
+            }
+            else
+            {
+                newList = (from s in db.News select s).AsEnumerable().Where(a => HomeController.RemoveUnicode(a.NewsTitle).Contains(HomeController.RemoveUnicode(keyword))).ToList();
+            }
+            foreach (var item in newList)
+            {
+                item.NewsCatalog = db2.NewsCatalogs.Find(item.NewsTypeId);
 
+            }
+            ViewBag.catalog = db.NewsCatalogs;
+            return View(newList);
+        }
         [HttpGet]
         public ActionResult CreateNews()
         {

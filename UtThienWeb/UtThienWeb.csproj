@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201912230357578_RePassword.designer.cs">
       <DependentUpon>201912230357578_RePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912260415323_add-OrderStatus.cs" />
+    <Compile Include="Migrations\201912260415323_add-OrderStatus.designer.cs">
+      <DependentUpon>201912260415323_add-OrderStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
@@ -496,6 +500,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Forms\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Courses\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Search.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -664,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912230357578_RePassword.resx">
       <DependentUpon>201912230357578_RePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912260415323_add-OrderStatus.resx">
+      <DependentUpon>201912260415323_add-OrderStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
