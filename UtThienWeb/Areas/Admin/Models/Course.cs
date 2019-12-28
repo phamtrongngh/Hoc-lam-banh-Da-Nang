@@ -34,6 +34,7 @@ namespace UtThienWeb.Areas.Admin.Models
 
         [StringLength(50)]
         public string DateStudy { get; set; }
+        
 
         [StringLength(255)]
         public string CourseThumbails { get; set; }

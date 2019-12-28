@@ -78,10 +78,15 @@
                                             <i class="fa fa-calendar" aria-hidden="true"></i> @item.NewsDate
                                         </div>
                                     </div>
-                                    
-                                    <div class="excerpt">
-                                        @Regex.Replace(item.NewsContent.Substring(0, Math.Min(40, item.NewsContent.Length)), "<.*?>", String.Empty)
-                                    </div>
+
+                                    @if (item.NewsContent != null)
+                                    {
+                                        <div class="excerpt">
+
+                                            @Regex.Replace(item.NewsContent.Substring(0, Math.Min(40, item.NewsContent.Length)), "<.*?>", String.Empty)
+                                        </div>
+
+                                    }
 
                                 </div>
                             </div>

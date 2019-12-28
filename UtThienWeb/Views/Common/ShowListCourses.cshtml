@@ -60,7 +60,18 @@
         @using System
         <section class="right right-content col-md-9 col-md-push-4 right-coure">
             <section class="list-blogs blog-main list-blogs-page-blog">
+                <div class="row" style="margin-bottom:10px;">
+                    <div style="margin-left:10px;">
+                        <select onchange="location=this.value" class="custom-select">
+                            <option>Sắp xếp</option>
+                            <option value="/@(HomeController.RemoveUnicode(((UtThienWeb.Models.CourseCatalog)ViewBag.catalog).CourseCatalogName))?trang=@ViewBag.trang&order=new">Mới nhất</option>
+                            <option value="/@(HomeController.RemoveUnicode(((UtThienWeb.Models.CourseCatalog)ViewBag.catalog).CourseCatalogName))?trang=@ViewBag.trang&order=price">Giá cao nhất</option>
+                            <option value="/@(HomeController.RemoveUnicode(((UtThienWeb.Models.CourseCatalog)ViewBag.catalog).CourseCatalogName))?trang=@ViewBag.trang&order=hot">Hot nhất</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row row-right-bv">
+
                     @foreach (var item in Model)
                     {
                         <div class="col-xs-12 col-sm-6 col-md-4">
@@ -99,7 +110,7 @@
                             @for (int i = 1; i <= ViewBag.pagination; i++)
                             {
                                 <li class="page-item">
-                                    <a class="page-link" href="/@(HomeController.RemoveUnicode(((UtThienWeb.Models.CourseCatalog)ViewBag.catalog).CourseCatalogName))?trang=@i">@i</a>
+                                    <a class="page-link" href="/@(HomeController.RemoveUnicode(((UtThienWeb.Models.CourseCatalog)ViewBag.catalog).CourseCatalogName))?trang=@i&order=@ViewBag.order">@i</a>
                                 </li>
                             }
                         </ul>

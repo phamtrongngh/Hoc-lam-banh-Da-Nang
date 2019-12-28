@@ -13,7 +13,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
     {
         ModelCakes db = new ModelCakes();
         ModelCakes db2 = new ModelCakes();
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id,string keyword)
         {
             if (Session["uName"] == null)
             {
@@ -22,16 +22,40 @@ namespace UtThienWeb.Areas.Admin.Controllers
             var courseList = new List<Course>();
             if (id == null)
             {
-                courseList = db.Courses.ToList();
+                courseList = db.Courses.OrderByDescending(a=>a.TimeCreate).ToList();
             }
             else
             {
-                courseList = db.Courses.Where(a => a.CourseCatalogId == id).ToList();
+                courseList = db.Courses.OrderByDescending(a => a.TimeCreate).Where(a => a.CourseCatalogId == id).ToList();
             }
             foreach (var item in courseList)
             {
                 item.CourseCatalog = db2.CourseCatalogs.Find(item.CourseCatalogId);
 
+            }
+            ViewBag.catalog = db.CourseCatalogs;
+            return View(courseList);
+        }
+        [HttpGet]
+        public ActionResult Search(string keyword)
+        {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var courseList = new List<Course>();
+            if (keyword == null)
+            {
+                courseList = db.Courses.ToList();
+            }
+            else
+            {
+                courseList = (from s in db.Courses select s).AsEnumerable().Where(a => HomeController.RemoveUnicode(a.CourseName).Contains(HomeController.RemoveUnicode(keyword))).ToList();
+                    
+            }
+            foreach (var item in courseList)
+            {
+                item.CourseCatalog = db2.CourseCatalogs.Find(item.CourseCatalogId);
             }
             ViewBag.catalog = db.CourseCatalogs;
             return View(courseList);

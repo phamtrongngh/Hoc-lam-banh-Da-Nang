@@ -91,6 +91,7 @@ namespace UtThienWeb.Controllers
                 foreach (var item in (IEnumerable<Course>)Session["cart"])
                 {
                     db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
+                    db.Courses.Find(item.CourseId).CourseCountOrder++;
                 }
 
                 db.SaveChanges();
@@ -111,6 +112,7 @@ namespace UtThienWeb.Controllers
                 foreach (var item in (IEnumerable<Course>)Session["cart"])
                 {
                     db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
+                    db.Courses.Find(item.CourseId).CourseCountOrder++;
                 }
 
                 db.SaveChanges();

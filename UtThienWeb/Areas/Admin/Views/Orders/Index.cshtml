@@ -56,7 +56,7 @@
                                         </td>
                                         <td>
                                             <table class="table">
-                                                
+
                                                 @foreach (var subitem in item.OrderDetails)
                                                 {
                                                     <tr>
@@ -66,11 +66,20 @@
                                             </table>
                                         </td>
                                         <td>
-                                            <p>Đang chờ liên lạc...</p>
+                                            @if (item.OrderStatus == true)
+                                            {<p style="color:limegreen">Đơn thành công</p>}
+                                            @if (item.OrderStatus == false)
+                                            {<p style="color:red">Đơn đã hủy</p>}
+                                            @if (item.OrderStatus == null)
+                                            {<p>Đang chờ liên lạc</p>}
+
                                         </td>
                                         <td>
-                                            <button style="font-size:12px;padding:4px 6px 6px 4px !important" onclick="" class="btn btn-primary">Thành công</button>
-                                            <button style="font-size:12px;padding:4px 6px 6px 4px !important" class="btn btn-primary">Hủy đơn</button>
+                                            <form action="/Admin/Orders/Apply" method="post">
+                                                <input hidden type="number" name="id" value="@item.OrderId" />
+                                                <button name="apply" value="success" style="font-size:12px;padding:4px 6px 6px 4px !important" onclick="" class="btn btn-primary">Thành công</button>
+                                                <button name="apply" value="failed" style="font-size:12px;padding:4px 6px 6px 4px !important" class="btn btn-primary">Hủy đơn</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 }

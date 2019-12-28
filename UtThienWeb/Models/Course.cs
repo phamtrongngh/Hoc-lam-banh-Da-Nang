@@ -38,7 +38,7 @@ namespace UtThienWeb.Models
 
         [StringLength(255)]
         public string CourseThumbails { get; set; }
-
+        public int CourseCountOrder { get; set; }
         [StringLength(50)]
         public string CourseImagesList { get; set; }
 

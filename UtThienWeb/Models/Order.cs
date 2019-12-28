@@ -20,7 +20,7 @@ namespace UtThienWeb.Models
         public int AccountId { get; set; }
 
         public DateTime? CreationDate { get; set; }
-
+        public bool? OrderStatus { get; set; }
         public virtual Account Account { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

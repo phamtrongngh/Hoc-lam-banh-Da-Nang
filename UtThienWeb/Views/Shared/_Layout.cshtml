@@ -25,7 +25,16 @@
     <script src="~/js/circle-progress.min.js"></script>
     <script src="~/js/jquery.magnific-popup.min.js"></script>
     <script src="~/js/main.js"></script>
-    <!------->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154980829-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-154980829-1');
+    </script>
+
 </head>
 @using UtThienWeb.Controllers;
 
@@ -68,7 +77,6 @@
         </div>
         <div class="navbar-collapse collapse" id="navbarCustom" style="">
             <ul class="navbar-nav mr-auto">
-
                 @foreach (var item in (IEnumerable<UtThienWeb.Models.Menu>)HttpContext.Current.Application["menu"])
                 {
                     if (item.MenuSubLi == null && item.Menu1.Count > 0 && item.MenuLiId != 2)
@@ -105,12 +113,10 @@
                             <a class="nav-link" href="@item.MenuUrl">@item.MenuLiName</a>
                         </li>
                     }
-
-
-
                 }
             </ul>
         </div>
+
         <div class="pull-right" style="display: block;">
             <div class="icon-menu search-box">
                 <form class="search-form" action="/Home/Search">
@@ -123,7 +129,9 @@
                 <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><label>@Html.Raw(Session["user"])</label></a>
             </div>
         </div>
-
+        <button id="button-toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCustom" aria-expanded="false">
+            <i class="fa fa-bars fa-lg py-1 text-white"></i>
+        </button>
 
 
     </nav>
