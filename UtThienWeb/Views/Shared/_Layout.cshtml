@@ -57,7 +57,10 @@
     </div>
 
     <!-- Header section  -->
-    <nav class="navbar navbar-expand-xl navbar-custom">
+    <nav class="navbar navbar-expand-xl navbar-custom" id="navbarmenu">
+        <button id="button-toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCustom" aria-expanded="false">
+            <i class="fa fa-bars fa-lg py-1 text-white"></i>
+        </button>
         <div class="logo-box">
             <a class="navbar-brand" href="../">
                 <img class="logo" src="/img/logo.png" alt="">
@@ -117,13 +120,11 @@
             </div>
 
             <div class="icon-menu user-login">
-                <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><span>@Html.Raw(Session["user"])</span></a>
+                <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><label>@Html.Raw(Session["user"])</label></a>
             </div>
         </div>
 
-        <button id="button-toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCustom" aria-expanded="false">
-            <i class="fa fa-bars fa-lg py-1 text-white"></i>
-        </button>
+
 
     </nav>
     <!-- Header section end  -->
@@ -328,21 +329,21 @@
                     <ul class="f-address">
                         <li>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 footer-sp">
                                     <a href="//khoa-banh-au-gia-dinh"><h6 class="font-weight-bold mb-0">KHÓA BÁNH ÂU GIA ĐÌNH</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 footer-sp">
                                     <a href="//khoa-banh-chuyen-sau"><h6 class="font-weight-bold mb-0">KHÓA BÁNH CHUYÊN SÂU</h6></a>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 footer-sp">
                                     <a href="//khoa-banh-ngoai-khoa"><h6 class="font-weight-bold mb-0">KHÓA BÁNH NGOẠI KHÓA</h6></a>
                                 </div>
                             </div>

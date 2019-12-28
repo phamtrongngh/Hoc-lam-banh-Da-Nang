@@ -25,7 +25,7 @@ namespace UtThienWeb.Controllers
 
             if (Session["current_user"] == null)
             {
-                Session["user"] = "<a href='' class='cart-btn' data-target='#login' data-toggle='modal'><i class='fa fa-user'></i><span>Đăng nhập</span></a>";
+                Session["user"] = "<a href='' class='cart-btn' data-target='#login' data-toggle='modal'><i class='fa fa-user'></i><span class='login-text'>Đăng nhập</span></a>";
             }
             else
             {

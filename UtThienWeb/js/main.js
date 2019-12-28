@@ -206,7 +206,8 @@
             recalculateCart();
         });
     }
-    
+   
+
 })
 jQuery(document).ready(function ($) {
     if ($(".lentop").length > 0) {
@@ -226,19 +227,25 @@ jQuery(document).ready(function ($) {
     }
 });
 jQuery(document).ready(function ($) {
-    if ($(".lentop1").length > 0) {
+    if ($("#navbarmenu").length > 0) {
         $(window).scroll(function () {
             var e = $(window).scrollTop();
             if (e > 300) {
-                $(".lentop1").show()
+                $("#navbarmenu").css("opacity", "0.5");
+                $("#navbarmenu").hover(function () {
+                    $(this).css("opacity", "1");
+                }, function () {
+                    $(this).css("opacity", "0.5");
+                });
             } else {
-                $(".lentop1").hide()
+                $("#navbarmenu").css("opacity", "1");
+                $("#navbarmenu").hover(function () {
+                    $(this).css("opacity", "1");
+                }, function () {
+                    $(this).css("opacity", "1");
+                });
+                
             }
-        });
-        $(".lentop1").click(function () {
-            $('body,html').animate({
-                scrollTop: 0
-            })
         })
     }
-});
+    });

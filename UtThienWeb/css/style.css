@@ -810,6 +810,34 @@ td {
         width: 100%;
     }
 }
+.login-text{
+    margin-left:4px;
+}
+@media screen and (max-width: 414px) {
+    .login-text {
+        display:none;
+    }
+    .search-form:hover {
+        width: 100px;
+        
+    }
+    .info-website{
+        text-align:center;
+    }
+
+}
+@media screen and (max-width: 1024px) {
+    .pull-right {
+        
+        margin-right: 10px !important;
+    }
+    .img-hoc-vien {
+        
+        filter: grayscale(0) !important;
+        
+    }
+
+}
 @media screen and (max-width: 375px) {
     ..bottom-ft {
         text-align: center;
@@ -1058,7 +1086,7 @@ td {
 @media screen and (max-width: 1200px) {
     .overlay-w3ls {
         
-        min-height: 1000px;
+        min-height: 747px;
     }
 }
 
@@ -1190,9 +1218,10 @@ td {
         top: -10px;
     }
 
-    .img-hoc-vien1:hover {
-        opacity:0.7;
-    }
+.img-hoc-vien1:hover {
+    opacity: 0.7;
+    z-index: 9999;
+}
 .text-top-huongnghiep {
     font-size: 28px;
     font-weight: 400;
@@ -1941,10 +1970,7 @@ ul.breadcrumb {
     margin-right: 1%;
 }
 
-.pull-right {
-    position: relative;
-    margin-right: 30px;
-}
+
 
 .navbar-expand-xl .navbar-collapse {
     margin-left: -2%;
