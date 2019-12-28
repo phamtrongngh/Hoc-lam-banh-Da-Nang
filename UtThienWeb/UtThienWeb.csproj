@@ -238,7 +238,6 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CunghoclambanhController.cs" />
-    <Compile Include="Controllers\CoursesNewsRouteHandler.cs" />
     <Compile Include="Controllers\HoatdonghocvienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LichhocController.cs" />
@@ -278,6 +277,10 @@
     <Compile Include="Migrations\201912260415323_add-OrderStatus.cs" />
     <Compile Include="Migrations\201912260415323_add-OrderStatus.designer.cs">
       <DependentUpon>201912260415323_add-OrderStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912280532320_course count.cs" />
+    <Compile Include="Migrations\201912280532320_course count.designer.cs">
+      <DependentUpon>201912280532320_course count.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -502,6 +505,7 @@
     <Content Include="Areas\Admin\Views\Forms\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Courses\Search.cshtml" />
     <Content Include="Areas\Admin\Views\News\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DashBoard.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -673,6 +677,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912260415323_add-OrderStatus.resx">
       <DependentUpon>201912260415323_add-OrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912280532320_course count.resx">
+      <DependentUpon>201912280532320_course count.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

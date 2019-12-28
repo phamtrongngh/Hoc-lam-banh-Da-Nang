@@ -74,7 +74,6 @@
         </div>
         <div class="navbar-collapse collapse" id="navbarCustom" style="">
             <ul class="navbar-nav mr-auto">
-
                 @foreach (var item in (IEnumerable<UtThienWeb.Models.Menu>)HttpContext.Current.Application["menu"])
                 {
                     if (item.MenuSubLi == null && item.Menu1.Count > 0 && item.MenuLiId != 2)
@@ -111,12 +110,10 @@
                             <a class="nav-link" href="@item.MenuUrl">@item.MenuLiName</a>
                         </li>
                     }
-
-
-
                 }
             </ul>
         </div>
+
         <div class="pull-right" style="display: block;">
             <div class="icon-menu search-box">
                 <form class="search-form" action="/Home/Search">
@@ -129,10 +126,10 @@
                 <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><span>@Html.Raw(Session["user"])</span></a>
             </div>
         </div>
-
         <button id="button-toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCustom" aria-expanded="false">
             <i class="fa fa-bars fa-lg py-1 text-white"></i>
         </button>
+
 
     </nav>
     <!-- Header section end  -->

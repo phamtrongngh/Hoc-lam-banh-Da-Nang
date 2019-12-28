@@ -21,11 +21,11 @@ namespace UtThienWeb.Areas.Admin.Controllers
             var newList = new List<News>();
             if (id == null)
             {
-                newList = db.News.ToList();
+                newList = db.News.OrderByDescending(a=>a.NewsDate).ToList();
             }
             else
             {
-                newList = db.News.Where(a=>a.NewsTypeId==id).ToList();
+                newList = db.News.OrderByDescending(a => a.NewsDate).Where(a=>a.NewsTypeId==id).ToList();
             }
             foreach (var item in newList)
             {

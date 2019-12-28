@@ -22,11 +22,11 @@ namespace UtThienWeb.Areas.Admin.Controllers
             var courseList = new List<Course>();
             if (id == null)
             {
-                courseList = db.Courses.ToList();
+                courseList = db.Courses.OrderByDescending(a=>a.TimeCreate).ToList();
             }
             else
             {
-                courseList = db.Courses.Where(a => a.CourseCatalogId == id).ToList();
+                courseList = db.Courses.OrderByDescending(a => a.TimeCreate).Where(a => a.CourseCatalogId == id).ToList();
             }
             foreach (var item in courseList)
             {
