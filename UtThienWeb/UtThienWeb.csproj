@@ -286,6 +286,10 @@
     <Compile Include="Migrations\201912280544230_delete.designer.cs">
       <DependentUpon>201912280544230_delete.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912280547029_addcoutercouse.cs" />
+    <Compile Include="Migrations\201912280547029_addcoutercouse.designer.cs">
+      <DependentUpon>201912280547029_addcoutercouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
@@ -687,6 +691,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912280544230_delete.resx">
       <DependentUpon>201912280544230_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912280547029_addcoutercouse.resx">
+      <DependentUpon>201912280547029_addcoutercouse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -39,7 +39,7 @@ namespace UtThienWeb.Controllers
 
                 return View("ShowDetailsCourses", course);
             }
-            News news = (from s in db.News select s).AsEnumerable().SingleOrDefault(a => HomeController.RemoveUnicode(a.NewsTitle) == name);
+            News news = (from s in db.News select s).AsEnumerable().FirstOrDefault(a => HomeController.RemoveUnicode(a.NewsTitle) == name);
             if (news != null)
             {
 
@@ -63,6 +63,10 @@ namespace UtThienWeb.Controllers
                 else if(order.Equals("price"))
                 {
                     courses=courses.OrderByDescending(a => a.CoursePrice).ToList();
+                }
+                else if(order.Equals("hot"))
+                {
+                    courses = courses.OrderByDescending(a => a.CourseCountOrder).ToList();
                 }
                 ViewBag.catalog = catalog;
                 ViewBag.pagination = Math.Ceiling((decimal)courses.Count / 9);
