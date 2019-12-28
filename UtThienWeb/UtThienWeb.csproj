@@ -282,6 +282,10 @@
     <Compile Include="Migrations\201912280532320_course count.designer.cs">
       <DependentUpon>201912280532320_course count.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912280544230_delete.cs" />
+    <Compile Include="Migrations\201912280544230_delete.designer.cs">
+      <DependentUpon>201912280544230_delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
@@ -680,6 +684,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912280532320_course count.resx">
       <DependentUpon>201912280532320_course count.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912280544230_delete.resx">
+      <DependentUpon>201912280544230_delete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
