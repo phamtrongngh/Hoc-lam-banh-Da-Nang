@@ -70,21 +70,23 @@
          logged_out_greeting="Hi! Bạn cần giúp đỡ gì?">
     </div>
 
-    <nav class="navbar navbar-expand-xl navbar-custom">
+    <nav class="navbar navbar-expand-xl navbar-custom" id="navbarmenu">
+        <button id="button-toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCustom" aria-expanded="false">
+            <i class="fa fa-bars fa-lg py-1 text-white"></i>
+        </button>
         <div class="logo-box">
             <a class="navbar-brand" href="../">
-                <img class="logo" src="~/img/logo.png" alt="">
+                <img class="logo" src="/img/logo.png" alt="">
             </a>
         </div>
-        <div class="collapse navbar-collapse" id="navbarCustom" style="height: 20px;">
+        <div class="navbar-collapse collapse" id="navbarCustom" style="">
             <ul class="navbar-nav mr-auto">
-
                 @foreach (var item in (IEnumerable<UtThienWeb.Models.Menu>)HttpContext.Current.Application["menu"])
                 {
                     if (item.MenuSubLi == null && item.Menu1.Count > 0 && item.MenuLiId != 2)
                     {
                         <li class="nav-item dropdown" data-toggle="dropdown">
-                            <a class="nav-link dropdown-toggle" id="@item.MenuUrl" href="@item.MenuUrl" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @item.MenuLiName
                             </a>
                             <div class="dropdown-menu" style="width:225px">
@@ -118,8 +120,8 @@
                 }
             </ul>
         </div>
-        <div class="pull-right" id="icon-pullright">
 
+        <div class="pull-right" style="display: block;">
             <div class="icon-menu search-box">
                 <form class="search-form" action="/Home/Search">
                     <input type="search" name="keyword" class="search">
@@ -128,18 +130,11 @@
             </div>
 
             <div class="icon-menu user-login">
-                <a href="" class="cart-btn" data-target="#login" data-toggle="modal">
-                    <span class="login-text">@Html.Raw(Session["user"])</span>
-                </a>
+                <a href="" class="cart-btn" data-target="#login" data-toggle="modal"><label>@Html.Raw(Session["user"])</label></a>
             </div>
         </div>
-        <div>
-            <button class="navbar-toggler" id="buttonHide" type="button" data-toggle="collapse" data-target="#navbarCustom">
-                <i class="fa fa-bars fa-lg py-1 text-white"></i>
 
-            </button>
 
-        </div>
 
     </nav>
     <!-- Header section end  -->
@@ -373,10 +368,10 @@
                     <div class="list-menu-bft">
 
                         <ul class="social-pet mt-4">
-                            <li><a href="https://www.facebook.com/HocLamBanhDaNang/" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#" title="youtube"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="#" title="instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/HocLamBanhDaNang/" title="facebook" style="padding-top: 0!important;"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" title="twitter" style="padding-top: 0!important;"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" title="youtube" style="padding-top: 0!important;"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#" title="instagram" style="padding-top: 0!important;"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

@@ -805,12 +805,14 @@ td {
     }
 }
 
-@media screen and (max-width: 576px) {
-    #iframefacebook {
-        width: 100%;
+
+    @media screen and (max-width: 576px) {
+        #iframefacebook {
+            width: 100%;
+        }
     }
-}
-.login-text{
+
+    .login-text{
     margin-left:4px;
 }
 @media screen and (max-width: 414px) {
