@@ -826,7 +826,21 @@ td {
     .info-website{
         text-align:center;
     }
-
+    .social-pet {
+        float: none !important;
+        text-align: center;
+        padding-left: 0px;
+    }
+    .totals .totals-item label {
+        width: 60% !important;
+    }
+    .totals .totals-item .totals-value {
+        width: 40% !important;
+    }
+    .product-line-price {
+       
+        width: 103px !important;
+    }
 }
 @media screen and (max-width: 1024px) {
     .pull-right {
@@ -2692,6 +2706,7 @@ a:hover {
 .product-price {
     float: left;
     width: 12%;
+    color:white;
 }
 
 .product-quantity {
@@ -2702,12 +2717,14 @@ a:hover {
 .product-removal {
     float: left;
     width: 9%;
+    text-align: center;
 }
 
 .product-line-price {
     float: left;
     width: 12%;
     text-align: right;
+    color:white;
 }
 
 /* This is used as the traditional .clearfix class */
@@ -2764,7 +2781,9 @@ label {
 }
 
 .shopping-cart {
-    margin-top: -45px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
 }
 
 /* Column headers */
@@ -2796,6 +2815,9 @@ label {
     .product .product-details .product-title {
         margin-right: 20px;
         font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+        color: white;
+        font-size: 20px;
+        text-align:center;
     }
 
     .product .product-details .product-description {
@@ -2831,6 +2853,7 @@ label {
     clear: both;
     width: 100%;
     margin-bottom: 10px;
+    font-size:20px;
 }
 
     .totals .totals-item label {
@@ -2844,6 +2867,7 @@ label {
         float: right;
         width: 21%;
         text-align: right;
+        color:white;
     }
 
 .totals .totals-item-total {
@@ -2853,11 +2877,9 @@ label {
 .checkout {
     float: right;
     border: 0;
-    margin-top: 20px;
-    padding: 6px 25px;
-    background-color: #6b6;
+    background-color: #ea3535;
     color: #fff;
-    font-size: 25px;
+    
     border-radius: 3px;
 }
 
@@ -2868,7 +2890,7 @@ label {
 /* Make adjustments for tablet */
 @media screen and (max-width: 650px) {
     .shopping-cart {
-        margin: 0;
+       
         padding-top: 20px;
         border-top: 1px solid #eee;
     }
@@ -2895,6 +2917,7 @@ label {
     .product-price {
         clear: both;
         width: 70px;
+        
     }
 
     .product-quantity {
@@ -2921,7 +2944,7 @@ label {
 /* Make more adjustments for phone */
 @media screen and (max-width: 350px) {
     .product-removal {
-        float: right;
+        margin-left: 30px;
     }
 
     .product-line-price {
@@ -2932,7 +2955,7 @@ label {
     }
 
     .product .product-line-price:before {
-        content: 'Item Total: $';
+        content: 'Item Total: ';
     }
 
     .totals .totals-item label {

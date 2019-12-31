@@ -9,40 +9,54 @@
     }
 </style>
 @using UtThienWeb.Controllers;
-<div class="body-cart">
-    <div class="shopping-cart">
-        <div>
-            <div class="column-labels">
-                <label class="product-image"></label>
-                <label class="product-details">Tên chuyên đề khóa học</label>
-                <label class="product-price">Giá</label>
-                <label class="product-removal">Xóa khỏi giỏ hàng</label>
-            </div>
-            <div class="container">
-                @foreach (var item in (List<UtThienWeb.Models.Course>)Session["cart"])
-                {
-                    <div class="row a" style="background: rgba(0,0,0,0.3)">
-                        <div class="col-md-3 s">
-                            <img src="~/img/@item.CourseThumbails" height="150px" width="100%">
-                        </div>
-                        <div class="col-md-3 s">
-                            <a class="title-cart" href="../chi-tiet-khoa-hoc/@HomeController.RemoveUnicode(item.CourseName)">@item.CourseName</a>
+<h1>Shopping Cart</h1>
 
-                        </div>
-                        <div class="col-md-3 s"><p style="font-size:20px;margin-top:25%">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice) đ</p></div>
-                        <div class="product-removal col-md-3 s">
-                            <button style="margin-top:25%" id=@item.CourseId class="remove-product btn btn-danger">
-                                Xóa khỏi giỏ hàng
-                            </button>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-        <button class="checkout btn-create-order">Đặt Khóa Học</button>
+<div class="shopping-cart">
+
+    <div class="column-labels">
+        <label class="product-image">Image</label>
+        <label class="product-details">Product</label>
+        <label class="product-price">Price</label>
+        <label class="product-quantity">Quantity</label>
+        <label class="product-removal">Remove</label>
+        <label class="product-line-price">Total</label>
     </div>
-    <!--====== Javascripts & Jquery ======-->
+    @foreach (var item in (List<UtThienWeb.Models.Course>)Session["cart"])
+    {
+        <div class="product">
+
+            <div class="product-image">
+                <img src="~/img/@item.CourseThumbails">
+            </div>
+            <div class="product-details">
+                <div class="product-title">@item.CourseName</div>
+
+            </div>
+            <div class="product-price">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice)đ</div>
+            <div class="product-quantity">
+                <input type="number" value="1" min="1">
+            </div>
+            <div class="product-removal">
+                <button id=@item.CourseId class="remove-product">
+                    Remove
+                </button>
+            </div>
+            <div class="product-line-price"> đ</div>
+
+        </div>
+    }
+    <div class="totals">
+        <div class="totals-item">
+            <label>Subtotal</label>
+            <div class="totals-value" id="cart-subtotal">71.97</div>
+        </div>
+
+    </div>
+    <button class="btn btn-success">Trở về</button>
+    <button class=" btn checkout btn-create-order">Đặt khóa học</button>
+
 </div>
+
 <form action="/Courses/OrderAnonymoues" method="post" class="modal fade" id="modalinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -87,13 +101,13 @@
             }
             else
             {
-                
+
                 <text>
             alert("Cảm ơn bạn đã đặt khóa học, Út Thiện sẽ liên hệ với bạn ngay!");
             location.href="/Courses/Order"
                 </text>
             }
-            
+
         })
     })
 </script>
