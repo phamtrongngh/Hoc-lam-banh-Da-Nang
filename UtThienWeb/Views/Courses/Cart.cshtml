@@ -14,12 +14,12 @@
 <div class="shopping-cart">
 
     <div class="column-labels">
-        <label class="product-image">Image</label>
-        <label class="product-details">Product</label>
-        <label class="product-price">Price</label>
-        <label class="product-quantity">Quantity</label>
-        <label class="product-removal">Remove</label>
-        <label class="product-line-price">Total</label>
+        <label class="product-image">-</label>
+        <label class="product-details">Tên khóa</label>
+        <label class="product-price">Giá</label>
+        <label class="product-quantity">Số lượng</label>
+        <label class="product-removal">-</label>
+        <label class="product-line-price">Tổng cộng</label>
     </div>
     @foreach (var item in (List<UtThienWeb.Models.Course>)Session["cart"])
     {
@@ -38,7 +38,7 @@
             </div>
             <div class="product-removal">
                 <button id=@item.CourseId class="remove-product">
-                    Remove
+                    Xóa
                 </button>
             </div>
             <div class="product-line-price"> đ</div>
@@ -47,8 +47,8 @@
     }
     <div class="totals">
         <div class="totals-item">
-            <label>Subtotal</label>
-            <div class="totals-value" id="cart-subtotal">71.97</div>
+            <label>Tổng thành tiền</label>
+            <div class="totals-value" id="cart-subtotal"></div>
         </div>
 
     </div>
