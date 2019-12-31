@@ -41,7 +41,7 @@ namespace UtThienWeb.Models
         public int CourseCountOrder { get; set; }
         [StringLength(50)]
         public string CourseImagesList { get; set; }
-        public int? CourseQuantity { get; set; }
+        
         public int CourseCatalogId { get; set; }
 
         [Required]

@@ -32,16 +32,16 @@
                 <div class="product-title">@item.CourseName</div>
 
             </div>
-            <div class="product-price">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice)đ</div>
+            <div class="product-price">@String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.CoursePrice)</div>
             <div class="product-quantity">
-                <input type="number" value="1" min="1">
+                <input type="number" class="@item.CourseId" min="1" value="1">
             </div>
             <div class="product-removal">
                 <button id=@item.CourseId class="remove-product">
                     Xóa
                 </button>
             </div>
-            <div class="product-line-price"> đ</div>
+            <div class="product-line-price product-line-prices">@item.CoursePrice</div>
 
         </div>
     }
@@ -50,7 +50,6 @@
             <label>Tổng thành tiền</label>
             <div class="totals-value" id="cart-subtotal"></div>
         </div>
-
     </div>
     <button class="btn btn-success">Trở về</button>
     <button class=" btn checkout btn-create-order">Đặt khóa học</button>
@@ -84,7 +83,7 @@
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-danger" style="width:20%">Đặt khóa</button>
+                <button onclick="alert('Cảm ơn bạn đã đặt khóa học, Út Thiện sẽ liên hệ với bạn ngay!')" class="btn btn-danger buy-button-cart" style="width:20%">Đặt khóa</button>
             </div>
         </div>
     </div>
@@ -104,10 +103,33 @@
 
                 <text>
             alert("Cảm ơn bạn đã đặt khóa học, Út Thiện sẽ liên hệ với bạn ngay!");
-            location.href="/Courses/Order"
+            location.href = "/Courses/Order";
                 </text>
             }
+        })
+        $(".product-quantity").change(function () {
+             
+            var value = $(this).find("input").val();
+            var price = parseFloat($(this).prev(".product-price").html());
+            $.ajax({
+                type: "POST",
+                url: "/Courses/ChangeQuantity/",
+                data: {
+                    quantity: value,
+                    id: $(this).next().find("button").attr("id")
+                }
+            }).done(function (result) {
+         
+            })
+            $(this).nextAll(".product-line-prices").html((value * price*1000));
+            var sum = 0;
+            $(".product-line-prices").each(function() {
+                var values = parseFloat($(this).text());
+                sum += values;
+            });
+            $(".totals-value").html(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
         })
+
     })
 </script>

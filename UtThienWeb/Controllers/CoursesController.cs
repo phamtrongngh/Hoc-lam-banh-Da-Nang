@@ -7,7 +7,7 @@ using UtThienWeb.Models;
 namespace UtThienWeb.Controllers
 {
     delegate string dele(string name);
-    
+
     public class CoursesController : CommonController
     {
         ModelCakes db = new ModelCakes();
@@ -56,7 +56,7 @@ namespace UtThienWeb.Controllers
             }
             return View();
         }
-        
+
         [HttpPost]
         public JsonResult PutToCart(int id)
         {
@@ -73,8 +73,25 @@ namespace UtThienWeb.Controllers
                 }
             }
             if (t)
-                ((List<Course>)Session["cart"]).Add(db.Courses.Find(id));
+            {
+                var s = db.Courses.Find(id);
+                s.CourseCountOrder = 1;
+                ((List<Course>)Session["cart"]).Add(s);
+            }
             return Json(((List<Course>)Session["cart"]).Count);
+        }
+        [HttpPost]
+        public JsonResult ChangeQuantity(int quantity, int id)
+        {
+            foreach (var item in (List<Course>)Session["cart"])
+            {
+                if (item.CourseId == id)
+                {
+                    item.CourseCountOrder = quantity;
+                    break;
+                }
+            }
+            return Json("");
         }
         public ActionResult Cart()
         {
@@ -88,9 +105,9 @@ namespace UtThienWeb.Controllers
             {
                 var idAccount = db.Accounts.Add(new Account { AccountName = name, AccountPhone = phone, AccountEmail = email }).AccountId;
                 var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = idAccount }).OrderId;
-                foreach (var item in (IEnumerable<Course>)Session["cart"])
+                foreach (var item in (IEnumerable<Course>) Session["cart"])
                 {
-                    db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
+                    db.OrderDetails.Add(new OrderDetail{ CourseId = item.CourseId, OrderId = idOrder, OrderQuantity=item.CourseCountOrder });
                     db.Courses.Find(item.CourseId).CourseCountOrder++;
                 }
 
@@ -111,7 +128,7 @@ namespace UtThienWeb.Controllers
                 var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = ((Account)Session["current_user"]).AccountId }).OrderId;
                 foreach (var item in (IEnumerable<Course>)Session["cart"])
                 {
-                    db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder });
+                    db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder, OrderQuantity=item.CourseCountOrder });
                     db.Courses.Find(item.CourseId).CourseCountOrder++;
                 }
 

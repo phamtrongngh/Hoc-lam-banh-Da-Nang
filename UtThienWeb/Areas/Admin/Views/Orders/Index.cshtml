@@ -30,7 +30,7 @@
                                         Vào lúc
                                     </th>
                                     <th>
-                                        Chuyên Đề Đã Đặt
+                                        Chuyên Đề Và Số Lượng
                                     </th>
                                     <th>
                                         Tình Trạng
@@ -55,12 +55,14 @@
                                             @item.CreationDate
                                         </td>
                                         <td>
-                                            <table class="table">
-
+                                            <table class="table" border="1">
+             
                                                 @foreach (var subitem in item.OrderDetails)
                                                 {
+
                                                     <tr>
                                                         <td>@subitem.Course.CourseName</td>
+                                                        <td>@subitem.OrderQuantity</td>
                                                     </tr>
                                                 }
                                             </table>
@@ -77,8 +79,8 @@
                                         <td>
                                             <form action="/Admin/Orders/Apply" method="post">
                                                 <input hidden type="number" name="id" value="@item.OrderId" />
-                                                <button name="apply" value="success" style="font-size:12px;padding:4px 6px 6px 4px !important" onclick="" class="btn btn-primary">Thành công</button>
-                                                <button name="apply" value="failed" style="font-size:12px;padding:4px 6px 6px 4px !important" class="btn btn-primary">Hủy đơn</button>
+                                                <button  name="apply" value="success" style="font-size:12px;padding:4px 4px !important;" onclick="" class="btn btn-primary">Thành công</button>
+                                                <button name="apply" value="failed" style="font-size:12px;padding:4px 15px !important" class="btn btn-primary">Hủy đơn</button>
                                             </form>
                                         </td>
                                     </tr>

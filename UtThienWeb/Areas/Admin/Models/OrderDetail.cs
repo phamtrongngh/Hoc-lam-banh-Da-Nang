@@ -14,7 +14,7 @@ namespace UtThienWeb.Areas.Admin.Models
 
         [Key]
         public int OrderDetailsId { get; set; }
-
+        public int? OrderQuantity { get; set; }
         public virtual Course Course { get; set; }
 
         public virtual Order Order { get; set; }

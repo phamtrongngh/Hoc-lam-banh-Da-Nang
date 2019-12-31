@@ -290,6 +290,14 @@
     <Compile Include="Migrations\201912280547029_addcoutercouse.designer.cs">
       <DependentUpon>201912280547029_addcoutercouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912311020387_CourseQuantity.cs" />
+    <Compile Include="Migrations\201912311020387_CourseQuantity.designer.cs">
+      <DependentUpon>201912311020387_CourseQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912311105312_edit-quantity.cs" />
+    <Compile Include="Migrations\201912311105312_edit-quantity.designer.cs">
+      <DependentUpon>201912311105312_edit-quantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
@@ -694,6 +702,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912280547029_addcoutercouse.resx">
       <DependentUpon>201912280547029_addcoutercouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912311020387_CourseQuantity.resx">
+      <DependentUpon>201912311020387_CourseQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912311105312_edit-quantity.resx">
+      <DependentUpon>201912311105312_edit-quantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
