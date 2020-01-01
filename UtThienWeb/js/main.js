@@ -138,9 +138,15 @@
             url: "/Courses/RemoveCart/",
             data: { id: $(this).attr("id") },
             success: function (e) {
-
+                var sum = 0;
+                $(".product-line-prices").each(function () {
+                    var values = parseFloat($(this).text());
+                    sum += values;
+                });
+                $(".totals-value").html((sum - e).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             }
         })
+        
     });
     ///* Recalculate cart */
     //function recalculateCart() {
@@ -188,7 +194,6 @@
         var productRow = $(removeButton).parent().parent();
         productRow.slideUp(fadeTime, function () {
             productRow.remove();
-            recalculateCart();
         });
     }
    

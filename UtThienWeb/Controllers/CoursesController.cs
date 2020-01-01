@@ -144,15 +144,17 @@ namespace UtThienWeb.Controllers
         [HttpPost]
         public JsonResult RemoveCart(int id)
         {
+            int re=1;
             foreach (var item in ((List<Course>)Session["cart"]))
             {
                 if (item.CourseId == id)
                 {
                     ((List<Course>)Session["cart"]).Remove(item);
+                    re = (int)item.CoursePrice * item.CourseCountOrder;
                     break;
                 }
             }
-            return Json("");
+            return Json(re);
         }
     }
 }
