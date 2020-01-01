@@ -91,6 +91,12 @@
 <input class="btn btn-danger btn-show-modal" hidden data-toggle="modal" data-target="#modalinfo">
 <script>
     $(document).ready(function () {
+        var sum = 0;
+            $(".product-line-prices").each(function() {
+                var values = parseFloat($(this).text());
+                sum += values;
+            });
+        $(".totals-value").html(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") );
         $(".btn-create-order").click(function () {
             @if (Session["current_user"] == null)
             {
