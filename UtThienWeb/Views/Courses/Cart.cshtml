@@ -51,7 +51,7 @@
             <div class="totals-value" id="cart-subtotal"></div>
         </div>
     </div>
-    <button class="btn btn-success">Trở về</button>
+
     <button class=" btn checkout btn-create-order">Đặt khóa học</button>
 
 </div>
@@ -88,7 +88,40 @@
         </div>
     </div>
 </form>
+<form action="/Courses/Order" method="post" class="modal fade" id="modalinfo2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Thông tin liên hệ</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="orangeForm-name"><i class="fas fa-user prefix grey-text"></i> Họ tên </label>
+                    <input type="text" required  name="name" class="form-control validate">
+                </div>
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="orangeForm-email"><i class="fas fa-envelope prefix grey-text"></i> Email</label>
+                    <input type="email" required  name="email" class="form-control validate">
+                </div>
+
+                <div class="md-form mb-4">
+                    <label data-error="wrong" data-success="right" for="orangeForm-pass"><i class="fa fa-phone-volume"></i> Số điện thoại</label>
+                    <input type="text" required  name="phone" class="form-control validate">
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button onclick="alert('Cảm ơn bạn đã đặt khóa học, Út Thiện sẽ liên hệ với bạn ngay!')" class="btn btn-danger buy-button-cart" style="width:20%">Đặt khóa</button>
+            </div>
+        </div>
+    </div>
+</form>
 <input class="btn btn-danger btn-show-modal" hidden data-toggle="modal" data-target="#modalinfo">
+<input class="btn btn-danger btn-show-modal2" hidden data-toggle="modal" data-target="#modalinfo2">
 <script>
     $(document).ready(function () {
         var sum = 0;
@@ -101,16 +134,23 @@
             @if (Session["current_user"] == null)
             {
                     <text>
-                $(".btn-show-modal").click();
+            $(".btn-show-modal").click();
                     </text>
             }
             else
             {
-
+                if ((((UtThienWeb.Models.Account)Session["current_user"])).AccountPhone == null)
+                {
+                    <text>
+            $(".btn-show-modal2").click();
+                    </text>
+                }
+                else { 
                 <text>
             alert("Cảm ơn bạn đã đặt khóa học, Út Thiện sẽ liên hệ với bạn ngay!");
             location.href = "/Courses/Order";
                 </text>
+                    }
             }
         })
         $(".product-quantity").change(function () {
@@ -136,6 +176,8 @@
             $(".totals-value").html(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
         })
+        $(".buy-button-cart").click(function () {
 
+        })
     })
 </script>

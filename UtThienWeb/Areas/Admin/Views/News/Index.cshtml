@@ -3,92 +3,111 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid">
-    <form class="navbar-form" action="/Admin/News/Search">
-        <span class="bmd-form-group">
-            <div class="input-group no-border">
-                <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm...">
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                    <i class="material-icons">search</i>
-                    <div class="ripple-container"></div>
-                </button>
-            </div>
-        </span>
-    </form>
-
-    <select onchange="location = this.value;" style="padding-left:10px">
-        <option>Lọc loại bài viết </option>
-        @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.NewsCatalog>)ViewBag.catalog)
-        {
-
-            <option value="/Admin/News/Index/@item.NewsCatalogId">
-                @item.NewsCatalogName
-            </option>
-        }
-
-    </select>
-    <i class="fa fa-caret-down"></i>
-    <div class="row">
-
-        <div class="col-md-12">
-
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Quản Lí Bài Viết</h4>
+    <div class="container-fluid">
+        <form class="navbar-form" action="/Admin/News/Search">
+            <span class="bmd-form-group">
+                <div class="input-group no-border">
+                    <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm...">
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
                 </div>
+            </span>
+        </form>
 
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                            <th>
-                                Hình Tiêu Đề
-                            </th>
-                            <th>
-                                Tiêu Đề
-                            </th>
-                            <th>
-                                Tác Giả
-                            </th>
-                            <th>
-                                Ngày Đăng
-                            </th>
-                            <th>
-                                Loại Bài Viết
-                            </th>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            <img src="~/img/@item.NewsThumbails" width="100" height="100" />
-                                        </td>
-                                        <td>
-                                            @item.NewsTitle
-                                        </td>
-                                        <td>
-                                            @item.NewsAuthor
-                                        </td>
-                                        <td>
-                                            @item.NewsDate
-                                        </td>
-                                        <td class="text-primary">
-                                            @item.NewsCatalog.NewsCatalogName
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Chỉnh Sửa Bài Viết", "EditNews", "News", new { NewsId = item.NewsId }, null)
-                                        </td>
-                                    </tr>
-                                }
+        <select onchange="location = this.value;" style="padding-left:10px">
+            <option>Lọc loại bài viết </option>
+            @foreach (var item in (IEnumerable<UtThienWeb.Areas.Admin.Models.NewsCatalog>)ViewBag.catalog)
+            {
+
+                <option value="/Admin/News/Index/@item.NewsCatalogId">
+                    @item.NewsCatalogName
+                </option>
+            }
+
+        </select>
+        <i class="fa fa-caret-down"></i>
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Quản Lí Bài Viết</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <th>
+                                    Hình Tiêu Đề
+                                </th>
+                                <th>
+                                    Tiêu Đề
+                                </th>
+                                <th>
+                                    Tác Giả
+                                </th>
+                                <th>
+                                    Ngày Đăng
+                                </th>
+                                <th>
+                                    Loại Bài Viết
+                                </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="~/img/@item.NewsThumbails" width="100" height="100" />
+                                            </td>
+                                            <td>
+                                                @item.NewsTitle
+                                            </td>
+                                            <td>
+                                                @item.NewsAuthor
+                                            </td>
+                                            <td>
+                                                @item.NewsDate
+                                            </td>
+                                            <td class="text-primary">
+                                                @item.NewsCatalog.NewsCatalogName
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Chỉnh Sửa Bài Viết", "EditNews", "News", new { NewsId = item.NewsId }, null)
+                                            </td>
+                                        </tr>
+                                    }
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <nav aria-label="Something.." class="pagenumber">
+            <ul class="pagination justify-content-end">
+                <li class="page-item">
+                    <a class="page-link" href="/Admin/News/Index?trang=1">Đầu</a>
+                </li>
+                @for (var i = (int.Parse(ViewBag.trang)) - 2; i <= (int.Parse(ViewBag.trang)) + 2; i++)
+                {
+                    if (i > 0 && i <= ViewBag.pagination)
+                    {
+                        <li class="page-item">
+                            <a class="page-link page-link-@i" href="/Admin/News/Index?trang=@i">@i</a>
+                        </li>
+                    }
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/Admin/News/Index?trang=@ViewBag.pagination">Cuối</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-</div>
 

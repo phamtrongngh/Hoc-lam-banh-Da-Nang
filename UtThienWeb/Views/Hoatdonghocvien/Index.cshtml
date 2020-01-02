@@ -93,12 +93,21 @@
                     </div>
                     <nav aria-label="Something.." class="pagenumber">
                         <ul class="pagination justify-content-end">
-                            @for (int i = 1; i <= ViewBag.pagination; i++)
+                            <li class="page-item">
+                                <a class="page-link" href="/hoat-dong-hoc-vien?trang=1">Đầu</a>
+                            </li>
+                            @for (var i = (int.Parse(ViewBag.trang)) - 2; i <= (int.Parse(ViewBag.trang)) + 2; i++)
                             {
-                                <li class="page-item">
-                                    <a class="page-link" href="/hoat-dong-hoc-vien?trang=@i">@i</a>
-                                </li>
+                                if (i > 0 && i <= ViewBag.pagination)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link page-link-@i" href="/hoat-dong-hoc-vien?trang=@i">@i</a>
+                                    </li>
+                                }
                             }
+                            <li class="page-item">
+                                <a class="page-link" href="/hoat-dong-hoc-vien?trang=@ViewBag.pagination">Cuối</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -116,5 +125,6 @@
                 data: { id: $(this).attr("id") }
             })
         })
+         $(".page-link-@(int.Parse(ViewBag.trang))").css({"color":"red","font-weight":"bold"});
     })
 </script>

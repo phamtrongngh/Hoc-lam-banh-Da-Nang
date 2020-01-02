@@ -13,7 +13,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
     {
         ModelCakes db = new ModelCakes();
         ModelCakes db2 = new ModelCakes();
-        public ActionResult Index(int? id,string keyword)
+        public ActionResult Index(int? id,string keyword,string trang)
         {
             if (Session["uName"] == null)
             {
@@ -34,6 +34,13 @@ namespace UtThienWeb.Areas.Admin.Controllers
 
             }
             ViewBag.catalog = db.CourseCatalogs;
+            ViewBag.pagination = Math.Ceiling(((decimal)courseList.Count) / 9);
+            if (trang == null)
+            {
+                trang = "1";
+            }
+            ViewBag.trang = trang;
+            return View(courseList.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
             return View(courseList);
         }
         [HttpGet]

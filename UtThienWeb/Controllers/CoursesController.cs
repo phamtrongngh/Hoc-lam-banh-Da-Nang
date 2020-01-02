@@ -105,9 +105,9 @@ namespace UtThienWeb.Controllers
             {
                 var idAccount = db.Accounts.Add(new Account { AccountName = name, AccountPhone = phone, AccountEmail = email }).AccountId;
                 var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = idAccount }).OrderId;
-                foreach (var item in (IEnumerable<Course>) Session["cart"])
+                foreach (var item in (IEnumerable<Course>)Session["cart"])
                 {
-                    db.OrderDetails.Add(new OrderDetail{ CourseId = item.CourseId, OrderId = idOrder, OrderQuantity=item.CourseCountOrder });
+                    db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder, OrderQuantity = item.CourseCountOrder });
                     db.Courses.Find(item.CourseId).CourseCountOrder++;
                 }
 
@@ -121,17 +121,30 @@ namespace UtThienWeb.Controllers
             return Redirect("../");
         }
 
-        public ActionResult Order()
+        public ActionResult Order(string phone)
         {
             try
             {
-                var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = ((Account)Session["current_user"]).AccountId }).OrderId;
-                foreach (var item in (IEnumerable<Course>)Session["cart"])
+                if (phone == null)
                 {
-                    db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder, OrderQuantity=item.CourseCountOrder });
-                    db.Courses.Find(item.CourseId).CourseCountOrder++;
+                    var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = ((Account)Session["current_user"]).AccountId }).OrderId;
+                    foreach (var item in (IEnumerable<Course>)Session["cart"])
+                    {
+                        db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder, OrderQuantity = item.CourseCountOrder });
+                        db.Courses.Find(item.CourseId).CourseCountOrder++;
+                    }
                 }
-
+                else
+                {
+                    var s = db.Accounts.Find((((Account)Session["current_user"])).AccountId);
+                    s.AccountPhone = phone;
+                    var idOrder = db.Orders.Add(new Order { CreationDate = DateTime.Now, AccountId = ((Account)Session["current_user"]).AccountId }).OrderId;
+                    foreach (var item in (IEnumerable<Course>)Session["cart"])
+                    {
+                        db.OrderDetails.Add(new OrderDetail { CourseId = item.CourseId, OrderId = idOrder, OrderQuantity = item.CourseCountOrder });
+                        db.Courses.Find(item.CourseId).CourseCountOrder++;
+                    }
+                }
                 db.SaveChanges();
                 Session.Remove("cart");
             }
@@ -144,7 +157,7 @@ namespace UtThienWeb.Controllers
         [HttpPost]
         public JsonResult RemoveCart(int id)
         {
-            int re=1;
+            int re = 1;
             foreach (var item in ((List<Course>)Session["cart"]))
             {
                 if (item.CourseId == id)

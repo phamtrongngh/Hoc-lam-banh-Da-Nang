@@ -32,6 +32,11 @@ namespace UtThienWeb.Controllers
             ViewBag.topViews = db.News.OrderByDescending(a=>a.NewsViews).Take(6);
             var news = db.News.Where(a => a.NewsTypeId == 1).OrderByDescending(a=>a.NewsDate).ToList();
             ViewBag.pagination = Math.Ceiling(((decimal)news.Count) / 9);
+            if (trang == null)
+            {
+                trang = "1";
+            }
+            ViewBag.trang = trang;
             return View(news.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
         }
         
