@@ -1856,7 +1856,7 @@ ul.breadcrumb {
 }
 /*14h 29/11*/
 .logo {
-    width: 100%;
+    
     height: 35px;
 }
 
@@ -1938,10 +1938,7 @@ ul.breadcrumb {
     text-align: center;
 }
 /*14h 29/11*/
-.logo {
-    width: 100%;
-    height: 35px;
-}
+
 
 .navbar {
     padding: 0rem;
