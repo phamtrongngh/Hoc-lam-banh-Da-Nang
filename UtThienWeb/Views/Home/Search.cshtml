@@ -2,11 +2,11 @@
 @using UtThienWeb.Controllers;
 @{
     ViewBag.Title = "Search";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-<div class="container">
+<div class="container" style="margin-top: 50px;">
     <div class="row">
-        <div class="col-md-12" style="border-bottom:1px solid black"><h2>Kết quả tìm kiếm</h2></div>
+        <div class="col-md-12" style="border-bottom:1px solid white"><h2 style="color:white">Kết quả tìm kiếm</h2></div>
     </div>
 
 </div>
@@ -19,7 +19,7 @@
                     <div class="img-search" style="width:100%;height:200px;">
                         <img src="~/img/@item.SearchImage" width="100%" height="100%" alt="Alternate Text" />
                     </div>
-                    <h3>@item.SearchName</h3>
+                    <h3 style="text-align:center;">@item.SearchName</h3>
                 </a>
             </div>
         }
