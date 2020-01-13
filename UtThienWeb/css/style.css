@@ -801,6 +801,7 @@ td {
 
     .info-website {
         text-align: center;
+        font-size: 14px;
     }
 
     .social-pet {
@@ -983,7 +984,7 @@ td {
     padding: 8em 0 8em;
     margin: 0 auto;
     position: absolute;
-    top: 0;
+    bottom: -62px;
     left: 0;
     right: 0;
 }
@@ -1310,7 +1311,7 @@ td {
     margin-top: 0;
     margin-right: 20px;
     color: black;
-    font-size: 26px;
+    font-size: 20px;
     justify-content: center;
     text-align: justify;
 }
