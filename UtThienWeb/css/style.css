@@ -524,26 +524,32 @@ input, textarea, select, fieldset {
     .hotline-footer .left {
         float: left;
         width: 33.33%;
+        margin-top: 9px;
         background: #333;
         text-align: center;
-        height: 100%
+        height: 100%;
+        line-height:normal;
     }
 
     .hotline-footer .middle {
         float: left;
         width: 33.33%;
         background: #333;
+        margin-top: 9px;
         text-align: center;
         height: 100%;
         border-left: 1px solid #fff;
+        line-height: normal;
     }
 
     .hotline-footer .right {
         float: right;
         width: 33.33%;
+        margin-top: 9px;
         background: #333;
         text-align: center;
         height: 100%;
+        line-height: normal;
         border-left: 1px solid #fff;
     }
 
@@ -552,7 +558,7 @@ input, textarea, select, fieldset {
     }
 
     .hotline-footer .right a, .hotline-footer .left a, .hotline-footer .middle a {
-        line-height: 42px;
+        line-height: 15px;
         font-size: 13px;
         color: white;
         text-decoration: none;
@@ -1365,6 +1371,7 @@ td {
         display: inline-block;
         width: 100%;
         vertical-align: top;
+        
     }
 }
 
@@ -1922,6 +1929,7 @@ ul.breadcrumb {
         display: block;
         float: none;
         margin-right: 0px;
+        top: -20px !important;
     }
 
     .text-nguoihuongdan {
