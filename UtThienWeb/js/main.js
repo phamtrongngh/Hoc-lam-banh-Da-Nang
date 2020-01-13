@@ -216,6 +216,7 @@ jQuery(document).ready(function ($) {
         })
     }
 });
+
 jQuery(document).ready(function ($) {
     if ($("#navbarmenu").length > 0) {
         $(window).scroll(function () {
