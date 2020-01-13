@@ -57,11 +57,19 @@
                                         @item.FormCreationDate
                                     </td>
                                     <td>
-                                        <p>Đang chờ liên lạc...</p>
+                                        @if (item.FormStatus == "succcess")
+                                        {<p style="color:limegreen">Đơn thành công</p>}
+                                        @if (item.FormStatus == "failed")
+                                        {<p style="color:red">Đơn đã hủy</p>}
+                                        @if (item.FormStatus == "Đang chờ liên lạc")
+                                        {<p>Đang chờ liên lạc</p>}
                                     </td>
                                     <td>
-                                        <button style="font-size:12px;padding:4px 6px 6px 4px !important" onclick="" class="btn btn-primary">Thành công</button>
-                                        <button style="font-size:12px;padding:4px 6px 6px 4px !important" class="btn btn-primary">Hủy đơn</button>
+                                        <form action="/Admin/Forms/Apply" method="post">
+                                            <input hidden type="number" name="id" value="@item.FormId" />
+                                            <button name="apply" value="success" style="font-size:12px;padding:4px 4px !important;" onclick="" class="btn btn-primary">Thành công</button>
+                                            <button name="apply" value="failed" style="font-size:12px;padding:4px 15px !important" class="btn btn-primary">Hủy đơn</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 }

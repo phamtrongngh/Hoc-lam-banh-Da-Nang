@@ -653,6 +653,7 @@
     <Content Include="Views\Common\ShowDetailsCourses.cshtml" />
     <Content Include="Views\Common\ShowListCourses.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Contact\Send.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

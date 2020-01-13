@@ -15,7 +15,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            var ordersList = db.Orders;
+            var ordersList = db.Orders.OrderByDescending(a => a.CreationDate);
             foreach (var item in ordersList)
             {
                 item.Account = db.Accounts.Find(item.AccountId);

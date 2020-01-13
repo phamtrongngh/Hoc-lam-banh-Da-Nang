@@ -9,7 +9,9 @@ namespace UtThienWeb.Areas.Admin.Controllers
 {
     public class MenusController : Controller
     {
+        
         ModelCakes db = new ModelCakes();
+        ModelCakes db2 = new ModelCakes();
         public ActionResult Index()
         {
             if (Session["uName"] == null)
@@ -45,10 +47,12 @@ namespace UtThienWeb.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult DeleteMenu()
         {
-
             var id = int.Parse(Request.Form["id"]);
-
-            db.Menus.Remove(db.Menus.Find(id));
+            var obj = db.Menus.Find(id);
+            db.Menus.Remove(obj);
+            var obj2 = db2.CourseCatalogs.FirstOrDefault(a => a.CourseCatalogName.Equals(obj.MenuLiName));
+            db2.CourseCatalogs.Remove(obj2);
+            db2.SaveChanges();
             db.SaveChanges();
 
             return Json("");

@@ -18,16 +18,16 @@
             </div>
             <div id="smform-23114" class="smform smform-contact">
                 <amp-state id="categories_data" src="#" class="i-amphtml-element i-amphtml-layout-container" i-amphtml-layout="container" hidden="" aria-hidden="true"></amp-state>
-                <form action-xhr="#" method="post" on="submit: smform_submit.hide, smform_loading.show; submit-success: smform_fields.hide; submit-error: smform_submit.show, smform_loading.hide" target="_top" novalidate="" class="i-amphtml-form amp-form-dirty">
+                <form action="/Contact/Send/" method="post" on="submit: smform_submit.hide, smform_loading.show; submit-success: smform_fields.hide; submit-error: smform_submit.show, smform_loading.hide" target="_top" novalidate="" class="i-amphtml-form amp-form-dirty">
                     <fieldset id="smform_fields">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="Name" id="Name" placeholder="Nhập họ tên của bạn *" required="">
+                            <input type="text" class="form-control" name="Name" id="name" placeholder="Nhập họ tên của bạn *" required="">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="Phone" id="Phone" placeholder="Nhập số điện thoại * (ví dụ: 0912345678)" required="">
+                            <input type="text" class="form-control" name="Phone" id="phone" placeholder="Nhập số điện thoại * (ví dụ: 0912345678)" required="">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="Time" id="Time">
+                            <select class="form-control" name="time" id="Time">
                                 <option value="">Chọn thời gian tư vấn</option>
                                 <option value="07h00 - 09h30">07h00 - 09h30</option>
                                 <option value="09h30 - 11h00">09h30 - 11h00</option>
@@ -37,10 +37,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="Email" id="Email" placeholder="Nhập email của bạn">
+                            <input type="email" class="form-control" name="email" id="Email" placeholder="Nhập email của bạn">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control">Ý kiến của bạn</textarea>
+                            <textarea class="form-control" name="content">Ý kiến của bạn</textarea>
                         </div>
                         <div submit-error="">
                             <template type="amp-mustache">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
 
-                            <button type="button" class="btn btn-danger">GỬI</button>
+                            <button type="submit" class="btn btn-danger">GỬI</button>
                         </div>
 
                     </fieldset>
