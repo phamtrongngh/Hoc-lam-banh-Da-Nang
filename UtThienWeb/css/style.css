@@ -118,7 +118,7 @@
 
 .col-lg-5 .block-td {
     word-break: break-all;
-}
+}f
 /*11/12*/
 #body-render {
     margin-top: 45px;
@@ -1351,7 +1351,9 @@ td {
         display: flex;
         flex-direction: column;
     }
-
+    .wrap-gioithieu{
+        margin-top:auto !important;
+    }
     .img-gioithieu {
         height: 600px;
         min-width: 800px;
@@ -1408,13 +1410,13 @@ td {
     }
 }
 
-@media only screen and (max-width: 475px) {
-}
+
 
 
 
 .wrap-gioithieu {
     padding: 10px;
+    margin-top: 65px;
 }
 
 .wrap-img-gioithieu {
@@ -1428,14 +1430,14 @@ td {
 .text-nguoihuongdan {
     color: white;
     font-size: 22px;
-    margin-bottom: 215px;
+    margin-bottom: 120px;
     text-align: justify;
     margin-top: 0px;
 }
 
 .img-nguoihuongdan {
     height: 400px;
-    width: 280px;
+    width: 188px;
 }
 
 .text-gv-img {
@@ -1446,6 +1448,8 @@ td {
 }
 
 .wrap-img-gv {
+    top: -64px;
+    position: relative;
     float: right;
     margin-right: 20px;
 }
@@ -1913,7 +1917,7 @@ ul.breadcrumb {
     padding: 0rem;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1160px) {
     .wrap-img-gv {
         display: block;
         float: none;
