@@ -121,7 +121,7 @@ namespace UtThienWeb.Controllers
                     Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
                     EnableSsl = true
                 };
-                var url = "https://localhost:44396/Accounts/ConfirmEmail?code=" + num;
+                var url = "https://hoclambanhdanang.com/Accounts/ConfirmEmail?code=" + num;
                 client.Send("hoclambanhdanangpass@gmail.com",email,"Kích Hoạt Email Học Làm Bánh Đà Nẵng", "Để kích hoạt email cho tài khoản "+user+", vui lòng nhấp vào link sau: "+url);
                 Response.Cookies.Add(cookie);
                 return Json("Success");
