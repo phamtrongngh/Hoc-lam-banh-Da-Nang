@@ -27,35 +27,6 @@
                             <input type="text" class="form-control" name="Phone" id="Phone" placeholder="Nhập số điện thoại * (ví dụ: 0912345678)" required="">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="SoLuong" id="SoLuong" placeholder="Số lượng học viên" required="">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" name="Major" id="Major" required="" on="change: AMP.setState({
-                                    courses: categories_data.categories.filter(x=>
-                                x.code == event.value)[0]
-                                })">
-                                <option value="">Chọn chuyên đề *</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <amp-list height="48">
-                                <template type="amp-mustache">
-                                    <select class="form-control" name="Course" id="Course" required="">
-                                        <option value="">Chọn khóa học *</option>
-
-
-
-                                    </select>
-                                </template>
-                                <div role="list" class="i-amphtml-fill-content i-amphtml-replaced-content">
-                                    <select required="" id="Course" name="Course" class="form-control" role="listitem">
-                                        <option value="">Chọn khóa học *</option>
-                                    </select>
-                                </div>
-                            </amp-list>
-                        </div>
-                        <div class="form-group">
                             <select class="form-control" name="Time" id="Time">
                                 <option value="">Chọn thời gian tư vấn</option>
                                 <option value="07h00 - 09h30">07h00 - 09h30</option>
@@ -69,10 +40,7 @@
                             <input type="email" class="form-control" name="Email" id="Email" placeholder="Nhập email của bạn">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="Address" id="Address">
-                                <option value="">Chọn địa điểm học</option>
-
-                            </select>
+                            <textarea class="form-control">Ý kiến của bạn</textarea>
                         </div>
                         <div submit-error="">
                             <template type="amp-mustache">
