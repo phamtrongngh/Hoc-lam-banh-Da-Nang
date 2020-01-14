@@ -11,10 +11,18 @@ namespace UtThienWeb.Areas.Admin.Controllers
         ModelCakes db = new ModelCakes();
         public ActionResult Index()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(db.Forms.OrderByDescending(a=>a.FormCreationDate));
         }
         public ActionResult Apply(int id, string apply)
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             if (apply.Equals("success"))
             {
                 db.Forms.Find(id).FormStatus = "succcess";

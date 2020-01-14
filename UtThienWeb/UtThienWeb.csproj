@@ -416,9 +416,11 @@
     <Content Include="img\b1.jpg" />
     <Content Include="img\b2.jpg" />
     <Content Include="img\b3.jpg" />
+    <Content Include="img\background.jpg" />
     <Content Include="img\bannerlienhe.jpg" />
     <Content Include="img\bep-banh.png" />
     <Content Include="img\bep-nong.jpg" />
+    <Content Include="img\bg-1920x1108.jpg" />
     <Content Include="img\bg-body.jpg" />
     <Content Include="img\bg-giang-vien.jpg" />
     <Content Include="img\bg-gioi-thieu.jpg" />
@@ -430,6 +432,7 @@
     <Content Include="img\bg-tuyen-sinh.jpg" />
     <Content Include="img\bv1.jpg" />
     <Content Include="img\bv2.jpg" />
+    <Content Include="img\cha-khoai-mon.jpg" />
     <Content Include="img\chi-nhanh-hnaau.png" />
     <Content Include="img\click.png" />
     <Content Include="img\cong-cu-dung-cu.png" />
@@ -458,6 +461,7 @@
     <Content Include="img\mien-xao-cua.jpg" />
     <Content Include="img\milestones-bg.jpg" />
     <Content Include="img\nghanh-nghe-bep-gia-dinh.png" />
+    <Content Include="img\nguoihuongdan.png" />
     <Content Include="img\nguyen-vat-lieu.png" />
     <Content Include="img\no-image-available-icon-6.jpg" />
     <Content Include="img\pha-che.png" />

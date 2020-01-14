@@ -10,9 +10,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
     {
         
         public ActionResult Index()
-        {
-            Session["uName"] = 2;
-            
+        {   
             if (Session["uName"] == null)
             {
                 return RedirectToAction("Login", "Account");

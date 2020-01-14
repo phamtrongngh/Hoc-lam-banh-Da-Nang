@@ -49,7 +49,7 @@ namespace UtThienWeb.Controllers
             }
             else
             {
-                CourseCatalog catalog = (from s in db.CourseCatalogs select s).AsEnumerable().SingleOrDefault(a => HomeController.RemoveUnicode(a.CourseCatalogName) == name);
+                CourseCatalog catalog = (from s in db.CourseCatalogs select s).AsEnumerable().FirstOrDefault(a => HomeController.RemoveUnicode(a.CourseCatalogName) == name);
                 ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
                 var courses = db.Courses.Where(a => a.CourseCatalogId.Equals(catalog.CourseCatalogId)).AsEnumerable().ToList();
                 if (order == null)

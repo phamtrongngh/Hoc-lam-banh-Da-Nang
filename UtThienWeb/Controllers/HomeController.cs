@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace UtThienWeb.Controllers
 {
-    [RoutePrefix("")]
+   
     public class HomeController : CommonController
     {
         ModelCakes db = new ModelCakes();

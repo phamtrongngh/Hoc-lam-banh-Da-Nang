@@ -11,6 +11,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         // GET: Common
         public ActionResult Vidu()
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
     }

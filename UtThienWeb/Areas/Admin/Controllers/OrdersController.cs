@@ -25,6 +25,10 @@ namespace UtThienWeb.Areas.Admin.Controllers
         }
         public ActionResult Apply(int id, string apply)
         {
+            if (Session["uName"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             if (apply.Equals("success"))
             {
                 db.Orders.Find(id).OrderStatus = true;

@@ -54,7 +54,6 @@ namespace UtThienWeb.Areas.Admin.Controllers
             db2.CourseCatalogs.Remove(obj2);
             db2.SaveChanges();
             db.SaveChanges();
-
             return Json("");
         }
         [HttpPost]
