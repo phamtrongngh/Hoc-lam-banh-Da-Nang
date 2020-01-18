@@ -661,6 +661,7 @@
     <Content Include="Views\Common\ShowListCourses.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Contact\Send.cshtml" />
+    <Content Include="Views\Common\ShowListNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

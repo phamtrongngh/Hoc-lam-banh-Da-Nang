@@ -47,9 +47,9 @@ namespace UtThienWeb.Controllers
                 ViewBag.catalog = db.NewsCatalogs.Find(news.NewsTypeId).NewsCatalogName;
                 return View("ShowDetailsNews", news);
             }
-            else
+            CourseCatalog catalog = (from s in db.CourseCatalogs select s).AsEnumerable().FirstOrDefault(a => HomeController.RemoveUnicode(a.CourseCatalogName) == name);
+            if(catalog !=null)
             {
-                CourseCatalog catalog = (from s in db.CourseCatalogs select s).AsEnumerable().FirstOrDefault(a => HomeController.RemoveUnicode(a.CourseCatalogName) == name);
                 ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
                 var courses = db.Courses.Where(a => a.CourseCatalogId.Equals(catalog.CourseCatalogId)).AsEnumerable().ToList();
                 if (order == null)
@@ -77,6 +77,21 @@ namespace UtThienWeb.Controllers
                 ViewBag.trang = trang;
                 ViewBag.order = order;
                 return View("ShowListCourses", courses.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
+            }
+            else
+            {
+                NewsCatalog catalogNews = (from s in db.NewsCatalogs select s).AsEnumerable().FirstOrDefault(a => HomeController.RemoveUnicode(a.NewsCatalogName) == name);
+                ViewBag.topViews = db.News.OrderByDescending(a => a.NewsViews).Take(6);
+                var newss = db.News.Where(a => a.NewsTypeId==catalogNews.NewsCatalogId).AsEnumerable().ToList();
+                newss = newss.OrderByDescending(a => a.NewsDate).ToList();
+                ViewBag.catalog = catalogNews;
+                ViewBag.pagination = Math.Ceiling((decimal)newss.Count / 9);
+                if (trang == null)
+                {
+                    trang = "1";
+                }
+                ViewBag.trang = trang;
+                return View("ShowListNews", newss.Skip(trang == null ? 0 : (int.Parse(trang) - 1) * 9).Take(9));
             }
         }
     }
