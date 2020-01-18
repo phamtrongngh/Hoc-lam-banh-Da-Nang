@@ -298,6 +298,10 @@
     <Compile Include="Migrations\201912311105312_edit-quantity.designer.cs">
       <DependentUpon>201912311105312_edit-quantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001180520071_codeAccount.cs" />
+    <Compile Include="Migrations\202001180520071_codeAccount.designer.cs">
+      <DependentUpon>202001180520071_codeAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Course.cs" />
@@ -712,6 +716,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912311105312_edit-quantity.resx">
       <DependentUpon>201912311105312_edit-quantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001180520071_codeAccount.resx">
+      <DependentUpon>202001180520071_codeAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

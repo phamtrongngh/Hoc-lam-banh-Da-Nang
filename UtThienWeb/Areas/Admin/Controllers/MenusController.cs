@@ -9,7 +9,7 @@ namespace UtThienWeb.Areas.Admin.Controllers
 {
     public class MenusController : Controller
     {
-        
+
         ModelCakes db = new ModelCakes();
         ModelCakes db2 = new ModelCakes();
         public ActionResult Index()
@@ -30,9 +30,8 @@ namespace UtThienWeb.Areas.Admin.Controllers
             return View(menu);
         }
         [HttpPost]
-        public JsonResult AddMenu()
+        public JsonResult AddMenu(string AddMenu)
         {
-
             var id = int.Parse(Request.Form["id"]);
             var name = Request.Form["name"];
             Menu menu = new Menu();
@@ -41,8 +40,19 @@ namespace UtThienWeb.Areas.Admin.Controllers
             db.Menus.Add(menu);
             db.CourseCatalogs.Add(new CourseCatalog { CourseCatalogName = name });
             db.SaveChanges();
-            
             return Json("");
+        }
+        [HttpPost]
+        public ActionResult AddMenuParent(string AddMenu)
+        {
+            Menu menu = new Menu();
+            menu.MenuLiName = AddMenu;
+            menu.MenuUrl = HomeController.RemoveUnicode(AddMenu);
+            db.Menus.Add(menu);
+            db.NewsCatalogs.Add(new NewsCatalog { NewsCatalogName = AddMenu });
+            
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public JsonResult DeleteMenu()

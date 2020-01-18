@@ -16,6 +16,7 @@ namespace UtThienWeb.Controllers
     public class AccountsController : Controller
     {
         ModelCakes db = new ModelCakes();
+        ModelCakes db2 = new ModelCakes();
         // GET: Accounts
         [HttpPost]
 
@@ -122,7 +123,7 @@ namespace UtThienWeb.Controllers
                     EnableSsl = true
                 };
                 var url = "https://hoclambanhdanang.com/Accounts/ConfirmEmail?code=" + num;
-                client.Send("hoclambanhdanangpass@gmail.com",email,"Kích Hoạt Email Học Làm Bánh Đà Nẵng", "Để kích hoạt email cho tài khoản "+user+", vui lòng nhấp vào link sau: "+url);
+                client.Send("hoclambanhdanangpass@gmail.com", email, "Kích Hoạt Email Học Làm Bánh Đà Nẵng", "Để kích hoạt email cho tài khoản " + user + ", vui lòng nhấp vào link sau: " + url);
                 Response.Cookies.Add(cookie);
                 return Json("Success");
             }
@@ -169,31 +170,53 @@ namespace UtThienWeb.Controllers
                 code = code
             });
             var accessToken = result.access_token;
+
             if (!string.IsNullOrEmpty(accessToken))
             {
                 fb.AccessToken = accessToken;
                 dynamic me = fb.Get("me?fields=name,email,gender,birthday,address,link");
-
                 string fullname = me.name;
                 string email = me.email;
+                string phone = me.phone;
                 var gender = me.gender == "male" ? true : false;
                 string bod = me.birthday;
                 string address = me.address;
                 string linkFacebook = me.link;
                 var check = db.Accounts.SingleOrDefault(a => a.AccountEmail.Equals(email));
-                if (check == null)
+                if (check == null || check.AccountConfirmEmail == false)
                 {
                     Account account = new Account();
                     account.AccountName = fullname;
-                    account.AccountEmail = email;
+                    var codeAccount = "";
+                    if (email == null)
+                    {
+                        Random random = new Random();
+                        codeAccount = random.Next(1000).ToString();
+                        account.AccountCurrentCode = codeAccount;
+                        account.AccountEmail = "Chưa xác định";
+                    }
+                    else
+                        account.AccountEmail = email;
+
                     account.AccountGender = gender;
                     account.AccountAddress = address;
+                    account.AccountPhone = phone;
                     account.LinkFacebook = linkFacebook;
                     account.AccountRole = 0;
                     account.TimeCreate = DateTime.Now;
                     db.Accounts.Add(account);
                     db.SaveChanges();
-                    check = db.Accounts.SingleOrDefault(a => a.AccountEmail.Equals(email));
+
+                    if (codeAccount != "")
+                    {
+                        check = db.Accounts.SingleOrDefault(a => a.AccountCurrentCode.Equals(codeAccount));
+                        check.AccountCurrentCode = "";
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        check = db.Accounts.SingleOrDefault(a => a.AccountEmail.Equals(email));
+                    }
                 }
                 Session["current_user"] = check;
                 HttpCookie cookie = new HttpCookie("cookieCHLB");
@@ -227,7 +250,7 @@ namespace UtThienWeb.Controllers
                         Credentials = new NetworkCredential("hoclambanhdanangpass@gmail.com", "doimatkhauroi1105"),
                         EnableSsl = true
                     };
-                    client.Send("hoclambanhdanangpass@gmail.com",email, "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mã xác nhận của bạn là: " + finalString);
+                    client.Send("hoclambanhdanangpass@gmail.com", email, "Khôi phục mật khẩu từ Học Làm Bánh Đà Nẵng", "Mã xác nhận của bạn là: " + finalString);
                     s.AccountRePassword = finalString;
                     db.SaveChanges();
                     ViewData["username"] = s.AccountUser;
@@ -242,15 +265,16 @@ namespace UtThienWeb.Controllers
             {
                 mess = "Tên đăng nhập không tồn tại";
             }
-            
+
             return View(mess);
         }
         [HttpPost]
-        public ActionResult ChangePass(string username,string code, string pass)
+        public ActionResult ChangePass(string username, string code, string pass)
         {
             var account = db.Accounts.SingleOrDefault(a => a.AccountUser.Equals(username));
             object mess;
-            if (account.AccountRePassword.Equals(code)){
+            if (account.AccountRePassword.Equals(code))
+            {
                 account.AccountPassword = pass;
                 mess = "Đã đổi thành công mặt khẩu, vui lòng đăng nhập lại";
                 db.SaveChanges();

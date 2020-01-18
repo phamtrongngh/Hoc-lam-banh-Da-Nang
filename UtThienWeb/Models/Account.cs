@@ -45,7 +45,7 @@ namespace UtThienWeb.Models
 
         [StringLength(255)]
         public string AccountUser { get; set; }
-
+        public string AccountCurrentCode { get; set; }
         public bool? AccountGender { get; set; }
         public bool? AccountConfirmEmail { get; set; }
         [Column(TypeName = "date")]
