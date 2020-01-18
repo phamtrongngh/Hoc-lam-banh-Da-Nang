@@ -1,4 +1,23 @@
-﻿.bottom-ft {
+﻿@media only screen and (max-width: 1367px) {
+    .text-nguoihuongdan {
+        margin-bottom: 120px !important;
+    }
+
+    .img-nguoihuongdan {
+        height: 400px !important;
+        width: 145px !important;
+    }
+
+    .fix_tel {
+        bottom: 245px !important;
+    }
+
+    .cart-button-fixed {
+        bottom: 190px !important;
+    }
+}
+
+.bottom-ft {
     padding: 10px 102px;
 }
 
@@ -79,8 +98,8 @@
 
 .lentop {
     display: none;
-    bottom: 25%;
-    right: 40px;
+    bottom: 50px;
+    left: 58px;
     cursor: pointer;
     position: fixed;
     z-index: 1000;
@@ -118,7 +137,9 @@
 
 .col-lg-5 .block-td {
     word-break: break-all;
-}f
+}
+
+f
 /*11/12*/
 #body-render {
     margin-top: 45px;
@@ -137,8 +158,8 @@
 
 .cart-button-fixed {
     position: fixed;
-    left: 40px;
-    bottom: 24%;
+    left: 50px;
+    bottom: 23%;
     z-index: 99;
     cursor: pointer;
     display: none;
@@ -147,7 +168,7 @@
     .cart-button-fixed span {
         position: absolute;
         display: block;
-        left: 50%;
+        left: 45%;
         top: -1px;
         color: #fece00;
     }
@@ -493,7 +514,7 @@ input, textarea, select, fieldset {
         display: none;
     }
 
-    .fb-root {
+    #fb-root {
         display: none;
     }
 
@@ -514,7 +535,9 @@ input, textarea, select, fieldset {
     }
 
     .lentop {
-        display: none !important;
+        bottom: 6% !important;
+        left: auto !important;
+        right: 16px !important;
     }
 
     .hotline-footer:hover {
@@ -528,7 +551,7 @@ input, textarea, select, fieldset {
         background: #333;
         text-align: center;
         height: 100%;
-        line-height:normal;
+        line-height: normal;
     }
 
     .hotline-footer .middle {
@@ -848,16 +871,10 @@ td {
         filter: grayscale(0) !important;
     }
 
-    .fix_tel {
-        bottom: 15% !important;
-    }
+
 
     .cart-button-fixed {
-        bottom: 13%;
-    }
-
-    .lentop {
-        bottom: 6%;
+        bottom: 13% !important;
     }
 }
 
@@ -906,6 +923,12 @@ td {
 
     .fix_tel {
         bottom: 18% !important;
+    }
+
+    .lentop {
+        bottom: 9%;
+        left: auto;
+        right: 31px;
     }
 }
 
@@ -1357,9 +1380,11 @@ td {
         display: flex;
         flex-direction: column;
     }
-    .wrap-gioithieu{
-        margin-top:auto !important;
+
+    .wrap-gioithieu {
+        margin-top: auto !important;
     }
+
     .img-gioithieu {
         height: 600px;
         min-width: 800px;
@@ -1371,7 +1396,6 @@ td {
         display: inline-block;
         width: 100%;
         vertical-align: top;
-        
     }
 }
 
@@ -1387,20 +1411,6 @@ td {
     .img-gioithieu {
         height: 400px;
         min-width: 500px;
-    }
-
-    .img-nguoihuongdan {
-        min-height: 500px;
-        min-width: 350px;
-    }
-}
-
-@media screen and (max-width: 730px) {
-
-
-    .img-nguoihuongdan {
-        min-height: 300px;
-        min-width: 200px;
     }
 }
 
@@ -1437,14 +1447,14 @@ td {
 .text-nguoihuongdan {
     color: white;
     font-size: 22px;
-    margin-bottom: 120px;
+    margin-bottom: 250px;
     text-align: justify;
     margin-top: 0px;
 }
 
 .img-nguoihuongdan {
     height: 400px;
-    width: 188px;
+    width: 155px;
 }
 
 .text-gv-img {
@@ -1785,7 +1795,7 @@ ul.breadcrumb {
 
 .fix_tel {
     position: fixed;
-    bottom: 30%;
+    bottom: 260px;
     left: -20px;
     z-index: 999;
 }
@@ -1918,6 +1928,7 @@ ul.breadcrumb {
 /*14h 29/11*/
 .logo {
     height: 35px;
+    margin-right: 8px;
 }
 
 .navbar {
@@ -1956,9 +1967,8 @@ ul.breadcrumb {
 
 @media only screen and (max-width: 370px) {
     .img-nguoihuongdan {
-        height: 310px;
-        width: 180px;
-        margin-left: 22px;
+        height: 280px;
+        width: 120px;
     }
 
     .f-address li a {
@@ -2017,10 +2027,7 @@ ul.breadcrumb {
 }
 
 @media only screen and (max-width: 370px) {
-    .img-nguoihuongdan {
-        height: 310px;
-        width: 180px;
-    }
+
 
     .f-address li a {
         color: #ccc;
